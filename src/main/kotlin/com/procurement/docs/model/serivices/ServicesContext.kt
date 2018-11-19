@@ -57,7 +57,7 @@ class ServicesContext(
             )
 
             data class AdditionalIdentifier(
-                val scheme: String, // AC.parties.[role=="buyer"].additionalidentifieres[scheme=="MD-FISCAL"].id
+                val scheme: String // AC.parties.[role=="buyer"].additionalidentifieres[scheme=="MD-FISCAL"].id
             )
 
             data class ContactPoint(
@@ -121,7 +121,7 @@ class ServicesContext(
             )
 
             data class AdditionalIdentifier(
-                val scheme: String, // AC.parties.[role=="supplier"].additionalidentifieres[scheme=="MD-FISCAL"].id
+                val scheme: String // AC.parties.[role=="supplier"].additionalidentifieres[scheme=="MD-FISCAL"].id
             )
 
             data class ContactPoint(
@@ -181,7 +181,7 @@ class ServicesContext(
             val ccTenderer_2_4Measure: String, // AC.agreedMetrics.cc-tenderer-2-4.measure
             val ccTenderer_3_1Measure: String, // AC.agreedMetrics.cc-tenderer-3-1.measure
             val ccTenderer_3_2Measure: String, // AC.agreedMetrics.cc-tenderer-3-2.measure
-            val ccTenderer_3_3Measure: String, // AC.agreedMetrics.cc-tenderer-3-3.measure
+            val ccTenderer_3_3Measure: String // AC.agreedMetrics.cc-tenderer-3-3.measure
         )
 
         data class Milestones(
