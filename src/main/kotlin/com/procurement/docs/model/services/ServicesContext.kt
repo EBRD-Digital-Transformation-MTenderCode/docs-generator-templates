@@ -208,7 +208,7 @@ class ServicesContext(
             ) {
                 data class Classification(
                         val id: String,// AC.award.items[*].classification.id
-                        val description: String?// AC.award.items[*].classification.description
+                        val description: String// AC.award.items[*].classification.description
                 )
 
                 data class Unit(
@@ -227,7 +227,7 @@ class ServicesContext(
                 ) {
                     data class BudgetAllocation(
                             val period: String,// AC.planning.budget.budgetAllocation[relatedItem==item.id].period
-                            val budgetBreakdownID: String// AC.budget.planning.budgetAllocation[relatedItem==item.id].budgetBreakdownID
+                            val budgetBreakdownID: String// AC.planning.budget.budgetAllocation[relatedItem==item.id].budgetBreakdownID
                     )
                 }
             }
