@@ -197,10 +197,6 @@
                 font-family: Arial, sans-serif;
                 font-size: 10pt;
             }
-
-            /*@page  {
-                size: landscape;
-            }*/
             b {
                 display: inline-block;
                 font-size: 11pt;
@@ -1026,7 +1022,9 @@
                 <td><span class="context" th:text="${item.quantity * item.unit.value.amount}">=4*6</span></td>
                 <td><span class="context"></span></td>
                 <td>
-                    <span class="context" th:text="${item.planning.budgetAllocation.period}">AC.award.items[*].planning.budgetAllocation[reltedItem:current].period</span>
+                    <span class="context" th:text="${item.planning.budgetAllocation.period.startDate}">AC.award.items[*].planning.budgetAllocation[relatedItem:current].period.startDate</span>
+                    -
+                    <span class="context" th:text="${item.planning.budgetAllocation.period.endDate}">AC.award.items[*].planning.budgetAllocation[relatedItem:current].period.endDate</span>
                     <span class="context" th:text="${item.planning.budgetAllocation.budgetBreakdownID}">+budgetBreakdownID</span>
                 </td>
             </tr>

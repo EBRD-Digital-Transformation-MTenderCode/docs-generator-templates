@@ -226,9 +226,14 @@ class ServicesContext(
 
                 ) {
                     data class BudgetAllocation(
-                            val period: String,// AC.planning.budget.budgetAllocation[relatedItem==item.id].period
+                            val period: Period,
                             val budgetBreakdownID: String// AC.planning.budget.budgetAllocation[relatedItem==item.id].budgetBreakdownID
-                    )
+                    ){
+                        data class Period(
+                                val startDate: String, // AC.planning.budget.budgetAllocation[relatedItem==item.id].period.startDate, format - (DD.MM.YYYY)
+                                val endDate: String // AC.planning.budget.budgetAllocation[relatedItem==item.id].period.endDate, format - (DD.MM.YYYY)
+                        )
+                    }
                 }
             }
         }
