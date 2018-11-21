@@ -11,8 +11,7 @@ class ServicesContext(
         val tender: Tender,
         val buyer: Buyer,
         val supplier: Supplier,
-        val award: Award,
-        val planning: Planning
+        val award: Award
     ) {
         data class Contract(
             val id: String, // AC.contracts[0].id
@@ -80,17 +79,17 @@ class ServicesContext(
                 val bankAccount: BankAccounts
             ) {
                 data class BankAccounts(
-                    val accountIdentification: String, // AC.parties.[role=="buyer"].details.bankAccounts.accountIdentification.id
-                    val identifier: String, // AC.parties.[role=="buyer"].details.bankAccounts.identifier.id
-                    val name: String, // AC.parties.[role=="buyer"].details.bankAccounts.bankName
+                    val accountIdentification: String, // AC.parties.[role=="buyer"].details.bankAccounts[0].accountIdentification.id
+                    val identifier: String, // AC.parties.[role=="buyer"].details.bankAccounts[0].identifier.id
+                    val name: String, // AC.parties.[role=="buyer"].details.bankAccounts[0].bankName
                     val address: Address
                 ) {
                     data class Address(
-                        val country: String, // AC.parties.[role=="buyer"].details.bankAccounts.address.addressDetails.country.description
-                        val region: String, // AC.parties.[role=="buyer"].details.bankAccounts.address.addressDetails.region.description
-                        val locality: String, // AC.parties.[role=="buyer"].details.bankAccounts.address.addressDetails.locality.description
-                        val streetAddress: String, // AC.parties.[role=="buyer"].details.bankAccounts.address.streetAddress
-                        val postalCode: String?// AC.parties.[role=="buyer"].details.bankAccounts.address.postalCode
+                        val country: String, // AC.parties.[role=="buyer"].details.bankAccounts[0].address.addressDetails.country.description
+                        val region: String, // AC.parties.[role=="buyer"].details.bankAccounts[0].address.addressDetails.region.description
+                        val locality: String, // AC.parties.[role=="buyer"].details.bankAccounts[0].address.addressDetails.locality.description
+                        val streetAddress: String, // AC.parties.[role=="buyer"].details.bankAccounts[0].address.streetAddress
+                        val postalCode: String?// AC.parties.[role=="buyer"].details.bankAccounts[0].address.postalCode
                     )
                 }
             }
@@ -149,17 +148,17 @@ class ServicesContext(
                 val bankAccount: BankAccounts
             ) {
                 data class BankAccounts(
-                    val accountIdentification: String, // AC.parties.[role=="supplier"].details.bankAccounts.accountIdentification.id
-                    val identifier: String, // AC.parties.[role=="supplier"].details.bankAccounts.identifier.id
-                    val name: String, // AC.parties.[role=="supplier"].details.bankAccounts.bankName
+                    val accountIdentification: String, // AC.parties.[role=="supplier"].details.bankAccounts[0].accountIdentification.id
+                    val identifier: String, // AC.parties.[role=="supplier"].details.bankAccounts[0].identifier.id
+                    val name: String, // AC.parties.[role=="supplier"].details.bankAccounts[0].bankName
                     val address: Address
                 ) {
                     data class Address(
-                        val country: String, // AC.parties.[role=="supplier"].details.bankAccounts.address.addressDetails.country.description
-                        val region: String, // AC.parties.[role=="supplier"].details.bankAccounts.address.addressDetails.region.description
-                        val locality: String, // AC.parties.[role=="supplier"].details.bankAccounts.address.addressDetails.locality.description
-                        val streetAddress: String, // AC.parties.[role=="supplier"].details.bankAccounts.address.streetAddress
-                        val postalCode: String? // AC.parties.[role=="supplier"].details.bankAccounts.address.postalCode
+                        val country: String, // AC.parties.[role=="supplier"].details.bankAccounts[0].address.addressDetails.country.description
+                        val region: String, // AC.parties.[role=="supplier"].details.bankAccounts[0].address.addressDetails.region.description
+                        val locality: String, // AC.parties.[role=="supplier"].details.bankAccounts[0].address.addressDetails.locality.description
+                        val streetAddress: String, // AC.parties.[role=="supplier"].details.bankAccounts[0].address.streetAddress
+                        val postalCode: String? // AC.parties.[role=="supplier"].details.bankAccounts[0].address.postalCode
                     )
                 }
             }
@@ -192,21 +191,43 @@ class ServicesContext(
         )
         data class Award(
                 val date: String,//AC.awards[relatedLots[0]==AC.tender.lots[0].id].date
-                val relatedLot: RelatedLot
+                val relatedLot: RelatedLot,
+                val items: List<Item>
         ) {
             data class RelatedLot(
                     val id: String //AC.awards.[relatedLots[0]==AC.tender.lots[0].id].id
             )
-        }
 
-        data class Planning(
-              val  budgetAllocation: BudgetAllocation
+            data class Item(
+                    val classification: Classification,
+                    val description: String,//AC.award.items[*].description
+                    val unit: Unit,
+                    val planning: Planning,
+                    val quantity: Double//AC.award.items[*].quantity
+            ){
+                data class Classification(
+                        val id: String,// AC.award.items[*].classification.id
+                        val description: String?// AC.award.items[*].classification.description
+                )
+                data class Unit(
+                        val name: String,//AC.award.items[*].unit.name
+                        val value: Value
+                ){
+                    data class Value(
+                            val amountNet: Double,//AC.award.items[*].unit.value.amountNet
+                            val amount:Double//AC.award.items[*].unit.value.amount
+                    )
+                }
+                data class Planning(
+                        val  budgetAllocation: BudgetAllocation
 
-        ) {
-            data class BudgetAllocation(
-                val period: String,// AC.planning.budget.budgetAllocation[reltedItem:current].period
-                val  budgetBreakdownID: String// AC.budget.planning.budgetAllocation[reltedItem:current].budgetBreakdownID
-            )
+                ) {
+                    data class BudgetAllocation(
+                            val period: String,// AC.planning.budget.budgetAllocation[relatedItem==item.id].period
+                            val  budgetBreakdownID: String// AC.budget.planning.budgetAllocation[relatedItem==item.id].budgetBreakdownID
+                    )
+                }
+            }
         }
     }
 

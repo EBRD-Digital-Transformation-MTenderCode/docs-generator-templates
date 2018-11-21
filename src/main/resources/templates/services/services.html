@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ro">
     <head>
         <meta content="text/html; charset=UTF-8" http-equiv="content-type">
         <style>
@@ -191,11 +191,13 @@
                 -moz-box-sizing: border-box;
                 box-sizing: border-box;
             }
+
             body {
                 line-height: 1;
                 font-family: Arial, sans-serif;
                 font-size: 10pt;
             }
+
             /*@page  {
                 size: landscape;
             }*/
@@ -204,7 +206,8 @@
                 font-size: 11pt;
                 margin-bottom: 10px;
             }
-            div{
+
+            div {
                 margin-bottom: 13pt;
             }
 
@@ -262,6 +265,7 @@
                 counter-increment: li;
                 content: counters(li, ".") ". ";
             }
+
             ul {
                 list-style: none;
                 margin-top: 5px;
@@ -270,18 +274,20 @@
             li {
                 padding: 5px 0;
             }
-            ul > li{
+
+            ul > li {
                 padding: 2px 0;
             }
 
-            p{
+            p {
                 margin: 0;
             }
 
-            .table-number{
+            .table-number {
                 text-align: center;
             }
-            .break{
+
+            .break {
                 page-break-before: always;
             }
         </style>
@@ -294,13 +300,26 @@
                 alt="">
         </div>
         <div class="square"></div>
-        <h3 style="font-size: 12pt">Contract Nr. <span class="context" th:text="${context.ac.contract.id}">AC.contracts[0].id</span></h3>
-        <div><b>de achiziţionare <span class="context" th:text="${context.ac.contract.description}">AC.contracts[0].description</span></b>
+        <h3 style="font-size: 12pt">Contract Nr. <span class="context" th:text="${context.ac.contract.id}">AC.contracts[0].id</span>
+        </h3>
+        <div>
+            <b>
+                de achiziţionare <span class="context" th:text="${context.ac.contract.description}">
+                AC.contracts[0].description
+            </span>
+            </b>
         </div>
-        <div><b>Cod CPV <span class="context" th:text="${context.ac.contract.id}">AC.contracts[0].id</span> <span
-            class="context" th:text="${context.ac.contract.description}">AC.contracts[0].description</span></b></div>
+        <div>
+            <b>
+                Cod CPV <span class="context" th:text="${context.ac.contract.id}">AC.contracts[0].id</span>
+                <span class="context" th:text="${context.ac.contract.description}">AC.contracts[0].description</span>
+            </b>
+        </div>
         <div style="margin-bottom: 0"><span class="context" th:text="${context.ac.date}">AC.date</span></div>
-        <div><span class="context" th:text="${context.ac.buyer.address.locality}">AC.parties[role=="buyer"].address.addressDetails.locality.description</span>
+        <div>
+            <span class="context" th:text="${context.ac.buyer.address.locality}">
+                AC.parties[role=="buyer"].address.addressDetails.locality.description
+            </span>
         </div>
         <table class="table">
             <tr>
@@ -319,8 +338,10 @@
                         <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.model.services.ServicesContext.AC.Supplier.Person"*/-->
                         <div th:each="supplierPerson : ${context.ac.supplier.persones}">
                             <span class="context" th:text="${supplierPerson.businessFunctions.jobTitle}">AC.parties.[supplier].persones.businessFunctions[type:authority].jobTitle</span>
-                            <span class="context" th:text="${supplierPerson.title}">AC.parties.[supplier].persones.title </span>
-                            <span class="context" th:text="${supplierPerson.name}">AC.parties.[supplier].persones.name</span>
+                            <span class="context"
+                                  th:text="${supplierPerson.title}">AC.parties.[supplier].persones.title </span>
+                            <span class="context"
+                                  th:text="${supplierPerson.name}">AC.parties.[supplier].persones.name</span>
                         </div>
                     </div>
                     <div>
@@ -345,10 +366,11 @@
                     </div>
                     <div>
                         <div style="margin-bottom: 3px">reprezentată prin</div>
+                        <!--/*@thymesVar id="buyerPerson" type="com.procurement.docs.model.services.ServicesContext.AC.Buyer.Person"*/-->
                         <div th:each="buyerPerson : ${context.ac.buyer.persones}">
-                            <!--/*@thymesVar id="buyerPerson" type="com.procurement.docs.model.services.ServicesContext.AC.Buyer.Person"*/-->
                             <span class="context" th:text="${buyerPerson.businessFunctions.jobTitle}">AC.parties.[buyer].persones.businessFunctions[type:authority].jobTitle, </span>
-                            <span class="context" th:text="${buyerPerson.title}">AC.parties.[buyer].persones.title </span>
+                            <span class="context"
+                                  th:text="${buyerPerson.title}">AC.parties.[buyer].persones.title </span>
                             <span class="context" th:text="${buyerPerson.name}">AC.parties.[buyer].persones.name</span>
                         </div>
                     </div>
@@ -799,23 +821,30 @@
             <li>
                 <b>Semnăturile părţilor</b>
                 <p>Acest document se semnează electronic în conformitate cu Legea nr. 91 din 29.05.2014. Verificarea
-                   semnăturii poate fi realizată la adresa https://msign.gov.md</p>
+                   semnăturii poate fi realizată la adresa https://msign.gov.md
+                </p>
             </li>
         </ol>
 
         <div class="break"></div>
 
         <h4>Specificaţii tehnice (F4.1)</h4>
-        <p>[Acest tabel va fi completat de către ofertant în coloanele 3, 4, 5, 7, iar de către autoritatea contractantă
-           – în coloanele 1, 2, 6, 8]</p>
+        <p>
+            [Acest tabel va fi completat de către ofertant în coloanele 3, 4, 5, 7, iar de către autoritatea
+            contractantă
+            – în coloanele 1, 2, 6, 8]
+        </p>
         <table class=" table table-border">
             <tr>
-                <td>Numărul licitaţiei: <span class="context" th:text="${context.ms.tender.id}"> MS.tender.id </span></td>
+                <td>Numărul licitaţiei: <span class="context" th:text="${context.ms.tender.id}"> MS.tender.id </span>
+                </td>
                 <td>Data: <span class="context" th:text="${context.ac.award.date}"> AC.award.date</span></td>
             </tr>
             <tr>
-                <td>Denumirea licitaţiei: <span class="context" th:text="${context.ms.tender.title}"> MS.tender.title</span></td>
-                <td>Lot: <span class="context" th:text="${context.ac.award.relatedLot.id}"> AC.award.relatedLot.id </span></td>
+                <td>Denumirea licitaţiei: <span class="context"
+                                                th:text="${context.ms.tender.title}"> MS.tender.title</span></td>
+                <td>Lot: <span class="context"
+                               th:text="${context.ac.award.relatedLot.id}"> AC.award.relatedLot.id </span></td>
             </tr>
         </table>
 
@@ -852,7 +881,8 @@
             </tr>
             <tr>
                 <td></td>
-                <td><span class="context" th:text="${context.ac.award.relatedLot.id}">AC.award.relatedLot.id.title</span></td>
+                <td><span class="context"
+                          th:text="${context.ac.award.relatedLot.id}">AC.award.relatedLot.id.title</span></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -860,37 +890,48 @@
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
+            <!--/*@thymesVar id="item" type="com.procurement.docs.model.services.ServicesContext.AC.Award.Item"*/-->
+            <tr th:each="item : ${context.ac.award.items}">
                 <td>
-                    <span class="context">AC.award.items[*].classification.id </span>
-                    <span class="context">+description</span>
-                </td> <!-- добавить th:text -->
-                <td><span class="context">AC.award.items[*].description</span></td><!-- добавить th:text -->
-                <td><span class="context" th:text="${context.ac.contract.agreedMetrics.ccSubject_1Measure}">AC.contract.agreedMetrics.cc-subject-1.measure</span></td>
-                <td><span class="context" th:text="${context.ac.contract.agreedMetrics.ccSubject_2Measure}">AC.contract.agreedMetrics.cc-subject-2.measure</span></td>
-                <td><span class="context" th:text="${context.ac.contract.agreedMetrics.ccSubject_3Measure}">AC.contract.agreedMetrics.cc-subject-3.measure</span></td>
-                <td><span class="context" th:text="${context.ac.contract.agreedMetrics.ccSubject_4Measure}">AC.contract.agreedMetrics.cc-subject-4.measure</span></td>
+                    <span class="context"
+                          th:text="${item.classification.id}">AC.award.items[*].classification.id </span>
+                    <span class="context" th:text="${item.classification.description}">+description</span>
+                </td>
+                <td><span class="context" th:text="${item.description}">AC.award.items[*].description</span></td>
+                <td><span class="context" th:text="${context.ac.contract.agreedMetrics.ccSubject_1Measure}">AC.contract.agreedMetrics.cc-subject-1.measure</span>
+                </td>
+                <td><span class="context" th:text="${context.ac.contract.agreedMetrics.ccSubject_2Measure}">AC.contract.agreedMetrics.cc-subject-2.measure</span>
+                </td>
+                <td><span class="context" th:text="${context.ac.contract.agreedMetrics.ccSubject_3Measure}">AC.contract.agreedMetrics.cc-subject-3.measure</span>
+                </td>
+                <td><span class="context" th:text="${context.ac.contract.agreedMetrics.ccSubject_4Measure}">AC.contract.agreedMetrics.cc-subject-4.measure</span>
+                </td>
                 <td></td>
-                <td><span class="context" th:text="${context.ac.contract.agreedMetrics.ccSubject_5Measure}">AC.contract.agreedMetrics.cc-subject-5.measure</span></td>
+                <td><span class="context" th:text="${context.ac.contract.agreedMetrics.ccSubject_5Measure}">AC.contract.agreedMetrics.cc-subject-5.measure</span>
+                </td>
             </tr>
         </table>
 
-        <p> Numele, Prenumele:
-           <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.model.services.ServicesContext.AC.Supplier.Person"*/-->
-        <div th:each="supplierPerson : ${context.ac.supplier.persones}">
-            <span class="context" th:text="${supplierPerson.title}">AC.parties.[supplier].persones.title </span>
-            <span class="context" th:text="${supplierPerson.name}">AC.parties.[supplier].persones.name</span>
-        </div>
+        <div>
+            Numele, Prenumele:
+            <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.model.services.ServicesContext.AC.Supplier.Person"*/-->
+            <div th:each="supplierPerson : ${context.ac.supplier.persones}">
+                <span class="context" th:text="${supplierPerson.title}">AC.parties.[supplier].persones.title</span>
+                <span class="context" th:text="${supplierPerson.name}">AC.parties.[supplier].persones.name</span>
+            </div>
 
-           În calitate de:
-        <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.model.services.ServicesContext.AC.Supplier.Person"*/-->
-        <div th:each="supplierPerson : ${context.ac.supplier.persones}">
-            <span class="context" th:text="${supplierPerson.businessFunctions.jobTitle}">AC.parties.[supplier].persones.businessFunctions[type:authority].jobTitle</span>
+            În calitate de:
+            <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.model.services.ServicesContext.AC.Supplier.Person"*/-->
+            <div th:each="supplierPerson : ${context.ac.supplier.persones}">
+                <span class="context" th:text="${supplierPerson.businessFunctions.jobTitle}">AC.parties.[supplier].persones.businessFunctions[type:authority].jobTitle</span>
+            </div>
         </div>
-        </p>
         <p>Ofertantul:
             <span class="context" th:text="${context.ac.supplier.legalForm.description}">AC.parties.[supplier].legalForm.description</span>
-            <span class="context" th:text="${context.ac.supplier.identifier.legalName}">AC.parties.[supplier].identifier.legalName (AC.parties.[supplier].identifier.id) </span> <!-- что значат скобки?? -->
+            <span class="context" th:text="${context.ac.supplier.identifier.legalName}">AC.parties.[supplier].identifier.legalName</span>
+           (<span class="context"
+                  th:text="${context.ac.supplier.identifier.id}"> AC.parties.[supplier].identifier.id </span>
+           )
         </p>
         <p>Adresa:
             <span class="context" th:text="${context.ac.supplier.address.streetAddress}">AC.parties.[supplier].address.streetAddress</span>
@@ -902,16 +943,20 @@
 
         <div class="break"></div>
         <h4>Specificații de preț (F4.2)</h4>
-        <p>[Acest tabel va fi completat de către ofertant în coloanele 5,6,7,8, iar de către autoritatea contractantă – în coloanele 1,2,3,4,9]</p>
+        <p>[Acest tabel va fi completat de către ofertant în coloanele 5,6,7,8, iar de către autoritatea contractantă –
+           în coloanele 1,2,3,4,9]</p>
 
         <table class="table table-border">
             <tr>
-                <td>Numărul licitaţiei: <span class="context" th:text="${context.ms.tender.id}"> MS.tender.id </span></td>
+                <td>Numărul licitaţiei: <span class="context" th:text="${context.ms.tender.id}"> MS.tender.id </span>
+                </td>
                 <td>Data: <span class="context" th:text="${context.ac.award.date}"> AC.award.date</span></td>
             </tr>
             <tr>
-                <td>Denumirea licitaţiei: <span class="context" th:text="${context.ms.tender.title}"> MS.tender.title</span></td>
-                <td>Lot: <span class="context" th:text="${context.ac.award.relatedLot.id}"> AC.award.relatedLot.id </span></td>
+                <td>Denumirea licitaţiei: <span class="context"
+                                                th:text="${context.ms.tender.title}"> MS.tender.title</span></td>
+                <td>Lot: <span class="context"
+                               th:text="${context.ac.award.relatedLot.id}"> AC.award.relatedLot.id </span></td>
             </tr>
         </table>
 
@@ -954,7 +999,8 @@
             </tr>
             <tr>
                 <td></td>
-                <td><span class="context" th:text="${context.ac.award.relatedLot.id}">AC.award.relatedLot.id.title</span></td>
+                <td><span class="context"
+                          th:text="${context.ac.award.relatedLot.id}">AC.award.relatedLot.id.title</span></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -964,24 +1010,24 @@
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
-                <td><span class="context">AC.award.items[*].classification.id</span> <span
-                    class="context">+description</span></td> <!-- добавить th:text -->
-                <td><span class="context">AC.award.items[*].description</span></td><!-- добавить th:text -->
-                <td><span class="context">AC.award.items[*].unit.name</span></td>
-                                                             <!-- добавить th:text -->
-                <td><span class="context">AC.award.items[*].quantity</span></td>
-                                                             <!-- добавить th:text -->
-                <td><span class="context">AC.award.items[*].unit.value.amountNet</span></td>
-                                                             <!-- добавить th:text -->
-                <td><span class="context">AC.award.items[*].unit.value.amount</span></td>
-                                                             <!-- добавить th:text -->
-                <td><span class="context">=4*5</span></td>
-                <td><span class="context">=4*6</span></td>
-                <td><span class="context">?</span> </td>
+
+            <!--/*@thymesVar id="item" type="com.procurement.docs.model.services.ServicesContext.AC.Award.Item"*/-->
+            <tr th:each="item : ${context.ac.award.items}">
+                <td><span class="context" th:text="${item.classification.id}">AC.award.items[*].classification.id</span>
+                    <span class="context" th:text="${item.classification.description}">+description</span></td>
+                <td><span class="context" th:text="${item.description}">AC.award.items[*].description</span></td>
+                <td><span class="context" th:text="${item.unit.name}">AC.award.items[*].unit.name</span></td>
+                <td><span class="context" th:text="${item.quantity}">AC.award.items[*].quantity</span></td>
+                <td><span class="context"
+                          th:text="${item.unit.value.amountNet}">AC.award.items[*].unit.value.amountNet</span></td>
+                <td><span class="context" th:text="${item.unit.value.amount}">AC.award.items[*].unit.value.amount</span>
+                </td>
+                <td><span class="context" th:text="${item.quantity * item.unit.value.amountNet}">=4*5</span></td>
+                <td><span class="context" th:text="${item.quantity * item.unit.value.amount}">=4*6</span></td>
+                <td><span class="context"></span></td>
                 <td>
-                    <span class="context" th:text="${context.ac.planning.budgetAllocation.period}">AC.planning.budgetAllocation[reltedItem:current].period</span>
-                    <span class="context" th:text="${context.ac.planning.budgetAllocation.budgetBreakdownID}">+budgetBreakdownID</span>
+                    <span class="context" th:text="${item.planning.budgetAllocation.period}">AC.award.items[*].planning.budgetAllocation[reltedItem:current].period</span>
+                    <span class="context" th:text="${item.planning.budgetAllocation.budgetBreakdownID}">+budgetBreakdownID</span>
                 </td>
             </tr>
 
@@ -990,7 +1036,7 @@
                 <td>TOTAL</td>
                 <td></td>
                 <td></td>
-                <td><span class="context">Sum</span> </td>
+                <td><span class="context">Sum</span></td>
                 <td><span class="context">Sum</span></td>
                 <td><span class="context">Sum</span></td>
                 <td><span class="context">Sum</span></td>
@@ -1000,22 +1046,23 @@
             </tr>
         </table>
 
-        <p>Numele, Prenumele:
-
-        <div th:each="buyerPerson : ${context.ac.buyer.persones}">
+        <div>
+            Numele, Prenumele:
             <!--/*@thymesVar id="buyerPerson" type="com.procurement.docs.model.services.ServicesContext.AC.Buyer.Person"*/-->
-            <span class="context" th:text="${buyerPerson.title}">AC.parties.[buyer].persones.title </span>
-            <span class="context" th:text="${buyerPerson.name}">AC.parties.[buyer].persones.name</span>
-        </div>
-           În calitate de:
-        <div th:each="buyerPerson : ${context.ac.buyer.persones}">
+            <div th:each="buyerPerson : ${context.ac.buyer.persones}">
+                <span class="context" th:text="${buyerPerson.title}">AC.parties.[buyer].persones.title </span>
+                <span class="context" th:text="${buyerPerson.name}">AC.parties.[buyer].persones.name</span>
+            </div>
+            În calitate de:
             <!--/*@thymesVar id="buyerPerson" type="com.procurement.docs.model.services.ServicesContext.AC.Buyer.Person"*/-->
-            <span class="context" th:text="${buyerPerson.businessFunctions.jobTitle}">AC.parties.[buyer].persones.businessFunctions[type:authority].jobTitle, </span>
+            <div th:each="buyerPerson : ${context.ac.buyer.persones}">
+                <span class="context" th:text="${buyerPerson.businessFunctions.jobTitle}">AC.parties.[buyer].persones.businessFunctions[type:authority].jobTitle, </span>
+            </div>
         </div>
-        </p>
         <p>Ofertantul:
             <span class="context" th:text="${context.ac.supplier.legalForm.description}">AC.parties.[supplier].legalForm.description</span>
-            <span class="context" th:text="${context.ac.supplier.identifier.legalName}">AC.parties.[supplier].identifier.legalName (AC.parties.[supplier].identifier.id) </span> <!-- что значат скобки?? -->
+            <span class="context" th:text="${context.ac.supplier.identifier.legalName}">AC.parties.[supplier].identifier.legalName (AC.parties.[supplier].identifier.id) </span>
+           <!-- что значат скобки?? -->
         </p>
         <p>Adresa:
             <span class="context" th:text="${context.ac.supplier.address.streetAddress}">AC.parties.[supplier].address.streetAddress</span>
