@@ -201,7 +201,7 @@ class ServicesContext(
 
             data class Item(
                     val classification: Classification,
-                    val description: String,//AC.award.items[*].description
+                    val description: String?,//AC.award.items[*].description
                     val unit: Unit,
                     val planning: Planning,
                     val quantity: Double//AC.award.items[*].quantity
