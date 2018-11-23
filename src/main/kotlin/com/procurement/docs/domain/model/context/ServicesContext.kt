@@ -37,44 +37,34 @@ class ServicesContext(
                                "ccBuyer_2_1Measure",
                                "ccBuyer_2_2Measure",
                                "ccTenderer_1_1Measure",
-                               "ccTenderer_1_6Measure",
+                               "ccTenderer_1_2Measure",
                                "ccTenderer_2_1Measure",
                                "ccTenderer_2_2Measure",
                                "ccTenderer_2_3Measure",
                                "ccTenderer_2_4Measure",
                                "ccTenderer_3_1Measure",
                                "ccTenderer_3_2Measure",
-                               "ccTenderer_3_3Measure",
-                               "ccSubject_1Measure",
-                               "ccSubject_2Measure",
-                               "ccSubject_3Measure",
-                               "ccSubject_4Measure",
-                               "ccSubject_5Measure"
+                               "ccTenderer_3_3Measure"
             )
             data class AgreedMetrics(
                 val ccGenerel_1_1Measure: String, // AC.contracts[0].agreedMetrics[id==cc-general].observations[id==cc-general-1-1].measure
                 val ccGenerel_1_2Measure: String, // AC.contracts[0].agreedMetrics[id==cc-general].observations[id==cc-general-1-2].measure
                 val ccGenerel_1_3Measure: String, // AC.contracts[0].agreedMetrics[id==cc-general].observations[id==cc-general-1-3].measure
 
-                val ccBuyer_1_1Measure: String, // AC.contracts[0].agreedMetrics[id==cc-buyer].observations[id==cc-buyer-1-1].measure
-                val ccBuyer_2_1Measure: String, // AC.contracts[0].agreedMetrics[id==cc-buyer].observations[id==cc-buyer-2-1].measure
-                val ccBuyer_2_2Measure: String, // AC.contracts[0].agreedMetrics[id==cc-buyer].observations[id==cc-buyer-2-2].measure
+                val ccBuyer_1_1Measure: String, // AC.contracts[0].agreedMetrics[id==cc-buyer-1].observations[id==cc-buyer-1-1].measure
+                val ccBuyer_2_1Measure: String, // AC.contracts[0].agreedMetrics[id==cc-buyer-1].observations[id==cc-buyer-2-1].measure
+                val ccBuyer_2_2Measure: String, // AC.contracts[0].agreedMetrics[id==cc-buyer-1].observations[id==cc-buyer-2-2].measure
 
-                val ccTenderer_1_1Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer].observations[id==cc-tenderer-1-1].measure
-                val ccTenderer_1_6Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer].observations[id==cc-tenderer-1-6].measure
-                val ccTenderer_2_1Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer].observations[id==cc-tenderer-2-1].measure
-                val ccTenderer_2_2Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer].observations[id==cc-tenderer-2-2].measure
-                val ccTenderer_2_3Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer].observations[id==cc-tenderer-2-3].measure
-                val ccTenderer_2_4Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer].observations[id==cc-tenderer-2-4].measure
-                val ccTenderer_3_1Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer].observations[id==cc-tenderer-3-1].measure
-                val ccTenderer_3_2Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer].observations[id==cc-tenderer-3-2].measure
-                val ccTenderer_3_3Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer].observations[id==cc-tenderer-3-3].measure
-
-                val ccSubject_1Measure: String, // AC.contracts[0].agreedMetrics[id==cc-subject].observations[id==cc-subject-1].measure
-                val ccSubject_2Measure: String,// AC.contracts[0].agreedMetrics[id==cc-subject].observations[id==cc-subject-2].measure
-                val ccSubject_3Measure: String,// AC.contracts[0].agreedMetrics[id==cc-subject].observations[id==cc-subject-3].measure
-                val ccSubject_4Measure: String,// AC.contracts[0].agreedMetrics[id==cc-subject].observations[id==cc-subject-4].measure
-                 val ccSubject_5Measure: String// AC.contracts[0].agreedMetrics[id==cc-subject].observations[id==cc-subject-5].measure
+                val ccTenderer_1_1Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer-1].observations[id==cc-tenderer-1-1].measure
+                /* TODO ccTenderer_1_6Measure */
+                val ccTenderer_1_2Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer-1].observations[id==cc-tenderer-1-2].measure
+                val ccTenderer_2_1Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer-1].observations[id==cc-tenderer-2-1].measure
+                val ccTenderer_2_2Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer-1].observations[id==cc-tenderer-2-2].measure
+                val ccTenderer_2_3Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer-1].observations[id==cc-tenderer-2-3].measure
+                val ccTenderer_2_4Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer-1].observations[id==cc-tenderer-2-4].measure
+                val ccTenderer_3_1Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer-1].observations[id==cc-tenderer-3-1].measure
+                val ccTenderer_3_2Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer-1].observations[id==cc-tenderer-3-2].measure
+                val ccTenderer_3_3Measure: String // AC.contracts[0].agreedMetrics[id==cc-tenderer-1].observations[id==cc-tenderer-3-3].measure
             )
         }
 
@@ -92,7 +82,6 @@ class ServicesContext(
         }
 
         @JsonPropertyOrder("address",
-                           "legalForm",
                            "identifier",
                            "additionalidentifieres",
                            "contactPoint",
@@ -101,7 +90,6 @@ class ServicesContext(
         )
         data class Buyer(
             val address: Address,
-            val legalForm: LegalForm,
             val identifier: Identifier,
             val additionalidentifieres: List<AdditionalIdentifier>,
             val contactPoint: ContactPoint,
@@ -117,11 +105,6 @@ class ServicesContext(
                 val streetAddress: String, // AC.parties[role=="buyer"].address.streetAddress
                 @field:JsonInclude(JsonInclude.Include.NON_NULL)
                 val postalCode: String? // AC.parties[role=="buyer"].address.postalCode
-            )
-
-            @JsonPropertyOrder("description")
-            data class LegalForm(
-                val description: String // AC.parties[role=="buyer"].legalForm.description
             )
 
             @JsonPropertyOrder("id", "legalName")
@@ -153,9 +136,10 @@ class ServicesContext(
                 )
             }
 
-            @JsonPropertyOrder("bankAccount")
+            @JsonPropertyOrder("bankAccount", "legalForm")
             data class Details(
-                val bankAccount: BankAccounts
+                val bankAccount: BankAccounts,
+                val legalForm: LegalForm
             ) {
 
                 @JsonPropertyOrder("accountIdentification", "identifier", "name", "address")
@@ -175,11 +159,15 @@ class ServicesContext(
                         val postalCode: String?// AC.parties.[role=="buyer"].details.bankAccounts[0].address.postalCode
                     )
                 }
+
+                @JsonPropertyOrder("description")
+                data class LegalForm(
+                        val description: String // AC.parties[role=="buyer"].legalForm.description
+                )
             }
         }
 
         @JsonPropertyOrder("address",
-                           "legalForm",
                            "identifier",
                            "additionalidentifieres",
                            "contactPoint",
@@ -187,7 +175,6 @@ class ServicesContext(
                            "details")
         data class Supplier(
             val address: Address,
-            val legalForm: LegalForm,
             val identifier: Identifier,
             val additionalidentifieres: List<AdditionalIdentifier>,
             val contactPoint: ContactPoint,
@@ -202,11 +189,6 @@ class ServicesContext(
                 val locality: String, // AC.parties[role=="supplier"].address.addressDetails.locality.description
                 val streetAddress: String, // AC.parties[role=="supplier"].address.streetAddress
                 val postalCode: String? // AC.parties[role=="supplier"].address.postalCode
-            )
-
-            @JsonPropertyOrder("description")
-            data class LegalForm(
-                val description: String // AC.parties[role=="supplier"].legalForm.description
             )
 
             @JsonPropertyOrder("id", "legalName")
@@ -245,9 +227,10 @@ class ServicesContext(
                 }
             }
 
-            @JsonPropertyOrder("bankAccount")
+            @JsonPropertyOrder("bankAccount", "legalForm")
             data class Details(
-                val bankAccount: BankAccounts
+                val bankAccount: BankAccounts,
+                val legalForm: LegalForm
             ) {
 
                 @JsonPropertyOrder("accountIdentification", "identifier", "name", "address")
@@ -267,6 +250,11 @@ class ServicesContext(
                         val postalCode: String? // AC.parties.[role=="supplier"].details.bankAccounts[0].address.postalCode
                     )
                 }
+
+                @JsonPropertyOrder("description")
+                data class LegalForm(
+                        val description: String // AC.parties[role=="supplier"].legalForm.description
+                )
             }
         }
 
@@ -282,13 +270,14 @@ class ServicesContext(
                 val id: String //AC.awards.[relatedLots[0]==AC.tender.lots[0].id].id
             )
 
-            @JsonPropertyOrder("classification", "description", "unit", "planning", "quantity")
+            @JsonPropertyOrder("classification", "description", "unit", "planning", "quantity", "agreedMetrics")
             data class Item(
                 val classification: Classification,
                 val description: String?,//AC.award.items[*].description
                 val unit: Unit,
                 val planning: Planning,
-                val quantity: Double//AC.award.items[*].quantity
+                val quantity: Double, //AC.award.items[*].quantity
+                val agreedMetrics: AgreedMetrics
             ) {
 
                 @JsonPropertyOrder("id", "description")
@@ -329,6 +318,15 @@ class ServicesContext(
                         )
                     }
                 }
+
+                @JsonPropertyOrder("ccSubject_1Measure", "ccSubject_2Measure", "ccSubject_3Measure", "ccSubject_4Measure", "ccSubject_5Measure")
+                data class AgreedMetrics(
+                        val ccSubject_1Measure: String, // AC.contracts[0].agreedMetrics[id==cc-subject-["item.id"]-*].observations[id==cc-subject-1].measure
+                        val ccSubject_2Measure: String, // AC.contracts[0].agreedMetrics[id==cc-subject-["item.id"]-*].observations[id==cc-subject-2].measure
+                        val ccSubject_3Measure: String, // AC.contracts[0].agreedMetrics[id==cc-subject-["item.id"]-*].observations[id==cc-subject-3].measure
+                        val ccSubject_4Measure: String, // AC.contracts[0].agreedMetrics[id==cc-subject-["item.id"]-*].observations[id==cc-subject-4].measure
+                        val ccSubject_5Measure: String // AC.contracts[0].agreedMetrics[id==cc-subject-["item.id"]-*].observations[id==cc-subject-5].measure
+                )
             }
         }
     }
