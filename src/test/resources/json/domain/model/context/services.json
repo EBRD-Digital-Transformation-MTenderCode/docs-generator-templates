@@ -1,2 +1,174 @@
 {
+  "ac": {
+    "date": "2018-11-23T19:45:51Z",
+    "contract": {
+      "id": "ocds-t1s2t3-MD-1542981234151-AC-1542036270645",
+      "description": "description",
+      "value": 100.0,
+      "endDate": "2018-11-26T00:00:00Z",
+      "agreedMetrics": {
+        "ccGenerel_1_1Measure": "142",
+        "ccGenerel_1_2Measure": "15",
+        "ccGenerel_1_3Measure": "10",
+        "ccBuyer_1_1Measure": "5",
+        "ccBuyer_2_1Measure": "5",
+        "ccBuyer_2_2Measure": "5",
+        "ccTenderer_1_1Measure": "15",
+        "ccTenderer_1_2Measure": "25",
+        "ccTenderer_2_1Measure": "9",
+        "ccTenderer_2_2Measure": "5",
+        "ccTenderer_2_3Measure": "4",
+        "ccTenderer_2_4Measure": "5",
+        "ccTenderer_3_1Measure": "5",
+        "ccTenderer_3_2Measure": "5",
+        "ccTenderer_3_3Measure": "5"
+      }
+    },
+    "tender": {
+      "procurementMethodDetails": "TEST Licitatia deschisa",
+      "classification": {
+        "id": "77600000-6",
+        "description": "Servicii privind vânătoarea"
+      }
+    },
+    "buyer": {
+      "address": {
+        "country": "MOLDOVA",
+        "region": "Cahul",
+        "locality": "mun.Cahul",
+        "streetAddress": "ukukyo777uk"
+      },
+      "identifier": {
+        "id": "MD_00_DM",
+        "legalName": "string"
+      },
+      "additionalidentifieres": [],
+      "contactPoint": {
+        "telephone": "string"
+      },
+      "persones": [
+        {
+          "title": "title",
+          "name": "name",
+          "businessFunctions": {
+            "jobTitle": "Chief Executive Officer"
+          }
+        }
+      ],
+      "details": {
+        "bankAccount": {
+          "accountIdentification": "2600000625637",
+          "identifier": "300711",
+          "name": "MBank",
+          "address": {
+            "country": "asasdasdasdasd",
+            "region": "sadfsdaf",
+            "locality": "DESCRIPTION",
+            "streetAddress": "address of pe",
+            "postalCode": null
+          }
+        },
+        "legalForm": {
+          "description": "ddd"
+        }
+      }
+    },
+    "supplier": {
+      "address": {
+        "country": "MOLDOVA",
+        "region": "mun.Chişinău",
+        "locality": "u",
+        "streetAddress": "hjk",
+        "postalCode": null
+      },
+      "identifier": {
+        "id": "f456-iioo",
+        "legalName": "jj"
+      },
+      "additionalidentifieres": [],
+      "contactPoint": {
+        "telephone": "u"
+      },
+      "persones": [
+        {
+          "title": "sss",
+          "name": "qwerty",
+          "businessFunctions": {
+            "jobTitle": "Chief",
+            "documents": {
+              "title": "N/A"
+            }
+          }
+        }
+      ],
+      "details": {
+        "bankAccount": {
+          "accountIdentification": "2600000625637",
+          "identifier": "300711",
+          "name": "bankName",
+          "address": {
+            "country": "description of country",
+            "region": "descr",
+            "locality": "",
+            "streetAddress": "Steet",
+            "postalCode": "5"
+          }
+        },
+        "legalForm": {
+          "description": "description"
+        }
+      }
+    },
+    "award": {
+      "date": "2018-11-23T14:00:34Z",
+      "relatedLot": {
+        "id": "118b1ce0-ef28-11e8-8498-a736525a2642"
+      },
+      "items": [
+        {
+          "classification": {
+            "id": "77600000-6",
+            "description": "Servicii privind vânătoarea"
+          },
+          "description": "p",
+          "unit": {
+            "name": "Milion decalitri",
+            "value": {
+              "amountNet": 100.0,
+              "amount": 100.0
+            }
+          },
+          "planning": {
+            "budgetAllocation": {
+              "period": {
+                "startDate": "2018-11-30T00:00:00Z",
+                "endDate": "2018-11-30T23:00:00Z"
+              },
+              "budgetBreakdownID": "ocds-t1s2t3-MD-1542966739115-FS-1542966755379"
+            }
+          },
+          "quantity": 10.0,
+          "agreedMetrics": {
+            "ccSubject_1Measure": "15",
+            "ccSubject_2Measure": "15",
+            "ccSubject_3Measure": "15",
+            "ccSubject_4Measure": "1",
+            "ccSubject_5Measure": "15"
+          }
+        }
+      ]
+    }
+  },
+  "ev": {
+    "publishDate": "2018-11-23",
+    "tender": {
+      "id": "ocds-t1s2t3-MD-1542981234151"
+    }
+  },
+  "ms": {
+    "tender": {
+      "id": "ocds-t1s2t3-MD-1542981234151",
+      "title": "TITLE"
+    }
+  }
 }
