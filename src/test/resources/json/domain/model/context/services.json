@@ -42,7 +42,11 @@
         "id": "MD_00_DM",
         "legalName": "string"
       },
-      "additionalidentifieres": [],
+      "additionalidentifieres": [
+        {
+        "id": "2"
+      }
+      ],
       "contactPoint": {
         "telephone": "string"
       },
@@ -85,7 +89,19 @@
         "id": "f456-iioo",
         "legalName": "jj"
       },
-      "additionalidentifieres": [],
+      "additionalidentifieres": [
+        {
+          "scheme": "MD-FISCAL",
+          "id": "33"
+        },
+        {
+          "scheme": "MD-FISCAL2",
+          "id": "88"
+        },
+        {
+          "id": "99"
+        }
+      ],
       "contactPoint": {
         "telephone": "u"
       },
@@ -130,7 +146,7 @@
             "id": "77600000-6",
             "description": "Servicii privind vânătoarea"
           },
-          "description": "p",
+          "description": "1p",
           "unit": {
             "name": "Milion decalitri",
             "value": {
@@ -148,6 +164,37 @@
             }
           },
           "quantity": 10.0,
+          "agreedMetrics": {
+            "ccSubject_1Measure": "15",
+            "ccSubject_2Measure": "15",
+            "ccSubject_3Measure": "15",
+            "ccSubject_4Measure": "1",
+            "ccSubject_5Measure": "15"
+          }
+        },
+        {
+          "classification": {
+            "id": "77600000-6",
+            "description": "Servicii privind vânătoarea"
+          },
+          "description": "2p",
+          "unit": {
+            "name": "Milion decalitri",
+            "value": {
+              "amountNet": 200.0,
+              "amount": 200.0
+            }
+          },
+          "planning": {
+            "budgetAllocation": {
+              "period": {
+                "startDate": "2018-11-30T00:00:00Z",
+                "endDate": "2018-11-30T23:00:00Z"
+              },
+              "budgetBreakdownID": "ocds-t1s2t3-MD-1542966739115-FS-1542966755379"
+            }
+          },
+          "quantity": 20.0,
           "agreedMetrics": {
             "ccSubject_1Measure": "15",
             "ccSubject_2Measure": "15",
