@@ -77,8 +77,8 @@
       "address": {
         "country": "MOLDOVA",
         "region": "mun.Chişinău",
-        "locality": "u",
-        "streetAddress": "hjk",
+        "locality": "locality",
+        "streetAddress": "streetAddress",
         "postalCode": null
       },
       "identifier": {

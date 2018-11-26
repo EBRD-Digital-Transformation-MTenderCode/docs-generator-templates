@@ -1,5 +1,6 @@
 package com.procurement.docs.template.ac
 
+import com.lowagie.text.pdf.BaseFont
 import com.procurement.docs.domain.model.context.ServicesContext
 import com.procurement.docs.template.AbstractTemplateTest
 import com.procurement.docs.toObject
@@ -29,6 +30,8 @@ class ACServicesTemplateTest : AbstractTemplateTest() {
         //Generate PDF
         val outputStream = FileOutputStream(File("services.pdf"))
         val renderer = ITextRenderer()
+        val fontResourceURL = javaClass.classLoader.getResource("fonts/times-new-roman.ttf")
+        renderer.fontResolver.addFont(fontResourceURL.path, BaseFont.IDENTITY_H, BaseFont.EMBEDDED)
         renderer.setDocumentFromString(html)
         renderer.layout()
         renderer.createPDF(outputStream)
