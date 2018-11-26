@@ -42,11 +42,7 @@
         "id": "MD_00_DM",
         "legalName": "string"
       },
-      "additionalidentifieres": [
-        {
-        "id": "2"
-      }
-      ],
+      "additionalidentifieres": [],
       "contactPoint": {
         "telephone": "string"
       },
@@ -91,11 +87,9 @@
       },
       "additionalidentifieres": [
         {
-          "scheme": "MD-FISCAL",
           "id": "33"
         },
         {
-          "scheme": "MD-FISCAL2",
           "id": "88"
         },
         {

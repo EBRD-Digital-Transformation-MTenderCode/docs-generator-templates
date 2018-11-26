@@ -195,6 +195,9 @@
             .a{
 
             }
+            .noDisplay{
+                display: none;
+            }
             body {
                 line-height: 1;
                 font-family: "Times New Roman", sans-serif;
@@ -242,10 +245,6 @@
                 vertical-align: top;
                 word-break: break-word;
                 text-align: left;
-            }
-
-            .table-border th,
-            .table-border td {
                 border: 1px solid black;
             }
 
@@ -295,6 +294,9 @@
             .break {
                 page-break-before: always;
             }
+            h1{
+                text-align: center;
+            }
         </style>
     </head>
     <body>
@@ -306,8 +308,8 @@
         </div>
         <div class="square"></div>
         <div class="square-clear"></div>
-        <h3 style="font-size: 12pt">Contract Nr. <span class="context" th:text="${context.ac.contract.id}">AC.contracts[0].id</span>
-        </h3>
+        <h1>Contract Nr. <span class="context" th:text="${context.ac.contract.id}">AC.contracts[0].id</span>
+        </h1>
         <div>
             <b>
                 de achiziţionare <span class="context" th:text="${context.ac.contract.description}">
@@ -339,14 +341,15 @@
             </tr>
             <tr>
                 <td>
-                    <div>
-                        <span class="context" th:text="${context.ac.supplier.details.legalForm.description}">
+                    <!--/*@thymesVar id="supplierInfo" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier"*/-->
+                    <div th:each="supplierInfo : ${context.ac.supplier}">
+                        <span class="context" th:text="${supplierInfo.details.legalForm.description}">
                             AC.parties[role=="supplier"].legalForm.description
                         </span>
-                        <span class="context" th:text="${context.ac.supplier.identifier.legalName}">
+                        <span class="context" th:text="${supplierInfo.identifier.legalName}">
                             AC.parties[role=="supplier"].identifier.legalName
                         </span>
-                        <span class="context" th:text="${context.ac.supplier.identifier.id}">
+                        <span class="context" th:text="${supplierInfo.identifier.id}">
                             AC.parties[role=="supplier"].identifier.id
                         </span>
                     </div>
@@ -380,14 +383,15 @@
                     <div> pe de o parte</div>
                 </td>
                 <td>
-                    <div>
-                        <span class="context" th:text="${context.ac.buyer.details.legalForm.description}">
+                    <!--/*@thymesVar id="buyerInfo" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer"*/-->
+                    <div th:each="buyerInfo : ${context.ac.buyer}">
+                        <span class="context" th:text="${buyerInfo.details.legalForm.description}">
                             AC.parties.[buyer].legalForm.description
                         </span>
-                        <span class="context" th:text="${context.ac.buyer.identifier.legalName}">
+                        <span class="context" th:text="${buyerInfo.identifier.legalName}">
                             AC.parties.[buyer].identifier.legalName
                         </span>
-                        <span class="context" th:text="${context.ac.buyer.identifier.id}">
+                        <span class="context" th:text="${buyerInfo.identifier.id}">
                             AC.parties.[buyer].identifier.
                         </span>
                     </div>
@@ -945,12 +949,14 @@
                             <span class="context" th:each="item : ${context.ac.supplier.additionalidentifieres}" >
                                 <span th:text="${item.id}">AC.parties.[supplier].additionalidentifieres[scheme:MD-FISCAL].id</span>
                             </span>
+                            <span th:class="${#arrays.length(context.ac.supplier.additionalidentifieres)} ? 'noDisplay'">N/A</span>
                         </td>
                         <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer.AdditionalIdentifier"*/-->
                         <td> Cod fiscal:
                             <span class="context" th:each="item : ${context.ac.buyer.additionalidentifieres}" >
                                 <span th:text="${item.id}">AC.parties.[buyer].additionalidentifieres[scheme:MD-FISCAL].id</span>
                             </span>
+                            <span th:class="${#arrays.length(context.ac.buyer.additionalidentifieres)} ? 'noDisplay'">N/A</span>
                         </td>
                     </tr>
                 </table>
@@ -1249,16 +1255,16 @@
 
         <div>
             Numele, Prenumele:
-            <!--/*@thymesVar id="buyerPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer.Person"*/-->
-            <div th:each="buyerPerson : ${context.ac.buyer.persones}">
-                <span class="context" th:text="${buyerPerson.title}">AC.parties.[buyer].persones.title </span>
-                <span class="context" th:text="${buyerPerson.name}">AC.parties.[buyer].persones.name</span>
+            <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person"*/-->
+            <div th:each="supplierPerson : ${context.ac.supplier.persones}">
+                <span class="context" th:text="${supplierPerson.title}">AC.parties.[supplier].persones.title </span>
+                <span class="context" th:text="${supplierPerson.name}">AC.parties.[supplier].persones.name</span>
             </div>
             În calitate de:
-            <!--/*@thymesVar id="buyerPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer.Person"*/-->
-            <div th:each="buyerPerson : ${context.ac.buyer.persones}">
-                <span class="context" th:text="${buyerPerson.businessFunctions.jobTitle}">
-                    AC.parties.[buyer].persones.businessFunctions[type:authority].jobTitle
+            <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person"*/-->
+            <div th:each="supplierPerson : ${context.ac.supplier.persones}">
+                <span class="context" th:text="${supplierPerson.businessFunctions.jobTitle}">
+                    AC.parties.[supplier].persones.businessFunctions[type:authority].jobTitle
                 </span>
             </div>
         </div>
