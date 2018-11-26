@@ -221,7 +221,7 @@
             }
 
             .context {
-                color: red;
+                /*color: red;*/
             }
 
             .square {
@@ -315,7 +315,8 @@
         </div>
         <div class="square"></div>
         <div class="square-clear"></div>
-        <h1>Contract Nr. <span class="context" th:text="${context.ac.contract.id}">AC.contracts[0].id</span>
+        <h1>
+            Contract Nr. <br/> <span class="context" th:text="${context.ac.contract.id}">AC.contracts[0].id</span>
         </h1>
         <div>
             <b>
