@@ -365,8 +365,11 @@
                         <div style="margin-bottom: 3px">reprezentată prin</div>
                         <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person"*/-->
                         <div th:each="supplierPerson : ${context.ac.supplier.persones}">
-                            <span class="context" th:text="${supplierPerson.businessFunctions.jobTitle}">
-                                AC.parties.[supplier].persones.businessFunctions[type:authority].jobTitle
+                            <!--/*@thymesVar id="supplierBusinessFunction" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person.BusinessFunction"*/-->
+                            <span th:each="supplierBussinessFunction : ${supplierPerson.businessFunctions}">
+                                <span class="context" th:text="${supplierBussinessFunction.jobTitle}">
+                                    AC.parties.[supplier].persones.businessFunctions[type:authority].jobTitle
+                                </span>
                             </span>
                             <span class="context" th:text="${supplierPerson.title}">
                                 AC.parties.[supplier].persones.title
@@ -380,8 +383,14 @@
                         <div>care acţionează în baza</div>
                         <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person"*/-->
                         <div th:each="supplierPerson : ${context.ac.supplier.persones}">
-                            <span class="context" th:text="${supplierPerson.businessFunctions.documents.title}">
-                                AC.parties.[supplier].persones.businessFunctions[type:authority].documents[type:regulatoryDocument].title
+                            <!--/*@thymesVar id="supplierBusinessFunction" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person.BusinessFunction"*/-->
+                            <span th:each="supplierBussinessFunction : ${supplierPerson.businessFunctions}">
+                                <!--/*@thymesVar id="supplierDocuments" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person.BusinessFunctions.Documents"*/-->
+                                <span th:each="supplierDocument, iterator : ${supplierBussinessFunction.documents}">
+                                    <span class="context" th:text="${supplierDocument.title}">
+                                        AC.parties.[supplier].persones.businessFunctions[type:authority].documents[type:regulatoryDocument].title
+                                    </span>
+                                </span>
                             </span>
                         </div>
                     </div>
@@ -407,8 +416,11 @@
                         <div style="margin-bottom: 3px">reprezentată prin</div>
                         <!--/*@thymesVar id="buyerPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer.Person"*/-->
                         <div th:each="buyerPerson : ${context.ac.buyer.persones}">
-                            <span class="context" th:text="${buyerPerson.businessFunctions.jobTitle}">
-                                AC.parties.[buyer].persones.businessFunctions[type:authority].jobTitle,
+                            <!--/*@thymesVar id="buyerBusinessFunction" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer.Person.BusinessFunction"*/-->
+                            <span th:each="buyerBussinessFunction : ${buyerPerson.businessFunctions}">
+                                <span class="context" th:text="${buyerBussinessFunction.jobTitle}">
+                                    AC.parties.[buyer].persones.businessFunctions[type:authority].jobTitle
+                                </span>
                             </span>
                             <span class="context" th:text="${buyerPerson.title}">
                                 AC.parties.[buyer].persones.title
@@ -1104,8 +1116,11 @@
                 În calitate de:
                 <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person"*/-->
                 <div th:each="supplierPerson : ${context.ac.supplier.persones}">
-                    <span class="context" th:text="${supplierPerson.businessFunctions.jobTitle}">
-                        AC.parties.[supplier].persones.businessFunctions[type:authority].jobTitle
+                    <!--/*@thymesVar id="supplierBusinessFunction" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person.BusinessFunction"*/-->
+                    <span th:each="supplierBussinessFunction : ${supplierPerson.businessFunctions}">
+                        <span class="context" th:text="${supplierBussinessFunction.jobTitle}">
+                            AC.parties.[supplier].persones.businessFunctions[type:authority].jobTitle
+                        </span>
                     </span>
                 </div>
             </div>
@@ -1285,9 +1300,12 @@
                 În calitate de:
                 <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person"*/-->
                 <div th:each="supplierPerson : ${context.ac.supplier.persones}">
-                <span class="context" th:text="${supplierPerson.businessFunctions.jobTitle}">
-                    AC.parties.[supplier].persones.businessFunctions[type:authority].jobTitle
-                </span>
+                    <!--/*@thymesVar id="supplierBusinessFunction" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person.BusinessFunction"*/-->
+                    <span th:each="supplierBussinessFunction : ${supplierPerson.businessFunctions}">
+                        <span class="context" th:text="${supplierBussinessFunction.jobTitle}">
+                            AC.parties.[supplier].persones.businessFunctions[type:authority].jobTitle
+                        </span>
+                    </span>
                 </div>
             </div>
             <p>Ofertantul:

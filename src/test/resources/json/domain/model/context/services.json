@@ -50,9 +50,25 @@
         {
           "title": "title",
           "name": "name",
-          "businessFunctions": {
-            "jobTitle": "Chief Executive Officer"
-          }
+          "businessFunctions": [
+            {
+              "id": "456921",
+              "type": "authority",
+              "jobTitle": "Chief Executive Officer",
+              "period": {
+                "startDate": "2018-11-20T00:00:00Z"
+              },
+              "documents": [
+                {
+                  "id": "ea9640ae-a8af-4090-85df-73e9043161ea-1543232394411",
+                  "title": "title1",
+                  "documentType": "regulatoryDocument",
+                  "url": "http://storage.eprocurement.systems/get/ea9640ae-a8af-4090-85df-73e9043161ea-1543232394411",
+                  "datePublished": "2018-11-26T12:18:46Z"
+                }
+              ]
+            }
+          ]
         }
       ],
       "details": {
@@ -103,12 +119,66 @@
         {
           "title": "sss",
           "name": "qwerty",
-          "businessFunctions": {
-            "jobTitle": "Chief",
-            "documents": {
-              "title": "N/A"
+          "businessFunctions": [
+            {
+              "id": "456951",
+              "type": "authority",
+              "jobTitle": "Chief прпрпрп",
+              "period": {
+                "startDate": "2018-12-19T00:00:00Z"
+              },
+              "documents": [
+                {
+                  "id": "ea9640ae-a8af-4090-85df-73e9043161ea-1543232394411",
+                  "documentType": "regulatoryDocument",
+                  "title": "title1",
+                  "url": "http://storage.eprocurement.systems/get/ea9640ae-a8af-4090-85df-73e9043161ea-1543232394411",
+                  "datePublished": "2018-11-26T12:18:46Z"
+                },
+                {
+                  "id": "dcd390af-4d47-46fd-b6d9-db81da6d9c60-1543318100905",
+                  "documentType": "regulatoryDocument",
+                  "title": "title2",
+                  "url": "http://storage.eprocurement.systems/get/dcd390af-4d47-46fd-b6d9-db81da6d9c60-1543318100905",
+                  "datePublished": "2018-11-27T11:30:21Z"
+                }
+              ]
+            },
+            {
+              "id": "qwerty",
+              "type": "authority",
+              "jobTitle": "Chief",
+              "period": {
+                "startDate": "2018-12-15T00:00:00Z"
+              },
+              "documents": [
+                {
+                  "id": "ea9640ae-a8af-4090-85df-73e9043161ea-1543232394411",
+                  "documentType": "regulatoryDocument",
+                  "title": "title3",
+                  "url": "http://storage.eprocurement.systems/get/ea9640ae-a8af-4090-85df-73e9043161ea-1543232394411",
+                  "datePublished": "2018-11-26T12:18:46Z"
+                }
+              ]
+            },
+            {
+              "id": "qwerty123",
+              "type": "authority",
+              "jobTitle": "job f",
+              "period": {
+                "startDate": "2018-12-31T00:00:00Z"
+              },
+              "documents": [
+                {
+                  "id": "ea9640ae-a8af-4090-85df-73e9043161ea-1543232394411",
+                  "documentType": "regulatoryDocument",
+                  "title": "title4",
+                  "url": "http://storage.eprocurement.systems/get/ea9640ae-a8af-4090-85df-73e9043161ea-1543232394411",
+                  "datePublished": "2018-11-26T12:18:46Z"
+                }
+              ]
             }
-          }
+          ]
         }
       ],
       "details": {
