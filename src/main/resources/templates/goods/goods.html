@@ -393,7 +393,10 @@
                         </div>
                     </div>
                     <div>denumit(a) în continuare Prestator</div>
-                    <div>înregistrat în Registrul de Stat cu nr. 245 la data de 19.12.1995,
+                    <div>înregistrat în Registrul de Stat cu nr.
+                        <span class="context" th:text="${context.ac.supplier.details.permit.id}"> 245 </span>
+                         la data de
+                        <span class="context" th:text="${#temporals.format(context.ac.supplier.details.permit.startDate, 'dd.MM.yyyy')}">19.12.1995</span>,
                     </div>
                     <div> pe de o parte</div>
                 </td>
@@ -431,7 +434,10 @@
                     <div>
                         denumit(a) în continuare Cumpărător/Beneficiar
                     </div>
-                    <div>înregistrat în Registrul de Stat cu nr. 245 la data de 19.12.1995,
+                    <div>înregistrat în Registrul de Stat cu nr.
+                        <span class="context" th:text="${context.ac.buyer.details.permit.id}"> 245 </span>
+                         la data de
+                        <span class="context" th:text="${#temporals.format(context.ac.buyer.details.permit.startDate, 'dd.MM.yyyy')}">19.12.1995</span>,
                     </div>
                     <div> pe de o parte</div>
 
