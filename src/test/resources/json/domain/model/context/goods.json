@@ -1,11 +1,11 @@
 {
   "ac": {
-    "date": "2018-11-23T19:45:51Z",
+    "date": "2018-11-23",
     "contract": {
       "id": "ocds-t1s2t3-MD-1542981234151-AC-1542036270645",
       "description": "description",
       "value": 100.0,
-      "endDate": "2018-11-26T00:00:00Z",
+      "endDate": "2018-11-26",
       "agreedMetrics": {
         "ccGenerel_1_1Measure": "142",
         "ccGenerel_1_2Measure": "15",
@@ -42,7 +42,7 @@
         "id": "MD_00_DM",
         "legalName": "string"
       },
-      "additionalidentifieres": [],
+      "additionalIdentifiers": [],
       "contactPoint": {
         "telephone": "string"
       },
@@ -56,7 +56,7 @@
               "type": "authority",
               "jobTitle": "Chief Executive Officer",
               "period": {
-                "startDate": "2018-11-20T00:00:00Z"
+                "startDate": "2018-11-20"
               },
               "documents": [
                 {
@@ -64,7 +64,7 @@
                   "title": "title1",
                   "documentType": "regulatoryDocument",
                   "url": "http://storage.eprocurement.systems/get/ea9640ae-a8af-4090-85df-73e9043161ea-1543232394411",
-                  "datePublished": "2018-11-26T12:18:46Z"
+                  "datePublished": "2018-11-26"
                 }
               ]
             }
@@ -101,7 +101,7 @@
         "id": "f456-iioo",
         "legalName": "jj"
       },
-      "additionalidentifieres": [
+      "additionalIdentifiers": [
         {
           "id": "33"
         },
@@ -125,7 +125,7 @@
               "type": "authority",
               "jobTitle": "Chief прпрпрп",
               "period": {
-                "startDate": "2018-12-19T00:00:00Z"
+                "startDate": "2018-12-19"
               },
               "documents": [
                 {
@@ -133,14 +133,14 @@
                   "documentType": "regulatoryDocument",
                   "title": "title1",
                   "url": "http://storage.eprocurement.systems/get/ea9640ae-a8af-4090-85df-73e9043161ea-1543232394411",
-                  "datePublished": "2018-11-26T12:18:46Z"
+                  "datePublished": "2018-11-26"
                 },
                 {
                   "id": "dcd390af-4d47-46fd-b6d9-db81da6d9c60-1543318100905",
                   "documentType": "regulatoryDocument",
                   "title": "title2",
                   "url": "http://storage.eprocurement.systems/get/dcd390af-4d47-46fd-b6d9-db81da6d9c60-1543318100905",
-                  "datePublished": "2018-11-27T11:30:21Z"
+                  "datePublished": "2018-11-27"
                 }
               ]
             },
@@ -149,7 +149,7 @@
               "type": "authority",
               "jobTitle": "Chief",
               "period": {
-                "startDate": "2018-12-15T00:00:00Z"
+                "startDate": "2018-12-15"
               },
               "documents": [
                 {
@@ -157,7 +157,7 @@
                   "documentType": "regulatoryDocument",
                   "title": "title3",
                   "url": "http://storage.eprocurement.systems/get/ea9640ae-a8af-4090-85df-73e9043161ea-1543232394411",
-                  "datePublished": "2018-11-26T12:18:46Z"
+                  "datePublished": "2018-11-26"
                 }
               ]
             },
@@ -166,7 +166,7 @@
               "type": "authority",
               "jobTitle": "job f",
               "period": {
-                "startDate": "2018-12-31T00:00:00Z"
+                "startDate": "2018-12-31"
               },
               "documents": [
                 {
@@ -174,7 +174,7 @@
                   "documentType": "regulatoryDocument",
                   "title": "title4",
                   "url": "http://storage.eprocurement.systems/get/ea9640ae-a8af-4090-85df-73e9043161ea-1543232394411",
-                  "datePublished": "2018-11-26T12:18:46Z"
+                  "datePublished": "2018-11-26"
                 }
               ]
             }
@@ -200,7 +200,7 @@
       }
     },
     "award": {
-      "date": "2018-11-23T14:00:34Z",
+      "date": "2018-11-23",
       "relatedLot": {
         "id": "118b1ce0-ef28-11e8-8498-a736525a2642"
       },
@@ -221,8 +221,8 @@
           "planning": {
             "budgetAllocation": {
               "period": {
-                "startDate": "2018-11-30T00:00:00Z",
-                "endDate": "2018-11-30T23:00:00Z"
+                "startDate": "2018-11-30",
+                "endDate": "2018-11-30"
               },
               "budgetBreakdownID": "ocds-t1s2t3-MD-1542966739115-FS-1542966755379"
             }
@@ -252,8 +252,8 @@
           "planning": {
             "budgetAllocation": {
               "period": {
-                "startDate": "2018-11-30T00:00:00Z",
-                "endDate": "2018-11-30T23:00:00Z"
+                "startDate": "2018-11-30",
+                "endDate": "2018-11-30"
               },
               "budgetBreakdownID": "ocds-t1s2t3-MD-1542966739115-FS-1542966755379"
             }
@@ -271,7 +271,7 @@
     }
   },
   "ev": {
-    "publishDate": "2018-11-23",
+    "publishDate": "2018-11-30",
     "tender": {
       "id": "ocds-t1s2t3-MD-1542981234151"
     }

@@ -89,6 +89,10 @@
             <artifactId>thymeleaf-layout-dialect</artifactId>
             <version>${thymeleaf-layout-dialect.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-java8time</artifactId>
+        </dependency>
 
         <!--PDF-->
         <dependency>

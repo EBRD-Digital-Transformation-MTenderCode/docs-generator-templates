@@ -336,7 +336,7 @@
                 </span>
             </b>
         </div>
-        <div style="margin-bottom: 0"><span class="context" th:text="${context.ac.date}">AC.date</span></div>
+        <div style="margin-bottom: 0"><span class="context" th:text="${#temporals.format(context.ac.date, 'dd.MM.yyyy')}">AC.date</span></div>
         <div>
             <span class="context" th:text="${context.ac.buyer.address.locality}">
                 AC.parties[role=="buyer"].address.addressDetails.locality.description
@@ -450,9 +450,9 @@
                 nr.
                 <span class="context" th:text="${context.ev.tender.id}"> EV.tender.id</span>
                 din
-                <span class="context" th:text="${context.ev.publishDate}"> EV.publishDate</span>
+                <span class="context" th:text="${#temporals.format(context.ev.publishDate, 'dd.MM.yyyy')}"> EV.publishDate</span>
                 , în baza deciziei grupului de lucru al Cumpărătorului/Beneficiarului din
-                <span class="context" th:text="${context.ac.award.date}"> AC.awards[relatedLot:currentLot].date</span>
+                <span class="context" th:text="${#temporals.format(context.ac.award.date, 'dd.MM.yyyy')}"> AC.awards[relatedLot:currentLot].date</span>
             </li>
             <li>
                 Următoarele documente vor fi considerate părţi componente şi integrale ale Contractului:
@@ -764,7 +764,7 @@
                         nu se efectuează prin intermediul sistemului trezorerial.
                     </li>
                     <li>Prezentul Contract este valabil pînă la
-                        <span class="context" th:text="${context.ac.contract.endDate}">
+                        <span class="context" th:text="${#temporals.format(context.ac.contract.endDate, 'dd.MM.yyyy')}">
                             AC.contract.period.endDate
                         </span>
                     </li>
@@ -925,18 +925,18 @@
                     <tr>
                         <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.GoodsContext.AC.Supplier.AdditionalIdentifier"*/-->
                         <td> Cod fiscal:
-                            <span class="context" th:each="item : ${context.ac.supplier.additionalidentifieres}">
+                            <span class="context" th:each="item : ${context.ac.supplier.additionalIdentifiers}">
                                 <span th:text="${item.id}">AC.parties.[supplier].additionalidentifieres[scheme:MD-FISCAL].id</span>
                             </span>
                             <span
-                                th:class="${#arrays.length(context.ac.supplier.additionalidentifieres)} ? 'noDisplay'">N/A</span>
+                                th:class="${#arrays.length(context.ac.supplier.additionalIdentifiers)} ? 'noDisplay'">N/A</span>
                         </td>
                         <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.GoodsContext.AC.Buyer.AdditionalIdentifier"*/-->
                         <td> Cod fiscal:
-                            <span class="context" th:each="item : ${context.ac.buyer.additionalidentifieres}">
+                            <span class="context" th:each="item : ${context.ac.buyer.additionalIdentifiers}">
                                 <span th:text="${item.id}">AC.parties.[buyer].additionalidentifieres[scheme:MD-FISCAL].id</span>
                             </span>
-                            <span th:class="${#arrays.length(context.ac.buyer.additionalidentifieres)} ? 'noDisplay'">N/A</span>
+                            <span th:class="${#arrays.length(context.ac.buyer.additionalIdentifiers)} ? 'noDisplay'">N/A</span>
                         </td>
                     </tr>
                 </table>
@@ -965,7 +965,7 @@
                     <td>Numărul licitaţiei:
                         <span class="context" th:text="${context.ms.tender.id}"> MS.tender.id </span>
                     </td>
-                    <td>Data: <span class="context" th:text="${context.ac.award.date}"> AC.award.date</span></td>
+                    <td>Data: <span class="context" th:text="${#temporals.format(context.ac.award.date, 'dd.MM.yyyy')}"> AC.award.date</span></td>
                 </tr>
                 <tr>
                     <td>Denumirea licitaţiei:
@@ -1123,7 +1123,7 @@
                 <tr>
                     <td>Numărul licitaţiei: <span class="context" th:text="${context.ms.tender.id}"> MS.tender.id </span>
                     </td>
-                    <td>Data: <span class="context" th:text="${context.ac.award.date}"> AC.award.date</span></td>
+                    <td>Data: <span class="context" th:text="${#temporals.format(context.ac.award.date, 'dd.MM.yyyy')}"> AC.award.date</span></td>
                 </tr>
                 <tr>
                     <td>
@@ -1217,11 +1217,11 @@
                     <td><span class="context" th:text="${item.quantity * item.unit.value.amount}">=4*6</span></td>
                     <td><span class="context"></span></td>
                     <td>
-                    <span class="context" th:text="${item.planning.budgetAllocation.period.startDate}">
+                    <span class="context" th:text="${#temporals.format(item.planning.budgetAllocation.period.startDate, 'dd.MM.yyyy')}">
                         AC.award.items[*].planning.budgetAllocation[relatedItem:current].period.startDate
                     </span>
                         -
-                        <span class="context" th:text="${item.planning.budgetAllocation.period.endDate}">
+                        <span class="context" th:text="${#temporals.format(item.planning.budgetAllocation.period.endDate, 'dd.MM.yyyy')}">
                         AC.award.items[*].planning.budgetAllocation[relatedItem:current].period.endDate
                     </span>
                         <span class="context" th:text="${item.planning.budgetAllocation.budgetBreakdownID}">
