@@ -224,13 +224,22 @@
             }
           },
           "planning": {
-            "budgetAllocation": {
-              "period": {
-                "startDate": "2018-11-30",
-                "endDate": "2018-11-30"
+            "budgetAllocation": [
+              {
+                "period": {
+                  "startDate": "2018-11-30",
+                  "endDate": "2018-11-30"
+                },
+                "budgetBreakdownID": "ocds-1111111111111111111111111111111111"
               },
-              "budgetBreakdownID": "ocds-t1s2t3-MD-1542966739115-FS-1542966755379"
-            }
+              {
+                "period": {
+                  "startDate": "2018-11-30",
+                  "endDate": "2018-11-30"
+                },
+                "budgetBreakdownID": "ocds-22222222222222222222222222222222"
+              }
+            ]
           },
           "quantity": 10.0,
           "agreedMetrics": {
@@ -255,13 +264,15 @@
             }
           },
           "planning": {
-            "budgetAllocation": {
-              "period": {
-                "startDate": "2018-11-30",
-                "endDate": "2018-11-30"
-              },
-              "budgetBreakdownID": "ocds-t1s2t3-MD-1542966739115-FS-1542966755379"
-            }
+            "budgetAllocation": [
+              {
+                "period": {
+                  "startDate": "2018-11-30",
+                  "endDate": "2018-11-30"
+                },
+                "budgetBreakdownID": "ocds-t1s2t3-MD-1542966739115-FS-1542966755379"
+              }
+            ]
           },
           "quantity": 20.0,
           "agreedMetrics": {

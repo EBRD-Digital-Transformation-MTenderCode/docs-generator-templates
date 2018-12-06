@@ -338,7 +338,7 @@ data class ServicesContext(
 
                 @JsonPropertyOrder("budgetAllocation")
                 data class Planning(
-                        @field:JsonProperty("budgetAllocation") @param:JsonProperty("budgetAllocation") val budgetAllocation: BudgetAllocation
+                        @field:JsonProperty("budgetAllocation") @param:JsonProperty("budgetAllocation") val budgetAllocation: List<BudgetAllocation>
 
                 ) {
 

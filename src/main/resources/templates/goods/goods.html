@@ -1291,18 +1291,23 @@
                         <td><span class="context" th:text="${item.quantity * item.unit.value.amount}">=4*6</span></td>
                         <td><span class="context"></span></td>
                         <td>
+                            <!--/*@thymesVar id="allocation" type="com.procurement.docs.domain.model.context.GoodsContext.AC.Award.Item.Planning.BudgetAllocation"*/-->
+                            <span th:each="allocation : ${item.planning.budgetAllocation}">
                     <span class="context"
-                          th:text="${#temporals.format(item.planning.budgetAllocation.period.startDate, 'dd.MM.yyyy')}">
+                          th:text="${#temporals.format(allocation.period.startDate, 'dd.MM.yyyy')}">
                         AC.award.items[*].planning.budgetAllocation[relatedItem:current].period.startDate
                     </span>
                             -
-                            <span class="context"
-                                  th:text="${#temporals.format(item.planning.budgetAllocation.period.endDate, 'dd.MM.yyyy')}">
-                        AC.award.items[*].planning.budgetAllocation[relatedItem:current].period.endDate
-                    </span>
-                            <span class="context" th:text="${item.planning.budgetAllocation.budgetBreakdownID}">
+                                <span class="context"
+                                      th:text="${#temporals.format(allocation.period.endDate, 'dd.MM.yyyy')}">
+                            AC.award.items[*].planning.budgetAllocation[relatedItem:current].period.endDate
+                         </span>
+                            <span class="context" th:text="${allocation.budgetBreakdownID}">
                         +budgetBreakdownID
                     </span>
+                                <br />
+
+                            </span>
                         </td>
                     </tr>
 
