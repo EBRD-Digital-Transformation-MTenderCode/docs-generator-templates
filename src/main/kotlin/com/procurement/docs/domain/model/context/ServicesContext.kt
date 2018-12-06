@@ -180,11 +180,11 @@ data class ServicesContext(
                 )
                 @JsonPropertyOrder("id", "startDate")
                 data class Permit(
-                        @field:JsonProperty("id") @param:JsonProperty("id") val id: String, // AC.parties.[role=="buyer"].details.permits[scheme="MD-SRLE"][0].id
+                        @field:JsonProperty("id") @param:JsonProperty("id") val id: String?, // AC.parties.[role=="buyer"].details.permits[scheme="MD-SRLE"][0].id
 
                         @JsonSerialize(using = JsonDateSerializer::class)
                         @JsonDeserialize(using = JsonDateDeserializer::class)
-                        @field:JsonProperty("startDate") @param:JsonProperty("startDate") val startDate: LocalDate // AC.parties.[role=="buyer"].details.permits[scheme="MD-SRLE"].permit.validityPeriod.startDate
+                        @field:JsonProperty("startDate") @param:JsonProperty("startDate") val startDate: LocalDate? // AC.parties.[role=="buyer"].details.permits[scheme="MD-SRLE"].permit.validityPeriod.startDate
                 )
             }
         }
@@ -282,11 +282,11 @@ data class ServicesContext(
 
                 @JsonPropertyOrder("id", "startDate")
                 data class Permit(
-                        @field:JsonProperty("id") @param:JsonProperty("id") val id: String, // AC.parties.[role=="supplier"].details.permits[scheme="MD-SRLE"][0].id
+                        @field:JsonProperty("id") @param:JsonProperty("id") val id: String?, // AC.parties.[role=="supplier"].details.permits[scheme="MD-SRLE"][0].id
 
                         @JsonSerialize(using = JsonDateSerializer::class)
                         @JsonDeserialize(using = JsonDateDeserializer::class)
-                        @field:JsonProperty("startDate") @param:JsonProperty("startDate") val startDate: LocalDate // AC.parties.[role=="supplier"].details.permits[scheme="MD-SRLE"].permit.validityPeriod.startDate
+                        @field:JsonProperty("startDate") @param:JsonProperty("startDate") val startDate: LocalDate? // AC.parties.[role=="supplier"].details.permits[scheme="MD-SRLE"].permit.validityPeriod.startDate
                 )
             }
         }

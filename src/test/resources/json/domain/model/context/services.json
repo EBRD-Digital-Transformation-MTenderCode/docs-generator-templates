@@ -88,8 +88,8 @@
           "description": "ddd"
         },
         "permit": {
-          "id": "4569512354785220000",
-          "startDate": "2018-12-05"
+          "id": null,
+          "startDate": null
         }
       }
     },
@@ -99,7 +99,7 @@
         "region": "mun.Chişinău",
         "locality": "locality",
         "streetAddress": "streetAddress",
-        "postalCode": null
+        "postalCode": "ffff"
       },
       "identifier": {
         "id": "f456-iioo",
@@ -202,8 +202,8 @@
           "description": "description"
         },
         "permit": {
-          "id": "4569512354785220000",
-          "startDate": "2018-12-05"
+          "id": null,
+          "startDate": null
         }
       }
     },
@@ -218,7 +218,7 @@
             "id": "77600000-6",
             "description": "Servicii privind vânătoarea"
           },
-          "description": "1p",
+          "description": null,
           "unit": {
             "name": "Milion decalitri",
             "value": {

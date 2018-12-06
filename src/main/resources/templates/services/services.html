@@ -395,11 +395,11 @@
                             </span>
                         </div>
                     </div>
-                    <div>denumit(a) în continuare Prestator</div>
+                    <div>denumit(a) în continuare Prestator11111</div>
                     <div>înregistrat în Registrul de Stat cu nr.]
-                        <span class="context" th:text="${context.ac.supplier.details.permit.id}"> 245 </span>
+                        <span class="context" th:text="${context.ac.supplier.details.permit.id != null} ? ${context.ac.supplier.details.permit.id} : '-' "> 245 </span>
                          la data de
-                        <span class="context" th:text="${#temporals.format(context.ac.supplier.details.permit.startDate, 'dd.MM.yyyy')}">19.12.1995</span>,
+                        <span class="context" th:text="${context.ac.supplier.details.permit.startDate != null} ? ${#temporals.format(context.ac.supplier.details.permit.startDate, 'dd.MM.yyyy')} : '-' ">19.12.1995</span>,
                     </div>
                     <div> pe de o parte</div>
                 </td>
@@ -438,9 +438,9 @@
                         denumit(a) în continuare Cumpărător/Beneficiar
                     </div>
                     <div>înregistrat în Registrul de Stat cu nr.
-                        <span class="context" th:text="${context.ac.buyer.details.permit.id}"> 245 </span>
+                        <span class="context" th:text="${context.ac.buyer.details.permit.id != null} ? ${context.ac.buyer.details.permit.id} : '-' "> 245 </span>
                          la data de
-                        <span class="context" th:text="${#temporals.format(context.ac.buyer.details.permit.startDate, 'dd.MM.yyyy')}">19.12.1995</span>,
+                        <span class="context" th:text="${context.ac.buyer.details.permit.startDate != null} ? ${#temporals.format(context.ac.buyer.details.permit.startDate, 'dd.MM.yyyy')} : '-' ">19.12.1995</span>,
                     </div>
                     <div> pe de o parte</div>
 
@@ -832,38 +832,34 @@
                     </tr>
                     <tr>
                         <td> Adresa poştală:
-                            <span class="context" th:text="${context.ac.supplier.address.streetAddress}">
+                            <span class="context" th:text="${context.ac.supplier.address.streetAddress} + ', '">
                               AC.parties.[supplier].address.streetAddress
                             </span>
-                            <span class="context" th:text="${context.ac.supplier.address.locality}">
+                            <span class="context" th:text="${context.ac.supplier.address.locality} + ', '">
                               address.addressDetails.locality
                             </span>
-                            <span class="context" th:text="${context.ac.supplier.address.region}">
+                            <span class="context" th:text="${context.ac.supplier.address.region} + ', '">
                               address.addressDetails.region
                             </span>
                             <span class="context" th:text="${context.ac.supplier.address.country}">
                               address.addressDetails.country
                             </span>
-                            <span class="context" th:text="${context.ac.supplier.address.postalCode}">
-                              address.postalCode
-                            </span>
+                            <span class="context" th:text="${context.ac.supplier.address.postalCode != null}  ?', ' + ${context.ac.supplier.address.postalCode}">postalCode</span>
                         </td>
                         <td> Adresa poştală:
-                            <span class="context" th:text="${context.ac.buyer.address.streetAddress}">
+                            <span class="context" th:text="${context.ac.buyer.address.streetAddress} + ', '">
                               AC.parties.[buyer].address.streetAddress
                             </span>
-                            <span class="context" th:text="${context.ac.buyer.address.locality}">
+                            <span class="context" th:text="${context.ac.buyer.address.locality} + ', '">
                               address.addressDetails.locality
                             </span>
-                            <span class="context" th:text="${context.ac.buyer.address.region}">
+                            <span class="context" th:text="${context.ac.buyer.address.region} + ', '">
                               address.addressDetails.region
                             </span>
                             <span class="context" th:text="${context.ac.buyer.address.country}">
                               address.addressDetails.country
                             </span>
-                            <span class="context" th:text="${context.ac.buyer.address.postalCode}">
-                              address.postalCode
-                            </span>
+                            <span class="context" th:text="${context.ac.buyer.address.postalCode != null}  ?', ' + ${context.ac.buyer.address.postalCode}">postalCode</span>
                         </td>
                     </tr>
 
@@ -911,46 +907,41 @@
                         <td>Adresa poştală a băncii:
                             <span
                                 class="context"
-                                th:text="${context.ac.supplier.details.bankAccount.address.streetAddress}"
+                                th:text="${context.ac.supplier.details.bankAccount.address.streetAddress} + ', '"
                             >
                               AC.parties.[supplier].details.bankAccount.address.streetAddress
                             </span>
-                            <span class="context" th:text="${context.ac.supplier.details.bankAccount.address.locality}">
+                            <span class="context" th:text="${context.ac.supplier.details.bankAccount.address.locality} + ', '">
                               address.addressDetails.locality
                             </span>
-                            <span class="context" th:text="${context.ac.supplier.details.bankAccount.address.region}">
+                            <span class="context" th:text="${context.ac.supplier.details.bankAccount.address.region} + ', '">
                               address.addressDetails.region
                             </span>
                             <span class="context" th:text="${context.ac.supplier.details.bankAccount.address.country}">
                               address.addressDetails.country
                             </span>
-                            <span
-                                class="context"
-                                th:text="${context.ac.supplier.details.bankAccount.address.postalCode}"
-                            >
-                              address.postalCode
+                            <span class="context" th:text="${context.ac.supplier.details.bankAccount.address.postalCode != null}  ?', ' + ${context.ac.supplier.details.bankAccount.address.postalCode}">
+                                postalCode
                             </span>
                         </td>
 
                         <td>Adresa poştală a băncii:
                             <span
                                 class="context"
-                                th:text="${context.ac.buyer.details.bankAccount.address.streetAddress}"
+                                th:text="${context.ac.buyer.details.bankAccount.address.streetAddress} + ', '"
                             >
                               AC.parties.[buyer].details.bankAccount.address.streetAddress
                             </span>
-                            <span class="context" th:text="${context.ac.buyer.details.bankAccount.address.locality}">
+                            <span class="context" th:text="${context.ac.buyer.details.bankAccount.address.locality} + ', '">
                               address.addressDetails.locality
                             </span>
-                            <span class="context" th:text="${context.ac.buyer.details.bankAccount.address.region}">
+                            <span class="context" th:text="${context.ac.buyer.details.bankAccount.address.region} + ', '">
                               address.addressDetails.region
                             </span>
                             <span class="context" th:text="${context.ac.buyer.details.bankAccount.address.country}">
                               address.addressDetails.country
                             </span>
-                            <span class="context" th:text="${context.ac.buyer.details.bankAccount.address.postalCode}">
-                              address.postalCode
-                            </span>
+                            <span class="context" th:text="${context.ac.buyer.details.bankAccount.address.postalCode != null}  ?', ' + ${context.ac.buyer.details.bankAccount.address.postalCode}">postalCode</span>
                         </td>
                     </tr>
 
@@ -974,14 +965,14 @@
                                 <span th:text="${item.id}">AC.parties.[supplier].additionalidentifieres[scheme:MD-FISCAL].id</span>
                             </span>
                             <span
-                                th:class="${#arrays.length(context.ac.supplier.additionalIdentifiers)} ? 'noDisplay'">N/A</span>
+                                th:class="${#arrays.length(context.ac.supplier.additionalIdentifiers)} ? 'noDisplay'">-</span>
                         </td>
                         <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer.AdditionalIdentifier"*/-->
                         <td> Cod fiscal:
                             <span class="context" th:each="item : ${context.ac.buyer.additionalIdentifiers}">
                                 <span th:text="${item.id}">AC.parties.[buyer].additionalIdentifiers[scheme:MD-FISCAL].id</span>
                             </span>
-                            <span th:class="${#arrays.length(context.ac.buyer.additionalIdentifiers)} ? 'noDisplay'">N/A</span>
+                            <span th:class="${#arrays.length(context.ac.buyer.additionalIdentifiers)} ? 'noDisplay'">-</span>
                         </td>
                     </tr>
                 </table>
@@ -1142,15 +1133,15 @@
                )
             </p>
             <p>Adresa:
-                <span class="context" th:text="${context.ac.supplier.address.streetAddress}">
+                <span class="context" th:text="${context.ac.supplier.address.streetAddress} + ', '">
                     AC.parties.[supplier].address.streetAddress
                 </span>
-                <span class="context" th:text="${context.ac.supplier.address.locality}">
+                <span class="context" th:text="${context.ac.supplier.address.locality} + ', '">
                     addressDetails.locality
                 </span>
-                <span class="context" th:text="${context.ac.supplier.address.region}">addressDetails.region</span>
+                <span class="context" th:text="${context.ac.supplier.address.region}  + ','" >addressDetails.region</span>
                 <span class="context" th:text="${context.ac.supplier.address.country}">addressDetails.country</span>
-                <span class="context" th:text="${context.ac.supplier.address.postalCode}">postalCode</span>
+                <span class="context" th:text="${context.ac.supplier.address.postalCode != null}  ?', ' + ${context.ac.supplier.address.postalCode}">postalCode</span>
             </p>
 
             <div class="break"></div>
@@ -1243,7 +1234,7 @@
                         <span class="context" th:text="${item.classification.id}">AC.award.items[*].classification.id</span>
                         <span class="context" th:text="${item.classification.description}">+description</span>
                     </td>
-                    <td><span class="context" th:text="${item.description}">AC.award.items[*].description</span></td>
+                    <td><span class="context" th:text="${item.description != null} ? ${item.description} : '-' ">AC.award.items[*].description</span></td>
                     <td><span class="context" th:text="${item.unit.name}">AC.award.items[*].unit.name</span></td>
                     <td><span class="context" th:text="${item.quantity}">AC.award.items[*].quantity</span></td>
                     <td>
@@ -1317,13 +1308,13 @@
             </span>)
             </p>
             <p>Adresa:
-                <span class="context" th:text="${context.ac.supplier.address.streetAddress}">
+                <span class="context" th:text="${context.ac.supplier.address.streetAddress} + ', '">
                 AC.parties.[supplier].address.streetAddress
             </span>
-                <span class="context" th:text="${context.ac.supplier.address.locality}">addressDetails.locality</span>
-                <span class="context" th:text="${context.ac.supplier.address.region}">addressDetails.region</span>
+                <span class="context" th:text="${context.ac.supplier.address.locality} + ', '">addressDetails.locality</span>
+                <span class="context" th:text="${context.ac.supplier.address.region} +', '">addressDetails.region</span>
                 <span class="context" th:text="${context.ac.supplier.address.country}">addressDetails.country</span>
-                <span class="context" th:text="${context.ac.supplier.address.postalCode}">postalCode</span>
+                <span class="context" th:text="${context.ac.supplier.address.postalCode != null}  ?', ' + ${context.ac.supplier.address.postalCode}">postalCode</span>
             </p>
         </div>
     </body>
