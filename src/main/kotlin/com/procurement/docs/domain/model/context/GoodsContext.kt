@@ -338,7 +338,7 @@ data class GoodsContext(
 
                 @JsonPropertyOrder("budgetAllocations")
                 data class Planning(
-                    @field:JsonProperty("budgetAllocations") @param:JsonProperty("budgetAllocation") val budgetAllocations: List<BudgetAllocation>
+                    @field:JsonProperty("budgetAllocations") @param:JsonProperty("budgetAllocation") val budgetAllocations: List<BudgetAllocation>// AC.planning.budget.budgetAllocation[relatedItem==item.id]
 
                 ) {
 
