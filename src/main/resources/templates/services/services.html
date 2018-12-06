@@ -400,10 +400,10 @@
                     <div>denumit(a) în continuare Prestator11111</div>
                     <div>înregistrat în Registrul de Stat cu nr.]
                         <span class="context"
-                              th:text="${context.ac.supplier.details.permit.id != null} ? ${context.ac.supplier.details.permit.id} : '-' "> 245 </span>
+                              th:text="${context.ac.supplier.details.permit != null} ? ${context.ac.supplier.details.permit.id} : '-' "> 245 </span>
                          la data de
                         <span class="context"
-                              th:text="${context.ac.supplier.details.permit.startDate != null} ? ${#temporals.format(context.ac.supplier.details.permit.startDate, 'dd.MM.yyyy')} : '-' ">19.12.1995</span>,
+                              th:text="${context.ac.supplier.details.permit != null} ? ${#temporals.format(context.ac.supplier.details.permit.startDate, 'dd.MM.yyyy')} : '-' ">19.12.1995</span>,
                     </div>
                     <div> pe de o parte</div>
                 </td>
@@ -443,10 +443,10 @@
                     </div>
                     <div>înregistrat în Registrul de Stat cu nr.
                         <span class="context"
-                              th:text="${context.ac.buyer.details.permit.id != null} ? ${context.ac.buyer.details.permit.id} : '-' "> 245 </span>
+                              th:text="${context.ac.buyer.details.permit != null} ? ${context.ac.buyer.details.permit.id} : '-' "> 245 </span>
                          la data de
                         <span class="context"
-                              th:text="${context.ac.buyer.details.permit.startDate != null} ? ${#temporals.format(context.ac.buyer.details.permit.startDate, 'dd.MM.yyyy')} : '-' ">19.12.1995</span>,
+                              th:text="${context.ac.buyer.details.permit != null} ? ${#temporals.format(context.ac.buyer.details.permit.startDate, 'dd.MM.yyyy')} : '-' ">19.12.1995</span>,
                     </div>
                     <div> pe de o parte</div>
 

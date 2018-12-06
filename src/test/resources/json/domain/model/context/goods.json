@@ -87,10 +87,7 @@
         "legalForm": {
           "description": "ddd"
         },
-        "permit": {
-          "id": null,
-          "startDate": null
-        }
+        "permit": null
       }
     },
     "supplier": {
@@ -202,8 +199,8 @@
           "description": "description"
         },
         "permit": {
-          "id": null,
-          "startDate": null
+          "id": "fff",
+          "startDate": "2018-12-31"
         }
       }
     },
