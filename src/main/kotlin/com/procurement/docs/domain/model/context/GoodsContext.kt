@@ -342,10 +342,10 @@ data class GoodsContext(
 
                 ) {
 
-                    @JsonPropertyOrder("period", "budgetBreakdownID")
+                    @JsonPropertyOrder("period", "budgetBreakdownId")
                     data class BudgetAllocation(
                         @field:JsonProperty("period") @param:JsonProperty("period") val period: Period,
-                        @field:JsonProperty("budgetBreakdownID") @param:JsonProperty("budgetBreakdownID") val budgetBreakdownID: String// AC.planning.budget.budgetAllocation[relatedItem==item.id].budgetBreakdownID
+                        @field:JsonProperty("budgetBreakdownId") @param:JsonProperty("budgetBreakdownId") val budgetBreakdownId: String// AC.planning.budget.budgetAllocation[relatedItem==item.id].budgetBreakdownId
                     ) {
 
                         @JsonPropertyOrder("startDate", "endDate")
