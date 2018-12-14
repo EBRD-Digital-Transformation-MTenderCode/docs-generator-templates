@@ -199,7 +199,14 @@
             .landscapePage {
                 page: land;
             }
-
+            .landscapePage table th,
+            .landscapePage .table-number td
+            {
+                text-align: center;
+            }
+            .total{
+                font-weight: 700;
+            }
             .noDisplay {
                 display: none;
             }
@@ -274,6 +281,9 @@
             .big_list > li > ol > li:before {
                 counter-increment: li;
                 content: counters(li, ".") ". ";
+            }
+            .big_list > li:before {
+                font-weight: bold;
             }
 
             ul {
@@ -1136,23 +1146,23 @@
             <div>
                 Numele, Prenumele:
                 <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.GoodsContext.AC.Supplier.Person"*/-->
-                <div th:each="supplierPerson : ${context.ac.supplier.persones}">
+                <span th:each="supplierPerson : ${context.ac.supplier.persones}">
                     <span class="context" th:text="${supplierPerson.title}">AC.parties.[supplier].persones.title</span>
                     <span class="context" th:text="${supplierPerson.name}">AC.parties.[supplier].persones.name</span>
-                </div>
+                </span>
 
                 În calitate de:
                 <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.GoodsContext.AC.Supplier.Person"*/-->
-                <div th:each="supplierPerson : ${context.ac.supplier.persones}">
+                <span th:each="supplierPerson : ${context.ac.supplier.persones}">
                     <!--/*@thymesVar id="supplierBusinessFunction" type="com.procurement.docs.domain.model.context.GoodsContext.AC.Supplier.Person.BusinessFunction"*/-->
                     <span th:each="supplierBussinessFunction : ${supplierPerson.businessFunctions}">
                         <span class="context" th:text="${supplierBussinessFunction.jobTitle}">
                             AC.parties.[supplier].persones.businessFunctions[type:authority].jobTitle
                         </span>
                     </span>
-                </div>
+                </span>
             </div>
-            <p>Ofertantul:
+            <div>Ofertantul:
                 <span class="context" th:text="${context.ac.supplier.details.legalForm.description}">
                     AC.parties.[supplier].legalForm.description
                 </span>
@@ -1164,8 +1174,8 @@
                     AC.parties.[supplier].identifier.id
                 </span>
                )
-            </p>
-            <p>Adresa:
+            </div>
+            <div>Adresa:
                 <span class="context" th:text="${context.ac.supplier.address.streetAddress} + ', '">
                     AC.parties.[supplier].address.streetAddress
                 </span>
@@ -1177,7 +1187,7 @@
                 <span class="context" th:text="${context.ac.supplier.address.country}">addressDetails.country</span>
                 <span class="context"
                       th:text="${context.ac.supplier.address.postalCode != null}  ?', ' + ${context.ac.supplier.address.postalCode}">postalCode</span>
-            </p>
+            </div>
 
             <div class="break"></div>
             <h4>Specificații de preț (F4.2)</h4>
@@ -1311,7 +1321,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+                    <tr class="total">
                         <td></td>
                         <td>TOTAL</td>
                         <td></td>
@@ -1338,22 +1348,22 @@
             <div>
                 Numele, Prenumele:
                 <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.GoodsContext.AC.Supplier.Person"*/-->
-                <div th:each="supplierPerson : ${context.ac.supplier.persones}">
+                <span th:each="supplierPerson : ${context.ac.supplier.persones}">
                     <span class="context" th:text="${supplierPerson.title}">AC.parties.[supplier].persones.title </span>
                     <span class="context" th:text="${supplierPerson.name}">AC.parties.[supplier].persones.name</span>
-                </div>
+                </span>
                 În calitate de:
                 <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.GoodsContext.AC.Supplier.Person"*/-->
-                <div th:each="supplierPerson : ${context.ac.supplier.persones}">
+                <span th:each="supplierPerson : ${context.ac.supplier.persones}">
                     <!--/*@thymesVar id="supplierBusinessFunction" type="com.procurement.docs.domain.model.context.GoodsContext.AC.Supplier.Person.BusinessFunction"*/-->
                     <span th:each="supplierBussinessFunction : ${supplierPerson.businessFunctions}">
                         <span class="context" th:text="${supplierBussinessFunction.jobTitle}">
                             AC.parties.[supplier].persones.businessFunctions[type:authority].jobTitle
                         </span>
                     </span>
-                </div>
+                </span>
             </div>
-            <p>Ofertantul:
+            <div>Ofertantul:
                 <span class="context" th:text="${context.ac.supplier.details.legalForm.description}">
                 AC.parties.[supplier].legalForm.description
             </span>
@@ -1363,8 +1373,8 @@
                (<span class="context" th:text="${context.ac.supplier.identifier.id}">
                 AC.parties.[supplier].identifier.id)
             </span>)
-            </p>
-            <p>Adresa:
+            </div>
+            <div>Adresa:
                 <span class="context" th:text="${context.ac.supplier.address.streetAddress} + ', '">
                 AC.parties.[supplier].address.streetAddress
             </span>
@@ -1375,7 +1385,7 @@
                 <span class="context" th:text="${context.ac.supplier.address.country}">addressDetails.country</span>
                 <span class="context"
                       th:text="${context.ac.supplier.address.postalCode != null}  ?', ' + ${context.ac.supplier.address.postalCode}">postalCode</span>
-            </p>
+            </div>
         </div>
     </body>
 </html>

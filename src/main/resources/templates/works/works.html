@@ -247,6 +247,7 @@
             .table th {
                 background-color: #DCDCDC;
                 -webkit-print-color-adjust: exact;
+                text-align: center;
             }
 
             .big_list {
@@ -264,6 +265,9 @@
             .big_list > li > ol > li:before {
                 counter-increment: li;
                 content: counters(li, ".") ". ";
+            }
+            .big_list > li:before {
+                font-weight: bold;
             }
 
             ul {
@@ -420,7 +424,9 @@
                 <b>PERIOADA DE EXECUŢIE</b>
                 <ol>
                     <li>
-                        Durata de execuţie a lucrărilor contractate este de AC.contract.period luni după primirea ordinului de începere a execuţiei şi asigurării lucrului ritmic de către beneficiar – ordonatorul de credite.
+                        Durata de execuţie a lucrărilor contractate este de
+                        <span class="context" th:text="${context.ac.contract.startDate}">AC.contract.period</span><!--TODO  realize month amount-->
+                        luni după primirea ordinului de începere a execuţiei şi asigurării lucrului ritmic de către beneficiar – ordonatorul de credite.
                     </li>
                     <li>
                         Graficul de execuţie a lucrărilor se va efectua conform specificaţiei din anexa prezentului contract.
@@ -463,7 +469,7 @@
                         Valoarea lucrărilor ce reprezintă obiectul prezentului contract este de
                         <span class="context" th:text="${context.ac.contract.amount}">AC.contract.value.amount</span>
                         lei MD, inclusiv
-                        <span class="context" th:text="${context.ac.contract.amount} - ${context.ac.contract.amountNet}">AC.contract.value.amount - amountNet</span><!-- TODO minus -->
+                        <span class="context" th:text="${context.ac.contract.amount} - ${context.ac.contract.amountNet}">AC.contract.value.amount - amountNet</span>
                         TVA lei MD.
                     </li>
                     <li>
@@ -525,12 +531,12 @@
                     </li>
                     <li>
                         Documentaţia pusă la dispoziţia Antreprenorului general se repartizează astfel:
-                        <ul type="A">
+                        <ul>
                             <li>
-                                exemplar rămân la dispoziţia Antreprenorului general, iar
+                               A. exemplar rămân la dispoziţia Antreprenorului general, iar
                             </li>
                             <li>
-                                altul va fi ţinut de către acesta la dispoziţie pentru consultare de către Inspecţia de Stat în Construcţii, precum şi de către alte persoane autorizate, inclusiv responsabilul tehnic atestat.
+                                B. altul va fi ţinut de către acesta la dispoziţie pentru consultare de către Inspecţia de Stat în Construcţii, precum şi de către alte persoane autorizate, inclusiv responsabilul tehnic atestat.
                             </li>
                         </ul>
                     </li>
@@ -594,17 +600,17 @@
                     </li>
                     <li>
                         Pe parcursul executării lucrărilor, Beneficiarul are dreptul să dispună în scris:
-                        <ol type="A">
+                        <ul>
                             <li>
-                                îndepărtarea de pe şantier a oricăror materiale care sînt calitativ necorespunzătoare;
+                                A. îndepărtarea de pe şantier a oricăror materiale care sînt calitativ necorespunzătoare;
                             </li>
                             <li>
-                                înlocuirea materialelor necorespunzătoare calitativ cu altele corespunzătoare;
+                                B. înlocuirea materialelor necorespunzătoare calitativ cu altele corespunzătoare;
                             </li>
                             <li>
-                                îndepărtarea sau refacerea oricărei lucrări sau părţi de lucrare necorespunzătoare din punct de vedere calitativ.
+                                C. îndepărtarea sau refacerea oricărei lucrări sau părţi de lucrare necorespunzătoare din punct de vedere calitativ.
                             </li>
-                        </ol>
+                        </ul>
                     </li>
                     <li>
                         În cazul neexecutării de către Antreprenor a dispoziţiilor din punctul 2.1., Beneficiarul poate opri lucrările, angaja şi plăti alţi antreprenori pentru executarea acestor lucrări, punând în întârziere în acest sens Antreprenorul, care va fi obligat, în condiţiile legii, să compenseze cheltuielile aferente suportate de Beneficiar în legătură cu faptul neexecutării.
@@ -733,34 +739,34 @@
                 <ol>
                     <li>
                         Antreprenorul general poate cere rezilierea contractului, dacă:
-                        <ol type="A">
+                        <ul>
                             <li>
-                                Beneficiarul nu-şi îndeplineşte o obligaţie care este în sarcina sa şi prin aceasta pune pe Antreprenorul general în situaţia de a nu putea executa lucrarea;
+                                A. Beneficiarul nu-şi îndeplineşte o obligaţie care este în sarcina sa şi prin aceasta pune pe Antreprenorul general în situaţia de a nu putea executa lucrarea;
                             </li>
                             <li>
-                                Beneficiarul nu onorează o plată scadentă mai mult de
+                                B. Beneficiarul nu onorează o plată scadentă mai mult de
                                 <span class="context" th:text="${context.ac.contract.agreedMetrics.ccBuyer_1_2Measure}"> AC.agreedMetrics.cc-buyer-1-2.measure</span>
                                 luni;
                             </li>
                             <li>
-                                Beneficiarul notifică antreprenorul general că din motive neprevăzute şi datorită unor conjuncturi economice îi este imposibil să continue îndeplinirea obligaţiunilor contractuale.
+                                C. Beneficiarul notifică antreprenorul general că din motive neprevăzute şi datorită unor conjuncturi economice îi este imposibil să continue îndeplinirea obligaţiunilor contractuale.
                             </li>
-                        </ol>
+                        </ul>
                     </li>
                     <li>
                         Beneficiarul poate cere rezilierea contractului, dacă:
-                        <ul type="square">
+                        <ul>
                             <li>
-                                Antreprenorul general se află în incapacitate de plată, lichidare, aplicat sechestru;
+                                ■ Antreprenorul general se află în incapacitate de plată, lichidare, aplicat sechestru;
                             </li>
                             <li>
-                                Antreprenorul general nu începe lucrările fără să aibă un motiv justificat sau nu reia lucrările suspendate, în termen rezonabil de la primirea dispoziţiei scrise de reîncepere a lucrărilor;
+                                ■ Antreprenorul general nu începe lucrările fără să aibă un motiv justificat sau nu reia lucrările suspendate, în termen rezonabil de la primirea dispoziţiei scrise de reîncepere a lucrărilor;
                             </li>
                             <li>
-                                Antreprenorul general nu a îndepărtat materialele necorespunzătoare de pe şantier sau nu a refăcut o lucrare în termenul stabilit prin prezentul contract;
+                                ■ Antreprenorul general nu a îndepărtat materialele necorespunzătoare de pe şantier sau nu a refăcut o lucrare în termenul stabilit prin prezentul contract;
                             </li>
                             <li>
-                                Beneficiarul notifică antreprenorul general că din motive neprevăzute şi datorită unor conjuncturi economice îi este imposibil să continue îndeplinirea obligaţiunilor contractuale.
+                                ■ Beneficiarul notifică antreprenorul general că din motive neprevăzute şi datorită unor conjuncturi economice îi este imposibil să continue îndeplinirea obligaţiunilor contractuale.
                             </li>
                         </ul>
                     </li>
