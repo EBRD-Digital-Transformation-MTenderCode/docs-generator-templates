@@ -138,7 +138,7 @@ data class GoodsContext(
             @JsonPropertyOrder("title", "name", "businessFunctions")
             data class Person(
                 @field:JsonProperty("title") @param:JsonProperty("title") val title: String, // AC.parties[role=="buyer"].persones[*].title
-                @field:JsonProperty("name") @param:JsonProperty("name") val name: String, // AC.parties[role=="buyer"].persones[*[.name
+                @field:JsonProperty("name") @param:JsonProperty("name") val name: String, // AC.parties[role=="buyer"].persones[*].name
                 @field:JsonProperty("businessFunctions") @param:JsonProperty("businessFunctions") val businessFunctions: List<BusinessFunction>
             ) {
 
@@ -246,7 +246,7 @@ data class GoodsContext(
 
                     @JsonPropertyOrder("title")
                     data class Document(
-                        @field:JsonProperty("title") @param:JsonProperty("title") val title: String // AC.parties[role=="supplier"].persones[*].businessFunctions[type=="authority"].documents[documentType=="regulatoryDocument"]
+                        @field:JsonProperty("title") @param:JsonProperty("title") val title: String // AC.parties[role=="supplier"].persones[*].businessFunctions[type=="authority"].documents[documentType=="regulatoryDocument"].title
                     )
                 }
             }
