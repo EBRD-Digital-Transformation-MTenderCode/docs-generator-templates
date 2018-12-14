@@ -268,6 +268,7 @@
 
             ul {
                 margin-top: 5px;
+                list-style: none;
             }
 
             li {
@@ -341,7 +342,7 @@
                 AC.parties.[buyer].details.permits[scheme:SRL].permitDetails.validityPeriod.startDate</span>
             , reprezentat prin
                 <!--/*@thymesVar id="buyerPerson" type="com.procurement.docs.domain.model.context.WorksContext.AC.Buyer.Person"*/-->
-            <div th:each="buyerPerson : ${context.ac.buyer.persones}">
+            <span th:each="buyerPerson : ${context.ac.buyer.persones}">
                 <!--/*@thymesVar id="buyerBusinessFunction" type="com.procurement.docs.domain.model.context.WorksContext.AC.Buyer.Person.BusinessFunction"*/-->
                 <span th:each="buyerBussinessFunction : ${buyerPerson.businessFunctions}">
                     <span class="context" th:text="${buyerBussinessFunction.jobTitle}">
@@ -350,7 +351,7 @@
                 </span>
                 <span class="context" th:text="${buyerPerson.title}">AC.parties.[buyer].persones.title</span>
                 <span class="context" th:text="${buyerPerson.name}">AC.parties.[buyer].persones.name</span>
-            </div>
+            </span>
             în calitate de Beneficiar, pe de o parte, şi
             <span class="context" th:text="${context.ac.supplier.details.legalForm.description}">AC.parties.[supplier].legalForm.description</span>
         <span class="context" th:text="${context.ac.supplier.identifier.legalName}">AC.parties.[supplier].identifier.legalName</span>
@@ -390,7 +391,7 @@
                 AC.parties.[supplier].details.permits[scheme:SRLE].permitDetails.issuedthought.id</span>)
             reprezentat prin
             <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.WorksContext.AC.Supplier.Person"*/-->
-            <div th:each="supplierPerson : ${context.ac.supplier.persones}">
+            <span th:each="supplierPerson : ${context.ac.supplier.persones}">
                 <!--/*@thymesVar id="buyerBusinessFunction" type="com.procurement.docs.domain.model.context.WorksContext.AC.Supplier.Person.BusinessFunction"*/-->
                 <span th:each="supplierBussinessFunction : ${supplierPerson.businessFunctions}">
                     <span class="context" th:text="${supplierBussinessFunction.jobTitle}">
@@ -400,7 +401,7 @@
                 <span class="context" th:text="${supplierPerson.title}">AC.parties.[supplier].persones.title</span>
                 <span class="context" th:text="${supplierPerson.name}">AC.parties.[supplier].persones.name</span>
                 , în calitate de Antreprenor, pe de altă parte.
-            </div>
+            </span>
         </div>
 
         <ol class="big_list">
@@ -408,7 +409,10 @@
                 <b>OBIECTUL CONTRACTULUI</b>
                 <ol>
                     <li>
-                        Antreprenorul general se obligă să execute lucrările AC.tender.classification.id+description în conformitate cu prevederile proiectului tehnic, cu detaliile de execuţie, precum şi a normativelor, standardelor şi prescripţiilor tehnice în vigoare.
+                        Antreprenorul general se obligă să execute lucrările
+                        <span class="context" th:text="${context.ac.tender.classification.id}">AC.tender.classification.id</span>
+                        <span class="context" th:text="${context.ac.tender.classification.description}">AC.tender.classification.description</span>
+                        în conformitate cu prevederile proiectului tehnic, cu detaliile de execuţie, precum şi a normativelor, standardelor şi prescripţiilor tehnice în vigoare.
                     </li>
                 </ol>
             </li>
@@ -423,23 +427,23 @@
                     </li>
                     <li>
                         Perioada de execuţie poate fi prelungită dacă constrângerea activităţii se datorează următoarelor cauze:
-                        <ol type="A">
+                        <ul>
                             <li>
-                                generate de Beneficiar;
+                                A. generate de Beneficiar;
                             </li>
                             <li>
-                                datorită unor greve organizate de federaţia sindicatelor de ramură la nivel naţional şi recunoscute ca legale prin justiţie ale personalului Antreprenorului general sau ca urmare a unor evenimente similare desfăşurate la un operator economic care este un furnizor al Antreprenorului general;
+                                B. datorită unor greve organizate de federaţia sindicatelor de ramură la nivel naţional şi recunoscute ca legale prin justiţie ale personalului Antreprenorului general sau ca urmare a unor evenimente similare desfăşurate la un operator economic care este un furnizor al Antreprenorului general;
                             </li>
                             <li>
-                                datorită forţei majore sau altei situaţii extreme neimputabile şi imprevizibile pentru Antreprenorul general;
+                                C. datorită forţei majore sau altei situaţii extreme neimputabile şi imprevizibile pentru Antreprenorul general;
                             </li>
                             <li>
-                                influenţei factorilor climatici, care împiedică respectarea în execuţie a normelor şi reglementărilor tehnice în vigoare a prevederilor caietelor de sarcini;
+                                D. influenţei factorilor climatici, care împiedică respectarea în execuţie a normelor şi reglementărilor tehnice în vigoare a prevederilor caietelor de sarcini;
                             </li>
                             <li>
-                                calamităţilor naturale recunoscute de autoritatea legală.
+                                E. calamităţilor naturale recunoscute de autoritatea legală.
                             </li>
-                        </ol>
+                        </ul>
                     </li>
                     <li>
                         Conform dispoziţiei scrise a Beneficiarului, Antreprenorul general va sista execuţia lucrărilor sau a unor părţi ale acestora pe o durată şi în modul în care Beneficiarul consideră necesar. Pe timpul suspendării, Antreprenorul general va proteja şi conserva lucrările în mod corespunzător, aşa cum va dispune Beneficiarul. Cheltuielile suplimentare generate în urma sistării lucrărilor suportate de Antreprenorul general vor fi plătite de către Beneficiar. În cazul sistării lucrărilor sau a unor părţi din ele, din iniţiativa Antreprenorului general, acesta suportă pe timpul suspendării toate cheltuielile, privind protejarea şi conservarea lucrărilor cu bună diligenţă.
@@ -483,9 +487,7 @@
                 </ol>
             </li>
             <li>
-                <b>
-                    AJUSTAREA VALORII CONTRACTULUI
-                </b>
+                <b>AJUSTAREA VALORII CONTRACTULUI</b>
                 <ol>
                     <li>
                         Pentru cazurile cînd urmează să fie făcute modificări la valoarea contractului privind majorarea sau reducerea acesteia, părţile se vor conforma prevederilor actelor normative cu incidenţă în domeniul achiziţiilor publice ce reglementează modalităţile de ajustare a valorii contractelor de achiziţii publice.
@@ -510,9 +512,7 @@
                 </ol>
             </li>
             <li>
-                <b>
-                    DREPTURILE ŞI OBLIGAŢIUNILE ANTREPRENORULUI GENERAL ŞI ALE BENEFICIARULUI
-                </b>
+                <b>DREPTURILE ŞI OBLIGAŢIUNILE ANTREPRENORULUI GENERAL ŞI ALE BENEFICIARULUI</b>
                 <ol>
                     <li>
                         Întreaga documentaţie necesară pentru executarea lucrărilor contractate se pune de către Beneficiar la dispoziţia Antreprenorului general în două exemplare, în termenele stabilite în contract, prin graficul general de realizare a lucrărilor publice.
@@ -786,7 +786,7 @@
                 <ol>
                     <li>
                         Următoarele documente vor fi citite şi vor fi interpretate ca fiind parte integrantă a prezentului contract:
-                        <ul type="none">
+                        <ul>
                             <li>
                                 a) Caietul de sarcini;
                             </li>
@@ -930,12 +930,9 @@
                 </table>
             </li>
             <li>
-                <b>SEMNĂTURILE PĂRŢILOR </b>
+                <b>SEMNĂTURILE PĂRŢILOR</b>
                 <p>Acest document se semnează electronic în conformitate cu Legea nr. 91 din 29.05.2014. Verificarea semnăturii poate fi realizată la adresa https://msign.gov.md</p>
             </li>
         </ol>
-
-
-
     </body>
 </html>
