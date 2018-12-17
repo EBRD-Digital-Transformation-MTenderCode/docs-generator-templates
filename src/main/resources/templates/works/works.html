@@ -385,7 +385,7 @@
         (<span class="context" th:text="${context.ac.supplier.details.permit != null} ? ${context.ac.supplier.details.permit.issuedBy.id} : '-' ">
                 AC.parties.[supplier].details.permits[scheme:SRLE].permitDetails.issuedBy.id</span>)
         , pe un termen de
-        <span class="context" th:text="${context.ac.supplier.details.permit != null} ? ${ context.ac.supplier.details.permit.startDateSRLE  } : '-' "> <!-- TODO  realize years amount-->
+        <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.yearsNumber !=null  } ? ${ context.ac.supplier.details.permit.yearsNumber } : '-' "> <!-- TODO  realize years amount-->
                 AC.parties.[supplier].details.permits[scheme:SRLE].permitDetails.validityPeriod.endDate-startDate
         </span>
             ani, pentru genurile de activitate
@@ -425,7 +425,7 @@
                 <ol>
                     <li>
                         Durata de execuţie a lucrărilor contractate este de
-                        <span class="context" th:text="${context.ac.contract.startDate}">AC.contract.period</span><!--TODO  realize month amount-->
+                        <span class="context" th:text="${context.ac.contract.monthNumber}">AC.contract.period</span><!--TODO  realize month amount-->
                         luni după primirea ordinului de începere a execuţiei şi asigurării lucrului ritmic de către beneficiar – ordonatorul de credite.
                     </li>
                     <li>

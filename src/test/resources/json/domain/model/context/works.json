@@ -4,8 +4,7 @@
     "contract": {
       "id": "ocds-t1s2t3-MD-1542981234151-AC-1542036270645",
       "description": "description",
-      "startDate": "2018-10-26",
-      "endDate": "2018-11-26",
+      "monthNumber": "2",
       "amount": 10,
       "amountNet": 3,
       "agreedMetrics": {
@@ -72,7 +71,21 @@
         "legalForm": {
           "description": "ddd"
         },
-        "permit": null
+        "permit": {
+          "idSRL" : "idSRL",
+          "startDateSRL": "2020-12-12",
+          "idSRLE": "idSRLE",
+          "startDateSRLE": "2022-12-12",
+          "yearsNumber": null,
+          "issuedBy": {
+            "id": "popopo",
+            "name": "vasia pupkin"
+          },
+          "issuedThought": {
+            "id": "95874",
+            "name": "name"
+          }
+        }
       }
     },
     "buyer": {

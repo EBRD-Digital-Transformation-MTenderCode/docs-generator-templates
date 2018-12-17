@@ -26,18 +26,12 @@ data class WorksContext(
         @field:JsonProperty("tender") @param:JsonProperty("tender") val tender: Tender
 
     ) {
-        @JsonPropertyOrder("id", "description", "startDate", "endDate", "amount", "amountNet", "agreedMetrics")
+        @JsonPropertyOrder("id", "description", "monthNumber", "amount", "amountNet", "agreedMetrics")
         data class Contract(
             @field:JsonProperty("id") @param:JsonProperty("id") val id: String, // AC.contracts[0].id
             @field:JsonProperty("description") @param:JsonProperty("description") val description: String, // AC.contracts[0].description
 
-            @JsonSerialize(using = JsonDateSerializer::class)
-            @JsonDeserialize(using = JsonDateDeserializer::class)
-            @field:JsonProperty("startDate") @param:JsonProperty("startDate") val startDate: LocalDate, //  AC.contract[0].period.startDate
-
-            @JsonSerialize(using = JsonDateSerializer::class)
-            @JsonDeserialize(using = JsonDateDeserializer::class)
-            @field:JsonProperty("endDate") @param:JsonProperty("endDate") val endDate: LocalDate, //  AC.contract[0].period.endDate
+            @field:JsonProperty("monthNumber") @param:JsonProperty("monthNumber") val monthNumber: String, // AC.contract[0].period.endDate - AC.contract[0].period.startDate  (in month)
 
             @field:JsonProperty("amount") @param:JsonProperty("amount") val amount: String, // AC.contract[0].value.amount
             @field:JsonProperty("amountNet") @param:JsonProperty("amountNet") val amountNet: String, // AC.contract[0].value.amountNet
@@ -209,7 +203,7 @@ data class WorksContext(
                     @field:JsonProperty("description") @param:JsonProperty("description") val description: String // AC.parties[role=="supplier"].legalForm.description
                 )
 
-                @JsonPropertyOrder("idSRL", "startDateSRL", "idSRLE", "startDateSRLE", "endDateSRLE", "issuedBy", "issuedThought")
+                @JsonPropertyOrder("idSRL", "startDateSRL", "idSRLE", "startDateSRLE", "yearsNumber", "issuedBy", "issuedThought")
                 data class Permit(
                     @field:JsonProperty("idSRL") @param:JsonProperty("idSRL") val idSRL: String, // AC.parties.[role=="supplier"].details.permits[scheme="SRL"][0].id
 
@@ -222,10 +216,7 @@ data class WorksContext(
                     @JsonSerialize(using = JsonDateSerializer::class)
                     @JsonDeserialize(using = JsonDateDeserializer::class)
                     @field:JsonProperty("startDateSRLE") @param:JsonProperty("startDateSRLE") val startDateSRLE: LocalDate, // AC.parties.[role=="supplier"].details.permits[scheme="SRLE"].permitDetails.validityPeriod.startDate
-
-                    @JsonSerialize(using = JsonDateSerializer::class)
-                    @JsonDeserialize(using = JsonDateDeserializer::class)
-                    @field:JsonProperty("endDateSRLE") @param:JsonProperty("endDateSRLE") val endDateSRLE: LocalDate, // AC.parties.[role=="supplier"].details.permits[scheme="SRLE"].permitDetails.validityPeriod.endDate
+                    @field:JsonProperty("yearsNumber") @param:JsonProperty("yearsNumber") val yearsNumber: String?, // AC.parties.[role=="supplier"].details.permits[scheme="SRLE"].permitDetails.validityPeriod.endDate - AC.parties.[role=="supplier"].details.permits[scheme="SRLE"].permitDetails.validityPeriod.startDate (in years)
 
                     @field:JsonProperty("issuedBy") @param:JsonProperty("issuedBy") val issuedBy: IssuedBy,//AC.parties.[supplier].details.permits[scheme:SRLE].permitDetails.issuedBy
                     @field:JsonProperty("issuedThought") @param:JsonProperty("issuedThought") val issuedThought: IssuedThought//AC.parties.[supplier].details.permits[scheme:SRLE].permitDetails.issuedThought
