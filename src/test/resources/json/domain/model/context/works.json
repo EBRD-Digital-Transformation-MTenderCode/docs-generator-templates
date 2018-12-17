@@ -8,13 +8,13 @@
       "amount": 10,
       "amountNet": 3,
       "agreedMetrics": {
-        "ccBuyer_1_2Measure": "5",
-        "ccTenderer_1_2Measure": "15",
+        "ccBuyer_1_1Measure": "5",
+        "ccTenderer_1_1Measure": "15",
         "ccTenderer_1_5Measure": "25",
-        "ccTenderer_2_5Measure": "1",
-        "ccTenderer_2_6Measure": "2",
-        "ccTenderer_3_4Measure": "3",
-        "ccTenderer_3_5Measure": "4"
+        "ccTenderer_2_2Measure": "1",
+        "ccTenderer_2_3Measure": "2",
+        "ccTenderer_3_2Measure": "3",
+        "ccTenderer_3_3Measure": "4"
       }
     },
     "tender": {
