@@ -370,28 +370,28 @@
         , fax:
         <span class="context" th:text="${context.ac.supplier.contactPoint.fax}">AC.parties.[supplier].contactPoint.fax</span>
         , autentificat prin cod unic de înregistrare nr cu nr.
-        <span class="context" th:text="${context.ac.supplier.details.permit != null} ? ${context.ac.supplier.details.permit.idSRL} : '-' "> AC.parties.[supplier].details.permits[scheme:SRL].id</span>
+        <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.idSRL != null} ? ${context.ac.supplier.details.permit.idSRL} : '-' "> AC.parties.[supplier].details.permits[scheme:SRL].id</span>
         , din
-        <span class="context" th:text="${context.ac.supplier.details.permit != null} ? ${#temporals.format(context.ac.supplier.details.permit.startDateSRL, 'dd.MM.yyyy')} : '-' ">
+        <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.startDateSRL != null} ? ${#temporals.format(context.ac.supplier.details.permit.startDateSRL, 'dd.MM.yyyy')} : '-' ">
                 AC.parties.[buyer].details.permits[scheme:SRL].permitDetails.validityPeriod.startDate</span>
         , autorizat pentru activitatea în construcţii: autorizaţia nr.
-        <span class="context" th:text="${context.ac.supplier.details.permit != null} ? ${context.ac.supplier.details.permit.idSRLE} : '-' "> AC.parties.[supplier].details.permits[scheme:SRLE].id</span>
+        <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.idSRLE != null} ? ${context.ac.supplier.details.permit.idSRLE} : '-' "> AC.parties.[supplier].details.permits[scheme:SRLE].id</span>
         , din
-        <span class="context" th:text="${context.ac.supplier.details.permit != null} ? ${#temporals.format(context.ac.supplier.details.permit.startDateSRLE, 'dd.MM.yyyy')} : '-' ">
+        <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.startDateSRLE != null} ? ${#temporals.format(context.ac.supplier.details.permit.startDateSRLE, 'dd.MM.yyyy')} : '-' ">
                 AC.parties.[buyer].details.permits[scheme:SRLE].permitDetails.validityPeriod.startDate</span>
         , eliberată de
-        <span class="context" th:text="${context.ac.supplier.details.permit != null} ? ${context.ac.supplier.details.permit.issuedBy.name} : '-' ">
+        <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.issuedBy != null} ? ${context.ac.supplier.details.permit.issuedBy.name} : '-' ">
                 AC.parties.[supplier].details.permits[scheme:SRLE].permitDetails.issuedBy.name</span>
-        (<span class="context" th:text="${context.ac.supplier.details.permit != null} ? ${context.ac.supplier.details.permit.issuedBy.id} : '-' ">
+        (<span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.issuedBy != null} ? ${context.ac.supplier.details.permit.issuedBy.id} : '-' ">
                 AC.parties.[supplier].details.permits[scheme:SRLE].permitDetails.issuedBy.id</span>)
         , pe un termen de
-        <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.yearsNumber !=null  } ? ${ context.ac.supplier.details.permit.yearsNumber } : '-' "> <!-- TODO  realize years amount-->
+        <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.yearsNumber !=null} ? ${context.ac.supplier.details.permit.yearsNumber } : '-' "> <!-- TODO  realize years amount-->
                 AC.parties.[supplier].details.permits[scheme:SRLE].permitDetails.validityPeriod.endDate-startDate
         </span>
             ani, pentru genurile de activitate
-            <span class="context" th:text="${context.ac.supplier.details.permit != null} ? ${context.ac.supplier.details.permit.issuedThought.name} : '-' ">
+            <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.issuedThought != null} ? ${context.ac.supplier.details.permit.issuedThought.name} : '-' ">
                 AC.parties.[supplier].details.permits[scheme:SRLE].permitDetails.issuedThought.id</span>
-            (<span class="context" th:text="${context.ac.supplier.details.permit != null} ? ${context.ac.supplier.details.permit.issuedThought.id} : '-' ">
+            (<span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.issuedThought != null} ? ${context.ac.supplier.details.permit.issuedThought.id} : '-' ">
                 AC.parties.[supplier].details.permits[scheme:SRLE].permitDetails.issuedthought.id</span>)
             reprezentat prin
             <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.WorksContext.AC.Supplier.Person"*/-->
