@@ -338,7 +338,7 @@
             , telefon:
             <span class="context" th:text="${context.ac.buyer.contactPoint.telephone}">AC.parties.[buyer].contactPoint.telephone</span>
             , fax:
-            <span class="context" th:text="${context.ac.buyer.contactPoint.fax}">AC.parties.[buyer].contactPoint.fax</span>
+            <span class="context" th:text="${context.ac.buyer.contactPoint.fax != null} ? ${context.ac.buyer.contactPoint.fax} : '-'">AC.parties.[buyer].contactPoint.fax</span>
             , autentificat prin cod unic de înregistrare cu nr.
             <span class="context" th:text="${context.ac.buyer.details.permit != null} ? ${context.ac.buyer.details.permit.id} : '-' "> AC.parties.[buyer].details.permits[scheme:SRL].id</span>
             , din
@@ -368,7 +368,7 @@
         , telefon:
         <span class="context" th:text="${context.ac.supplier.contactPoint.telephone}">AC.parties.[supplier].contactPoint.telephone</span>
         , fax:
-        <span class="context" th:text="${context.ac.supplier.contactPoint.fax}">AC.parties.[supplier].contactPoint.fax</span>
+        <span class="context" th:text="${context.ac.supplier.contactPoint.fax != null} ? ${context.ac.supplier.contactPoint.fax} : '-' ">AC.parties.[supplier].contactPoint.fax</span>
         , autentificat prin cod unic de înregistrare nr cu nr.
         <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.idSRL != null} ? ${context.ac.supplier.details.permit.idSRL} : '-' "> AC.parties.[supplier].details.permits[scheme:SRL].id</span>
         , din
