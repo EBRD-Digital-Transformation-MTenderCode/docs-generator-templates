@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ro">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+        <style>
+            html {
+                line-height: 1.15; /* 1 */
+                -webkit-text-size-adjust: 100%; /* 2 */
+            }
+
+            body {
+                margin: 0;
+            }
+
+            main {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2em;
+                margin: 0.67em 0;
+            }
+
+            hr {
+                box-sizing: content-box; /* 1 */
+                height: 0; /* 1 */
+                overflow: visible; /* 2 */
+            }
+
+            pre {
+                font-family: monospace, monospace; /* 1 */
+                font-size: 1em; /* 2 */
+            }
+
+            a {
+                background-color: transparent;
+            }
+
+            abbr[title] {
+                border-bottom: none; /* 1 */
+                text-decoration: underline; /* 2 */
+                text-decoration: underline dotted; /* 2 */
+            }
+
+            b,
+            strong {
+                font-weight: bolder;
+            }
+
+            code,
+            kbd,
+            samp {
+                font-family: monospace, monospace; /* 1 */
+                font-size: 1em; /* 2 */
+            }
+
+            small {
+                font-size: 80%;
+            }
+
+            sub,
+            sup {
+                font-size: 75%;
+                line-height: 0;
+                position: relative;
+                vertical-align: baseline;
+            }
+
+            sub {
+                bottom: -0.25em;
+            }
+
+            sup {
+                top: -0.5em;
+            }
+
+            img {
+                border-style: none;
+            }
+
+            button,
+            input,
+            optgroup,
+            select,
+            textarea {
+                font-family: inherit; /* 1 */
+                font-size: 100%; /* 1 */
+                line-height: 1.15; /* 1 */
+                margin: 0; /* 2 */
+            }
+
+            button,
+            input { /* 1 */
+                overflow: visible;
+            }
+
+            button,
+            select { /* 1 */
+                text-transform: none;
+            }
+
+            button,
+            [type="button"],
+            [type="reset"],
+            [type="submit"] {
+                -webkit-appearance: button;
+            }
+
+            button::-moz-focus-inner,
+            [type="button"]::-moz-focus-inner,
+            [type="reset"]::-moz-focus-inner,
+            [type="submit"]::-moz-focus-inner {
+                border-style: none;
+                padding: 0;
+            }
+
+            button:-moz-focusring,
+            [type="button"]:-moz-focusring,
+            [type="reset"]:-moz-focusring,
+            [type="submit"]:-moz-focusring {
+                outline: 1px dotted ButtonText;
+            }
+
+            fieldset {
+                padding: 0.35em 0.75em 0.625em;
+            }
+
+            legend {
+                box-sizing: border-box; /* 1 */
+                color: inherit; /* 2 */
+                display: table; /* 1 */
+                max-width: 100%; /* 1 */
+                padding: 0; /* 3 */
+                white-space: normal; /* 1 */
+            }
+
+            progress {
+                vertical-align: baseline;
+            }
+
+            textarea {
+                overflow: auto;
+            }
+
+            [type="checkbox"],
+            [type="radio"] {
+                box-sizing: border-box; /* 1 */
+                padding: 0; /* 2 */
+            }
+
+            [type="number"]::-webkit-inner-spin-button,
+            [type="number"]::-webkit-outer-spin-button {
+                height: auto;
+            }
+
+            [type="search"] {
+                -webkit-appearance: textfield; /* 1 */
+                outline-offset: -2px; /* 2 */
+            }
+
+            [type="search"]::-webkit-search-decoration {
+                -webkit-appearance: none;
+            }
+
+            ::-webkit-file-upload-button {
+                -webkit-appearance: button; /* 1 */
+                font: inherit; /* 2 */
+            }
+
+            details {
+                display: block;
+            }
+
+            summary {
+                display: list-item;
+            }
+
+            template {
+                display: none;
+            }
+
+            [hidden] {
+                display: none;
+            }
+        </style>
+        <style>
+            *,
+            *:before,
+            *:after {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+            .noDisplay {
+                display: none;
+            }
+
+            body {
+                line-height: 1;
+                font-family: "Times New Roman", sans-serif;
+                font-size: 10pt;
+            }
+
+            b {
+                display: inline-block;
+                font-size: 11pt;
+                margin-bottom: 10px;
+            }
+
+            div {
+                margin-bottom: 13pt;
+            }
+
+            .context {
+                color: red;
+            }
+
+            .square {
+                display: inline-block;
+                width: 175px;
+                height: 75px;
+                float: right;
+                margin-top: 20px;
+                border: 1px solid black;
+            }
+
+            .square-clear {
+                display: table;
+                clear: both;
+            }
+
+            .table {
+                width: 100%;
+                border-collapse: collapse;
+                page-break-inside: avoid;
+                margin-bottom: 20px;
+            }
+
+            .table th,
+            .table td {
+                padding: 5px;
+                vertical-align: top;
+                word-break: break-word;
+                text-align: left;
+            }
+
+            .table th {
+                background-color: #DCDCDC;
+                -webkit-print-color-adjust: exact;
+                text-align: center;
+            }
+
+            .big_list {
+                list-style: none;
+                counter-reset: li;
+            }
+
+            .big_list > li > ol {
+                margin-bottom: 10pt;
+                list-style: none;
+                counter-reset: li;
+            }
+
+            .big_list > li:before,
+            .big_list > li > ol > li:before {
+                counter-increment: li;
+                content: counters(li, ".") ". ";
+            }
+            .big_list > li:before {
+                font-weight: bold;
+            }
+
+            ul {
+                margin-top: 5px;
+                list-style: none;
+            }
+
+            li {
+                padding: 5px 0;
+            }
+
+            ul > li {
+                padding: 2px 0;
+            }
+
+            p {
+                margin: 0;
+            }
+
+            h2{
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <!--/*@thymesVar id="context" type="com.procurement.docs.domain.model.context.WorksContext"*/-->
+        <div style="text-align: center">
+            <img
+                src="data:image/gif;base64,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"
+                alt="" />
+        </div>
+        <div class="square"></div>
+        <div class="square-clear"></div>
+        <h1>
+            <b>CONTRACT DE ANTREPRIZĂ Nr. <span class="context" th:text="${context.ac.contract.id}">AC.contracts[0].id</span></b>
+        </h1>
+        <div>
+            <b>
+                privind achiziţia prin  <span class="context" th:text="${context.ac.contract.description}">
+                AC.contracts[0].description
+            </span>
+            </b>
+        </div>
+        <div style="margin-bottom: 0"><span class="context"
+                                            th:text="${#temporals.format(context.ac.date, 'dd.MM.yyyy')}">AC.date</span>
+        </div>
+        <div>
+            <span class="context" th:text="${context.ac.buyer.address.locality}">
+                AC.parties[role=="buyer"].address.addressDetails.locality.description
+            </span>
+        </div>
+        <h2>Părţile contractante</h2>
+        <div>
+            Prezentul contract este încheiat în urma procedurii de achiziție nr
+            <span class="context" th:text="${context.ev.tender.id}">EV.tender.id</span>
+            din data
+            <span class="context" th:text="${context.ev.publishDate}">EV.publishDate</span>,
+            între
+            <span class="context" th:text="${context.ac.buyer.details.legalForm.description}">AC.parties.[buyer].legalForm.description</span>
+            <span class="context" th:text="${context.ac.buyer.identifier.legalName}">AC.parties.[buyer].identifier.legalName</span>
+           (<span class="context" th:text="${context.ac.buyer.identifier.id}">AC.parties.[buyer].identifier.id</span>)
+            , cu sediul în
+            <span class="context" th:text="${context.ac.buyer.address.postalCode}">AC.parties.[buyer].address.postalCode</span>
+            <span class="context" th:text="${context.ac.buyer.address.locality}">AC.parties.[buyer].address.addressDetails.locality.description</span>
+            str.
+            <span class="context" th:text="${context.ac.buyer.address.streetAddress}">AC.parties.[buyer].address.streetAddress</span>
+            , telefon:
+            <span class="context" th:text="${context.ac.buyer.contactPoint.telephone}">AC.parties.[buyer].contactPoint.telephone</span>
+            , fax:
+            <span class="context" th:text="${context.ac.buyer.contactPoint.fax != null} ? ${context.ac.buyer.contactPoint.fax} : '-'">AC.parties.[buyer].contactPoint.fax</span>
+            , autentificat prin cod unic de înregistrare cu nr.
+            <span class="context" th:text="${context.ac.buyer.details.permit != null} ? ${context.ac.buyer.details.permit.id} : '-' "> AC.parties.[buyer].details.permits[scheme:SRL].id</span>
+            , din
+            <span class="context" th:text="${context.ac.buyer.details.permit != null} ? ${#temporals.format(context.ac.buyer.details.permit.startDate, 'dd.MM.yyyy')} : '-' ">
+                AC.parties.[buyer].details.permits[scheme:SRL].permitDetails.validityPeriod.startDate</span>
+            , reprezentat prin
+                <!--/*@thymesVar id="buyerPerson" type="com.procurement.docs.domain.model.context.WorksContext.AC.Buyer.Person"*/-->
+            <span th:each="buyerPerson : ${context.ac.buyer.persones}">
+                <!--/*@thymesVar id="buyerBusinessFunction" type="com.procurement.docs.domain.model.context.WorksContext.AC.Buyer.Person.BusinessFunction"*/-->
+                <span th:each="buyerBussinessFunction : ${buyerPerson.businessFunctions}">
+                    <span class="context" th:text="${buyerBussinessFunction.jobTitle}">
+                        AC.parties.[buyer].persones.businessFunctions[type:authority].jobTitle
+                    </span>
+                </span>
+                <span class="context" th:text="${buyerPerson.title}">AC.parties.[buyer].persones.title</span>
+                <span class="context" th:text="${buyerPerson.name}">AC.parties.[buyer].persones.name</span>
+            </span>
+            în calitate de Beneficiar, pe de o parte, şi
+            <span class="context" th:text="${context.ac.supplier.details.legalForm.description}">AC.parties.[supplier].legalForm.description</span>
+        <span class="context" th:text="${context.ac.supplier.identifier.legalName}">AC.parties.[supplier].identifier.legalName</span>
+        (<span class="context" th:text="${context.ac.supplier.identifier.id}">AC.parties.[supplier].identifier.id</span>)
+        cu sediul în
+        <span class="context" th:text="${context.ac.supplier.address.postalCode}">AC.parties.[supplier].address.postalCode</span>
+        <span class="context" th:text="${context.ac.supplier.address.locality}">AC.parties.[supplier].address.addressDetails.locality.description</span>
+        , str
+        <span class="context" th:text="${context.ac.supplier.address.streetAddress}">AC.parties.[supplier].address.streetAddress</span>
+        , telefon:
+        <span class="context" th:text="${context.ac.supplier.contactPoint.telephone}">AC.parties.[supplier].contactPoint.telephone</span>
+        , fax:
+        <span class="context" th:text="${context.ac.supplier.contactPoint.fax != null} ? ${context.ac.supplier.contactPoint.fax} : '-' ">AC.parties.[supplier].contactPoint.fax</span>
+        , autentificat prin cod unic de înregistrare nr cu nr.
+        <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.idSRL != null} ? ${context.ac.supplier.details.permit.idSRL} : '-' "> AC.parties.[supplier].details.permits[scheme:SRL].id</span>
+        , din
+        <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.startDateSRL != null} ? ${#temporals.format(context.ac.supplier.details.permit.startDateSRL, 'dd.MM.yyyy')} : '-' ">
+                AC.parties.[buyer].details.permits[scheme:SRL].permitDetails.validityPeriod.startDate</span>
+        , autorizat pentru activitatea în construcţii: autorizaţia nr.
+        <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.idSRLE != null} ? ${context.ac.supplier.details.permit.idSRLE} : '-' "> AC.parties.[supplier].details.permits[scheme:SRLE].id</span>
+        , din
+        <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.startDateSRLE != null} ? ${#temporals.format(context.ac.supplier.details.permit.startDateSRLE, 'dd.MM.yyyy')} : '-' ">
+                AC.parties.[buyer].details.permits[scheme:SRLE].permitDetails.validityPeriod.startDate</span>
+        , eliberată de
+        <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.issuedBy != null} ? ${context.ac.supplier.details.permit.issuedBy.name} : '-' ">
+                AC.parties.[supplier].details.permits[scheme:SRLE].permitDetails.issuedBy.name</span>
+        (<span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.issuedBy != null} ? ${context.ac.supplier.details.permit.issuedBy.id} : '-' ">
+                AC.parties.[supplier].details.permits[scheme:SRLE].permitDetails.issuedBy.id</span>)
+        , pe un termen de
+        <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.yearsNumber !=null} ? ${context.ac.supplier.details.permit.yearsNumber } : '-' "> <!-- TODO  realize years amount-->
+                AC.parties.[supplier].details.permits[scheme:SRLE].permitDetails.validityPeriod.endDate-startDate
+        </span>
+            ani, pentru genurile de activitate
+            <span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.issuedThought != null} ? ${context.ac.supplier.details.permit.issuedThought.name} : '-' ">
+                AC.parties.[supplier].details.permits[scheme:SRLE].permitDetails.issuedThought.id</span>
+            (<span class="context" th:text="${context.ac.supplier.details.permit != null && context.ac.supplier.details.permit.issuedThought != null} ? ${context.ac.supplier.details.permit.issuedThought.id} : '-' ">
+                AC.parties.[supplier].details.permits[scheme:SRLE].permitDetails.issuedthought.id</span>)
+            reprezentat prin
+            <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.WorksContext.AC.Supplier.Person"*/-->
+            <span th:each="supplierPerson : ${context.ac.supplier.persones}">
+                <!--/*@thymesVar id="buyerBusinessFunction" type="com.procurement.docs.domain.model.context.WorksContext.AC.Supplier.Person.BusinessFunction"*/-->
+                <span th:each="supplierBussinessFunction : ${supplierPerson.businessFunctions}">
+                    <span class="context" th:text="${supplierBussinessFunction.jobTitle}">
+                        AC.parties.[supplier].persones.businessFunctions[type:authority].jobTitle
+                    </span>,
+                </span>
+                <span class="context" th:text="${supplierPerson.title}">AC.parties.[supplier].persones.title</span>
+                <span class="context" th:text="${supplierPerson.name}">AC.parties.[supplier].persones.name</span>
+                , în calitate de Antreprenor, pe de altă parte.
+            </span>
+        </div>
+
+        <ol class="big_list">
+            <li>
+                <b>OBIECTUL CONTRACTULUI</b>
+                <ol>
+                    <li>
+                        Antreprenorul general se obligă să execute lucrările
+                        <span class="context" th:text="${context.ac.tender.classification.id}">AC.tender.classification.id</span>
+                        <span class="context" th:text="${context.ac.tender.classification.description}">AC.tender.classification.description</span>
+                        în conformitate cu prevederile proiectului tehnic, cu detaliile de execuţie, precum şi a normativelor, standardelor şi prescripţiilor tehnice în vigoare.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <b>PERIOADA DE EXECUŢIE</b>
+                <ol>
+                    <li>
+                        Durata de execuţie a lucrărilor contractate este de
+                        <span class="context" th:text="${context.ac.contract.monthNumber}">AC.contract.period</span><!--TODO  realize month amount-->
+                        luni după primirea ordinului de începere a execuţiei şi asigurării lucrului ritmic de către beneficiar – ordonatorul de credite.
+                    </li>
+                    <li>
+                        Graficul de execuţie a lucrărilor se va efectua conform specificaţiei din anexa prezentului contract.
+                    </li>
+                    <li>
+                        Perioada de execuţie poate fi prelungită dacă constrângerea activităţii se datorează următoarelor cauze:
+                        <ul>
+                            <li>
+                                A. generate de Beneficiar;
+                            </li>
+                            <li>
+                                B. datorită unor greve organizate de federaţia sindicatelor de ramură la nivel naţional şi recunoscute ca legale prin justiţie ale personalului Antreprenorului general sau ca urmare a unor evenimente similare desfăşurate la un operator economic care este un furnizor al Antreprenorului general;
+                            </li>
+                            <li>
+                                C. datorită forţei majore sau altei situaţii extreme neimputabile şi imprevizibile pentru Antreprenorul general;
+                            </li>
+                            <li>
+                                D. influenţei factorilor climatici, care împiedică respectarea în execuţie a normelor şi reglementărilor tehnice în vigoare a prevederilor caietelor de sarcini;
+                            </li>
+                            <li>
+                                E. calamităţilor naturale recunoscute de autoritatea legală.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Conform dispoziţiei scrise a Beneficiarului, Antreprenorul general va sista execuţia lucrărilor sau a unor părţi ale acestora pe o durată şi în modul în care Beneficiarul consideră necesar. Pe timpul suspendării, Antreprenorul general va proteja şi conserva lucrările în mod corespunzător, aşa cum va dispune Beneficiarul. Cheltuielile suplimentare generate în urma sistării lucrărilor suportate de Antreprenorul general vor fi plătite de către Beneficiar. În cazul sistării lucrărilor sau a unor părţi din ele, din iniţiativa Antreprenorului general, acesta suportă pe timpul suspendării toate cheltuielile, privind protejarea şi conservarea lucrărilor cu bună diligenţă.
+                    </li>
+                    <li>
+                        La terminarea lucrărilor, Antreprenorul general va notifica Beneficiarul că sînt îndeplinite condiţiile de recepţie, solicitând convocarea comisiei. În baza acestei notificări, Beneficiarul va convoca comisia de recepţie pentru terminarea lucrărilor.
+                    </li>
+                    <li>
+                        În baza documentelor de confirmare a execuţiei şi a constatărilor efectuate pe teren, Beneficiarul va aprecia dacă sînt întrunite condiţiile pentru anunţarea comisiei de recepţie. În cazul în care se constată că sînt lipsuri şi deficienţe acestea vor fi aduse la cunoştinţă şi remediate din contul Antreprenorului general, stabilindu-se termenele necesare pentru finalizare sau remediere. După constatarea lichidării tuturor lipsurilor şi deficienţelor, la o nouă solicitare a Antreprenorului general, Beneficiarul va convoca comisia de recepţie. Comisia de recepţie va constata realizarea lucrărilor în conformitate cu documentaţia de execuţie, cu reglementările în vigoare şi cu prevederile din contract. În funcţie de constatările făcute Beneficiarul va aproba sau va respinge recepţia. Recepţia poate fi făcută şi pentru părţi de construcţie distincte fizic şi funcţional.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <b>VALOAREA LUCRĂRILOR ŞI MODALITĂŢILE DE PLATĂ</b>
+                <ol>
+                    <li>
+                        Valoarea lucrărilor ce reprezintă obiectul prezentului contract este de
+                        <span class="context" th:text="${context.ac.contract.amount}">AC.contract.value.amount</span>
+                        lei MD, inclusiv
+                        <span class="context" th:text="${context.ac.contract.amount} - ${context.ac.contract.amountNet}">AC.contract.value.amount - amountNet</span>
+                        TVA lei MD.
+                    </li>
+                    <li>
+                        Achitările vor fi efectuate prin transfer în baza facturilor fiscale, după primirea proceselor - verbale de recepţie a lucrărilor executate, semnate şi acceptate de către Beneficiar.
+                    </li>
+                    <li>
+                        Beneficiarul va verifica procesele verbale de recepţie a lucrărilor executate în termen de 20 zile calendaristice de la primirea acestora de la Antreprenorul General.
+                    </li>
+                    <li>
+                        Pentru demararea lucrărilor Beneficiarul va achita în avans 10% anual din suma alocaţiilor anuale estimate în contract.
+                    </li>
+                    <li>
+                        Plata facturii finale se va face imediat după verificarea şi acceptarea situaţiei de plată definitive de către Beneficiar. Dacă verificarea se prelungeşte din diferite motive, dar în special datorită unor eventuale litigii, contravaloarea lucrărilor care nu sînt în litigiu va fi plătită imediat.
+                    </li>
+                    <li>
+                        Lucrările nu vor fi considerate finalizate pînă cînd procesul-verbal de recepţie la terminarea lucrărilor nu va fi semnat de comisia de recepţie, care confirmă că lucrările au fost executate conform contractului.
+                    </li>
+                    <li>
+                        Garanţia de bună execuţie se va restitui Antreprenorului general în baza notificării Beneficiarului către agentul bancar. Notificarea se va face după semnarea procesului-verbal de recepţie la terminarea lucrărilor în cel mult 15 zile.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <b>AJUSTAREA VALORII CONTRACTULUI</b>
+                <ol>
+                    <li>
+                        Pentru cazurile cînd urmează să fie făcute modificări la valoarea contractului privind majorarea sau reducerea acesteia, părţile se vor conforma prevederilor actelor normative cu incidenţă în domeniul achiziţiilor publice ce reglementează modalităţile de ajustare a valorii contractelor de achiziţii publice.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <b>ANTREPRENORUL GENERAL ŞI SUBANTREPRENORII DE SPECIALITATE</b>
+                <ol>
+                    <li>
+                        Antreprenorul general este obligat să execute toate lucrările, prevăzute în contract, în termenele stabilite prin graficul general de realizare a lucrărilor şi graficul de execuţie şi de o calitate corespunzătoare prevederilor actelor normative în vigoare şi a prezentului contract.
+                    </li>
+                    <li>
+                        În cazul în care părţile din lucrarea ce se contractează se execută în subantrepriză, Antreprenorul general trebuie să prezinte, cu ocazia ofertării, lista subantreprenorilor de specialitate şi lucrările pe care aceştia le vor executa.
+                    </li>
+                    <li>
+                        Pe parcursul execuţiei lucrărilor, Antreprenorul general este obligat să comunice, la cererea Beneficiarului, datele de recunoaştere ale subantreprenorilor de specialitate.
+                    </li>
+                    <li>
+                        Angajarea forţei de muncă pe bază de acord nu este considerată ca făcînd obiectul unei subcontractări.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <b>DREPTURILE ŞI OBLIGAŢIUNILE ANTREPRENORULUI GENERAL ŞI ALE BENEFICIARULUI</b>
+                <ol>
+                    <li>
+                        Întreaga documentaţie necesară pentru executarea lucrărilor contractate se pune de către Beneficiar la dispoziţia Antreprenorului general în două exemplare, în termenele stabilite în contract, prin graficul general de realizare a lucrărilor publice.
+                    </li>
+                    <li>
+                        Antreprenorul general are obligaţia să execute, să finalizeze lucrarea în termenele stabilite în contract, pe proprie răspundere. Pentru aceasta el este obligat să respecte proiectul, documentaţia de execuţie şi prevederile actelor normative în vigoare pentru construcţii.
+                    </li>
+                    <li>
+                        Antreprenorul general are obligaţia de a supraveghea lucrările, de a asigura forţa de muncă, materialele, instalaţiile, echipamentele şi toate celelalte obiecte fie de natură provizorie, fie definitive cerute de şi pentru contract, în măsura în care necesitatea asigurării acestora este prevăzută în contract sau se poate deduce în mod rezonabil din contract.
+                    </li>
+                    <li>
+                        Documentaţia pusă la dispoziţia Antreprenorului general se repartizează astfel:
+                        <ul>
+                            <li>
+                               A. exemplar rămân la dispoziţia Antreprenorului general, iar
+                            </li>
+                            <li>
+                                B. altul va fi ţinut de către acesta la dispoziţie pentru consultare de către Inspecţia de Stat în Construcţii, precum şi de către alte persoane autorizate, inclusiv responsabilul tehnic atestat.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Desenele, calculele, verificările calculelor, caietele de măsurări (ataşamentele) şi alte documente, pe care Beneficiarul sau Antreprenorul general trebuie să le întocmească şi sînt cerute de subantreprenorul proiectant, vor fi puse la dispoziţia acestuia de către Antreprenorul general.
+                    </li>
+                    <li>
+                        Oferta adjudecată face parte integrantă din contract. Ea trebuie să fie corectă şi completă. Preţurile stabilite vor acoperi toate obligaţiunile din contract şi toate operaţiunile pentru terminarea şi întreţinerea corespunzătoare a lucrărilor.
+                    </li>
+                    <li>
+                        Dacă Beneficiarul nu emite în timp util dispoziţii suplimentare care să conţină instrucţiuni sau aprobări, ordine, directive, sau detalii, Antreprenorul general va notifica Beneficiarul prin scrisori, de cîte ori este posibil, că acestea pot să provoace întîrzieri sau întreruperi în desfăşurarea lucrărilor. Notificarea va conţine detaliile sau dispoziţiile ce se cer şi va specifica data la care acestea au fost necesare, precum şi întârzierile sau întreruperile ce survin datorită lipsei acestor documente.
+                    </li>
+                    <li>
+                        Întreaga documentaţie necesară pentru executarea lucrărilor de subantrepriză va fi pusă la dispoziţia subantreprenorilor de către Antreprenorul general, fără plată, în termenele din subcontracte (contracte de subantrepriză), stabilite prin graficul de execuţie.
+                    </li>
+                    <li>
+                        Antreprenorul general va executa şi va întreţine toate lucrările, va asigura forţa de muncă, materialele, utilajele de construcţiişi obiectele cu caracter provizoriu pentru executarea lucrărilor. Acesta îşi asumă întreaga responsabilitate pentru toate operaţiunile executate pe şantier şi pentru procedeele de execuţie utilizate.
+                    </li>
+                    <li>
+                        Antreprenorul general, prin adjudecarea ofertei în favoarea sa, se angajează să obţină garanţia din partea unei bănci, pentru o sumă care reprezintă garanţia de bună execuţie a contractului, în cuantum de
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_1_1Measure}"> AC.agreedMetrics.cc-tenderer-1-1.measure</span>
+                        % din valoarea contractului atribuit.
+                    </li>
+                    <li>
+                        Garanţia de bună execuţie se va restitui Antreprenorului general în baza notificării Beneficiarului către agentul bancar. Notificarea se va face după semnarea procesului-verbal de recepţie finală în cel mult
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_1_5Measure}"> AC.agreedMetrics.cc-tenderer-1-5.measure</span>
+                        zile.
+                    </li>
+                    <li>
+                        Antreprenorul general trebuie să constituie garanţia de bună execuţie după primirea scrisorii de acceptare, dar nu mai tîrziu de data încheierii contractului. Atîta timp cît el nu şi-a îndeplinit această obligaţiune, Beneficiarul poate să reţină Antreprenorului general garanţia pentru ofertă.
+                    </li>
+                    <li>
+                        Beneficiarul trebuie să restituie Antreprenorului general garanţia de bună execuţie în cel mult 15 zile după expirarea perioadei de garanţie, dacă acesta nu a înaintat pînă la acea dată pretenţii asupra ei. Atîta timp însă cît pretenţiile înaintate în termen nu s-au rezolvat, Beneficiarul poate reţine o parte corespunzătoare din valoarea garanţiei, în limitele prejudiciului cauzat.
+                    </li>
+                    <li>
+                        Antreprenorul general garantează că, la data recepţiei, lucrarea executată are calităţile stipulate în contract, corespunde reglementărilor tehnice în vigoare şi nu este afectată de vicii care ar diminua sau chiar anula valoarea sau posibilitatea de utilizare, conform condiţiilor normale de folosire sau a celor explicite în contract.
+                    </li>
+                    <li>
+                        La lucrările la care se fac încercări, se consideră calitatea probei îndeplinită atîta timp cît rezultatele se înscriu în limitele admise prin reglementările tehnice în vigoare.
+                    </li>
+                    <li>
+                        Beneficiarul are dreptul de a supraveghea desfăşurarea lucrărilor în conformitate cu prevederile contractului, prin responsabilii tehnici atestaţi. Acestora li se va asigura accesul la locul de muncă, în ateliere, depozite şi oriunde se desfăşoară activităţi legate de realizarea obligaţiilor contractuale. La cerere, trebuie să i se pună la dispoziţie desenele şi documentaţia de execuţie pentru examinare şi să i se dea toate lămuririle, condiţia fiind ca prin aceasta să nu se divulge taine ale Antreprenorului general. Informaţiile secrete, precum şi documentaţiile secrete vor fi considerate de Beneficiar drept confidenţiale.
+                    </li>
+                    <li>
+                        Beneficiarul este autorizat să emită dispoziţiile pe care le consideră necesare executării lucrărilor, cu respectarea drepturilor Antreprenorului general. Dispoziţiile se adresează în principiu numai Antreprenorului general şi dirigintelui de şantier, cu excepţia cazurilor în care trebuie de intervenit împotriva unui pericol iminent sau declarat. Beneficiarului trebuie să i se comunice numele dirigintelui de şantier atestat tehnico-profesional, care va dirija execuţia lucrărilor şi va verifica calitatea lor din partea Antreprenorului general.
+                    </li>
+                    <li>
+                        Dacă Antreprenorul general consideră că dispoziţiile Beneficiarului sînt nejustificate sau inoportune, el poate ridica obiecţii, dar acestea nu îl absolvă de a executa dispoziţiile primite, în afara cazului în care ele contravin prevederilor legale. Dacă prin executarea dispoziţiilor Beneficiarului se creează dificultăţi în execuţie, care generează cheltuieli suplimentare, acestea vor fi suportate de către Beneficiar.
+                    </li>
+                    <li>
+                        Trasarea axelor principale, bornelor de referinţă, căilor de circulaţie şi limitelor terenului pus la dispoziţia Antreprenorului general, precum şi materializarea cotelor de nivel în imediata apropiere a terenului, sînt obligaţiuni ale Antreprenorului general.
+                    </li>
+                    <li>
+                        Pentru verificarea trasării de către Beneficiar sau proiectant, Antreprenorul general este obligat să protejeze şi să păstreze toate reperele, bornele sau alte obiecte folosite la trasarea lucrărilor.
+                    </li>
+                    <li>
+                        Ridicările de teren, trasările şi cotele de nivel, precum şi alte documente puse la dispoziţia Antreprenorului general de către Beneficiar pentru executarea contractului sânt hotărâtoare. Antreprenorul general este obligat să verifice documentele primite şi să înştiinţeze Beneficiarul cu privire la erorile şi inexactităţile constatate sau presupuse.
+                    </li>
+                    <li>
+                        Antreprenorul general are obligaţia să stabilească toate relaţiile care reglementează raporturile cu subantreprenorii de specialitate şi este răspunzător faţă de Beneficiar pentru respectarea de către subantreprenorii de specialitate a prevederilor şi obligaţiunilor legale şi profesionale.
+                    </li>
+                    <li>
+                        Pe parcursul executării lucrărilor, Beneficiarul are dreptul să dispună în scris:
+                        <ul>
+                            <li>
+                                A. îndepărtarea de pe şantier a oricăror materiale care sînt calitativ necorespunzătoare;
+                            </li>
+                            <li>
+                                B. înlocuirea materialelor necorespunzătoare calitativ cu altele corespunzătoare;
+                            </li>
+                            <li>
+                                C. îndepărtarea sau refacerea oricărei lucrări sau părţi de lucrare necorespunzătoare din punct de vedere calitativ.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        În cazul neexecutării de către Antreprenor a dispoziţiilor din punctul 2.1., Beneficiarul poate opri lucrările, angaja şi plăti alţi antreprenori pentru executarea acestor lucrări, punând în întârziere în acest sens Antreprenorul, care va fi obligat, în condiţiile legii, să compenseze cheltuielile aferente suportate de Beneficiar în legătură cu faptul neexecutării.
+                    </li>
+                    <li>
+                        În cazul în care în timpul executării lucrărilor, pe amplasamente se descoperă valori istorice, artistice sau ştiinţifice, Antreprenorul general este obligat să oprească execuţia lucrărilor în zona respectivă şi să comunice Beneficiarului, organelor de poliţie sau organelor competente acest fapt.
+                    </li>
+                    <li>
+                        În timpul desfăşurării lucrărilor, Antreprenorul general are obligaţia să menţină căile de acces libere, să retragă utilajele, să îndepărteze surplusurile de materiale, deşeuri şi lucrări provizorii de orice fel, care nu sînt necesare, iar la terminarea lucrărilor, Antreprenorul general va evacua de pe şantier toate utilajele de construcţie, surplusurile de materiale, deşeurile şi lucrările provizorii.
+                    </li>
+                    <li>
+                        Beneficiarul trebuie să obţină, pe propria cheltuială, toate avizele, autorizaţiile şi aprobările, să plătească toate taxele necesare legate de execuţia lucrărilor, precum şi pentru bunuri sau drepturi afectate sau care pot fi afectate de execuţia lucrărilor.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <b>FORŢA DE MUNCĂ</b>
+                <ol>
+                    <li>
+                        Antreprenorul general şi subantreprenorii vor îndeplini toate formalităţile necesare angajării întregii forţe de muncă pentru realizarea lucrărilor contractate în conformitate cu prevederile legislaţiei în vigoare.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <b>MATERIALELE ŞI EXECUŢIA LUCRĂRILOR PROPRIU-ZISE</b>
+                <ol>
+                    <li>
+                        Materialele vor fi de calitatea prevăzută în documentaţia de executare, urmând a fi supuse periodic la diverse testări de către proiectantul sau Beneficiarul ce le va solicita. Antreprenorul general va asigura, la cerere, forţa de muncă, instrumentele, utilajul şi materialele necesare pentru examinarea, măsurarea şi testarea lucrărilor.
+                    </li>
+                    <li>
+                        Costul probelor şi încercărilor va fi suportat de Antreprenorul general, dacă acesta este prevăzut în documentaţie, în caz contrar cheltuielile vor fi suportate de Beneficiar.
+                    </li>
+                    <li>
+                        Probele neprevăzute şi comandate de Beneficiar pentru verificarea unor lucrări sau materiale puse în operă vor fi suportate de Antreprenorul general, dacă se dovedeşte că materialele nu sînt corespunzător calitative sau manopera nu este în conformitate cu prevederile contractului. În caz contrar, Beneficiarul va suporta aceste cheltuieli.
+                    </li>
+                    <li>
+                        Beneficiarul, proiectantul sau orice altă persoană autorizată de aceştia au acces tot timpul la lucrări pe şantier şi în locurile unde se pregăteşte lucrarea, în depozite de materiale prefabricate etc.
+                    </li>
+                    <li>
+                        Lucrările care devin ascunse nu vor fi acoperite fără aprobarea responsabilului tehnic atestat şi, după caz, a proiectantului, Antreprenorul general asigurând posibilitatea acestora să examineze şi să urmărească orice lucrare care urmează să fie ascunsă. Antreprenorul general va anunţa responsabilul tehnic atestat, proiectantul ori de cîte ori astfel de lucrări, inclusiv fundaţiile clădirii, sînt gata pentru a fi examinate. Responsabilul tehnic atestat şi proiectantul vor participa la examinarea şi măsurarea lucrărilor.
+                    </li>
+                    <li>
+                        Antreprenorul general va dezveli orice parte sau părţi de lucrare la dispoziţia Beneficiarului şi va reface această parte sau părţi de lucrare, dacă este cazul. Dacă se constată că lucrările au fost de calitate corespunzătoare şi realizate conform documentaţiei de execuţie, dezvelirea, refacerea şi/sau repararea vor fi suportate de Beneficiar, iar în caz contrar, de Antreprenorul general.
+                    </li>
+                    <li>
+                        Costurile pentru consumul de utilităţi, precum şi cel al contoarelor sau al altor aparate de măsurat se suportă de către Antreprenorul general. În cazul mai multor antreprenori, costurile se suportă proporţional de către aceştia.
+                    </li>
+                    <li>
+                        Lucrările executate de Antreprenorul general în afara celor prevăzute în contract sau fără dispoziţia Beneficiarului, precum şi cele care nu respectă prevederile contractului, fără a exista în acest sens o dispoziţie expresă a Beneficiarului, nu vor fi plătite Antreprenorului general. Antreprenorul general trebuie să înlăture aceste lucrări, în termenul stabilit cu Beneficiarul. De asemenea, el răspunde în faţa Beneficiarului de toate pagubele pe care le-a provocat acestuia. Lucrările respective vor fi plătite Antreprenorului general numai dacă se dovedesc a fi necesare şi se presupune că ele corespund voinţei Beneficiarului, în care caz vor fi notificate imediat.
+                    </li>
+                    <li>
+                        Lucrările vor începe după
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_2_3Measure}"> AC.agreedMetrics.cc-tenderer-2-3.measure</span>
+                        zile de la semnarea şi înregistrarea contractului în modul corespunzător şi primirea ordinului de execuţie.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <b>PERIOADA DE GARANŢIE ŞI REMEDIERI îN PERIOADA DE GARANŢIE</b>
+                <ol>
+                    <li>
+                        Perioada de garanţie pentru lucrările prevăzute la pct.2.1. al prezentului contract este de
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_2_2Measure} "> (AC.agreedMetrics.cc-tenderer-2-2.measure)</span>
+                        ani.
+                    </li>
+                    <li>
+                        Perioada de garanţie curge de la data recepţiei la terminarea lucrărilor şi pînă la expirarea termenului prevăzut la punctul 9.1 din prezentul articol.
+                    </li>
+                    <li>
+                        Antreprenorul general are obligaţia ca în perioada de garanţie să înlăture toate defecţiunile ce ţin de nerespectarea clauzelor contractului pe cheltuială proprie în urma unei notificări transmise de către Beneficiar.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <b>RĂSPUNDEREA PĂRŢILOR</b>
+                <ol>
+                    <li>
+                        Părţile poartă răspundere pentru neexecutarea sau executarea necorespunzătoare a obligaţiilor prevăzute de prezentul contract în conformitate cu legislaţia în vigoare a Republicii Moldova.
+                    </li>
+                    <li>
+                        Dacă în legătură cu executarea lucrărilor de construcţii se produce o daună unui terţ, părţile contractante răspund solidar, conform prevederilor legale. Pentru stabilirea între părţi a cuantumului răspunderii pentru dauna provocată se va ţine seama de gradul de vinovăţie a fiecărui partener în producerea acesteia, dacă în clauzele contractuale nu s-a prevăzut altfel.
+                    </li>
+                    <li>
+                        Membrii asocierii îşi păstrează individualitatea ca subiecţi de drept, însă sunt obligaţi să răspundă solidar faţă de autoritate contractantă pentru modul de îndeplinire a obligaţiilor contractuale.
+                    </li>
+                    <li>
+                        Dacă prejudiciul cauzat terţei persoane este urmare a unei măsuri dispuse de beneficiar în forma în care a fost aplicată, atunci acesta poartă singur răspunderea, numai dacă Antreprenorul general l-a înştiinţat în prealabil de pericolul legat de executarea dispoziţiei.
+                    </li>
+                    <li>
+                        Antreprenorul general este obligat, conform prevederilor legale, la plata daunelor pentru încălcarea sau deteriorarea drumurilor de acces sau a reţelelor de utilităţi, a terenurilor limitrofe prin depozitarea de pământ, materiale sau alte obiecte, precum şi ca urmare a unor îngrădiri sau limitări din proprie vină.
+                    </li>
+                    <li>
+                        Antreprenorul general trebuie să asigure lucrările executate şi dotările pe care le are la dispoziţie împotriva degradării şi furturilor pînă la predarea lucrărilor către Beneficiar. El trebuie să ia măsuri de protecţie contra degradării lucrării datorită acţiunilor atmosferice şi a apei şi să îndepărteze zăpada şi gheaţa.
+                    </li>
+                    <li>
+                        Dacă nerespectarea de către Antreprenorul general a prevederilor oricărui regulament sau hotărâri ale autorităţilor administraţiei publice locale sau ale altor organe locale, legal constituite, şi care au caracter obligatoriu la executarea lucrărilor, provoacă pagube pentru Beneficiar, acesta va fi despăgubit de Antreprenorul general în mărimea sumei prejudiciului.
+                    </li>
+                    <li>
+                        Dacă motivele constrângerii sau ale întreruperii sînt imputabile uneia dintre părţile contractante, atunci cealaltă parte poate emite pretenţii privind despăgubirea pentru daunele intervenite şi care pot fi dovedite.
+                    </li>
+                    <li>
+                        Dacă întârzierea în execuţia lucrărilor este în culpa unuia din părţi a contractului, partea culpabilă va plăti celeilalte părţi penalizări şi/sau despăgubiri în cuantum (de la
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_3_2Measure}"> AC.agreedMetrics.cc-tenderer-3-2.measure</span>
+                        % până la
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_3_3Measure}"> AC.agreedMetrics.cc-tenderer-3-3.measure</span>
+                        %) din valoarea lucrărilor rest de executat/neonorate pentru fiecare zi de întârziere. Penalizarea devine operantă în momentul în care partea inculpă a intrat în întârziere.
+                    </li>
+                    <li>
+                        Beneficiarul nu va fi responsabil pentru nici un fel de daune – interese, compensaţii plătibile conform prevederilor legale, în privinţa sau ca urmare a unui accident sau prejudiciu adus unui muncitor sau altei persoane angajate de Antreprenorul general, cu excepţia unui accident sau prejudiciu rezultând din vina Beneficiarului, a agenţilor sau a angajaţilor acestora.
+                    </li>
+                    <li>
+                        Antreprenorul general şi subantreprenorii de specialitate răspund solidar pentru neexecutarea obligaţiile contractuale.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <b>SOLUŢIONAREA LITIGIILOR</b>
+                <ol>
+                    <li>
+                        În cazul litigiilor privind calitatea şi proprietăţile materialelor de construcţie, procedurile de verificare, corectitudinea efectuării probelor, a utilajelor de construcţie folosite, fiecare parte poate, după o înştiinţare prealabilă a celeilalte părţi, să ceară efectuarea unor cercetări de către o instituţie publică de cercetare. Costurile cercetărilor efectuate se suportă de partea a cărei culpă a fost dovedită.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <b>REZILIEREA CONTRACTULUI</b>
+                <ol>
+                    <li>
+                        Antreprenorul general poate cere rezilierea contractului, dacă:
+                        <ul>
+                            <li>
+                                A. Beneficiarul nu-şi îndeplineşte o obligaţie care este în sarcina sa şi prin aceasta pune pe Antreprenorul general în situaţia de a nu putea executa lucrarea;
+                            </li>
+                            <li>
+                                B. Beneficiarul nu onorează o plată scadentă mai mult de
+                                <span class="context" th:text="${context.ac.contract.agreedMetrics.ccBuyer_1_1Measure}"> AC.agreedMetrics.cc-buyer-1-1.measure</span>
+                                luni;
+                            </li>
+                            <li>
+                                C. Beneficiarul notifică antreprenorul general că din motive neprevăzute şi datorită unor conjuncturi economice îi este imposibil să continue îndeplinirea obligaţiunilor contractuale.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Beneficiarul poate cere rezilierea contractului, dacă:
+                        <ul>
+                            <li>
+                                ■ Antreprenorul general se află în incapacitate de plată, lichidare, aplicat sechestru;
+                            </li>
+                            <li>
+                                ■ Antreprenorul general nu începe lucrările fără să aibă un motiv justificat sau nu reia lucrările suspendate, în termen rezonabil de la primirea dispoziţiei scrise de reîncepere a lucrărilor;
+                            </li>
+                            <li>
+                                ■ Antreprenorul general nu a îndepărtat materialele necorespunzătoare de pe şantier sau nu a refăcut o lucrare în termenul stabilit prin prezentul contract;
+                            </li>
+                            <li>
+                                ■ Beneficiarul notifică antreprenorul general că din motive neprevăzute şi datorită unor conjuncturi economice îi este imposibil să continue îndeplinirea obligaţiunilor contractuale.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Contractul se consideră reziliat, dacă partea contractantă va comunica în scris celelalte părţi contractante în termen de 15 zile motivele indicate la punctele 12.1. şi 12.2. din prezentul contract.
+                    </li>
+                    <li>
+                        Beneficiarul, în caz de reziliere a contractului, va convoca comisia de recepţie care va efectua recepţia cantitativă şi calitativa a lucrărilor executate.
+                    </li>
+                    <li>
+                        În cazul rezilierii contractului, Beneficiarul va întocmi situaţia lucrărilor efectiv executate, inventarul materialelor, utilajelor şi lucrărilor provizorii, după care se vor stabili sumele care urmează să le plătească în conformitate cu prevederile contractului, precum şi daunele pe care trebuie să le suporte Antreprenorul general din vina căruia s-a reziliat contractul.
+                    </li>
+                    <li>
+                        După rezilierea contractului, Beneficiarul poate continua execuţia lucrărilor cu respectarea prevederilor legale.
+                    </li>
+                    <li>
+                        Beneficiarul va convoca comisia de recepţie care va efectua recepţia cantitativă şi calitativă a lucrărilor executate în maximum 15 zile de la data rezilierii contractului.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <b>DISPOZIŢII FINALE</b>
+                <ol>
+                    <li>
+                        Următoarele documente vor fi citite şi vor fi interpretate ca fiind parte integrantă a prezentului contract:
+                        <ul>
+                            <li>
+                                a) Caietul de sarcini;
+                            </li>
+                            <li>b) Propunerea tehnică;</li>
+                            <li>c) Oferta financiară;</li>
+                            <li>d) Graficul de timp pentru îndeplinirea contractului;</li>
+                            <li>e) Garanţia de bună execuţie.</li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        Documentele contractului vor fi întocmite în limba română.
+                    </li>
+                    <li>
+                        În cazurile în care apar ambiguităţi sau discrepanţe în clauzele prezentului contract, acestea vor fi clarificate de Beneficiar, care va emite instrucţiuni în acest sens pentru Antreprenorul general.
+                    </li>
+                    <li>
+                        Prezentul Contract reprezintă acordul de voinţă al părţilor şi se consideră semnat la data aplicării ultimei semnături de către una dintre părţi.
+                    </li>
+                    <li>
+                        Pentru confirmarea celor menţionate, părţile au semnat prezentul Contract în conformitate cu legislaţia Republicii Moldova, la data şi anul indicate, fiind valabil până la recepţia finală a lucrărilor.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <b>RECHIZITELE JURIDICE, POŞTALE ŞI DE PLĂŢI ALE PĂRŢILOR</b>
+                <table class="table">
+                    <tr>
+                        <th>BENEFICIARUL</th>
+                        <th>ANTREPRENOR GENERAL</th>
+                    </tr>
+                    <tr>
+                        <td> Adresa poştală:
+                            <span class="context" th:text="${context.ac.buyer.address.streetAddress} + ', '">
+                              AC.parties.[buyer].address.streetAddress
+                            </span>
+                            <span class="context" th:text="${context.ac.buyer.address.locality} + ', '">
+                              address.addressDetails.locality
+                            </span>
+                            <span class="context" th:text="${context.ac.buyer.address.region} + ', '">
+                              address.addressDetails.region
+                            </span>
+                            <span class="context" th:text="${context.ac.buyer.address.country}">
+                              address.addressDetails.country
+                            </span>
+                            <span class="context"
+                                  th:text="${context.ac.buyer.address.postalCode != null}  ?', ' + ${context.ac.buyer.address.postalCode}">postalCode
+                            </span>
+                        </td>
+                        <td> Adresa poştală:
+                            <span class="context" th:text="${context.ac.supplier.address.streetAddress} + ', '">
+                              AC.parties.[supplier].address.streetAddress
+                            </span>
+                            <span class="context" th:text="${context.ac.supplier.address.locality} + ', '">
+                              address.addressDetails.locality
+                            </span>
+                            <span class="context" th:text="${context.ac.supplier.address.region} + ', '">
+                              address.addressDetails.region
+                            </span>
+                            <span class="context" th:text="${context.ac.supplier.address.country}">
+                              address.addressDetails.country
+                            </span>
+                            <span class="context"
+                                  th:text="${context.ac.supplier.address.postalCode != null}  ?', ' + ${context.ac.supplier.address.postalCode}">postalCode
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td> Telefon:
+                            <span class="context" th:text="${context.ac.buyer.contactPoint.telephone}">
+                              AC.parties.[buyer].contactPoint.telephone
+                            </span>
+                        </td>
+                        <td> Telefon:
+                            <span class="context" th:text="${context.ac.supplier.contactPoint.telephone}">
+                              AC.parties.[supplier].contactPoint.telephone
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer.AdditionalIdentifier"*/-->
+                        <td> Cod fiscal:
+                            <span class="context" th:each="item : ${context.ac.buyer.additionalIdentifiers}">
+                                <span
+                                    th:text="${item.id}">AC.parties.[buyer].additionalIdentifiers[scheme:MD-FISCAL].id</span>
+                            </span>
+                            <span
+                                th:class="${#arrays.length(context.ac.buyer.additionalIdentifiers)} ? 'noDisplay'">-</span>
+                        </td>
+                        <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.AdditionalIdentifier"*/-->
+                        <td> Cod fiscal:
+                            <span class="context" th:each="item : ${context.ac.supplier.additionalIdentifiers}">
+                                <span th:text="${item.id}">AC.parties.[supplier].additionalIdentifiers[scheme:MD-FISCAL].id</span>
+                            </span>
+                            <span
+                                th:class="${#arrays.length(context.ac.supplier.additionalIdentifiers)} ? 'noDisplay'">-</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Banca:
+                            <span class="context" th:text="${context.ac.buyer.details.bankAccount.name}">
+                              AC.parties.[buyer].details.bankAccounts.bankName
+                            </span>
+                        </td>
+                        <td>Banca:
+                            <span class="context" th:text="${context.ac.supplier.details.bankAccount.name}">
+                              AC.parties.[supplier].details.bankAccounts.bankName
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cod Bancar:
+                            <span class="context" th:text="${context.ac.buyer.details.bankAccount.identifier}">
+                                AC.parties.[buyer].details.bankAccounts.identifier.id
+                            </span>
+                        </td>
+                        <td>Cod Bancar:
+                            <span class="context" th:text="${context.ac.supplier.details.bankAccount.identifier}">
+                                AC.parties.[supplier].details.bankAccounts.identifier.id
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            IBAN
+                            <span class="context"
+                                  th:text="${context.ac.buyer.details.bankAccount.accountIdentification}">
+                              AC.parties.[buyer].details.bankAccounts.accountIdentification.id
+                            </span>
+                        </td>
+                        <td>
+                            IBAN
+                            <span class="context"
+                                  th:text="${context.ac.supplier.details.bankAccount.accountIdentification}">
+                              AC.parties.[supplier].details.bankAccounts.accountIdentification.id
+                            </span>
+                        </td>
+                    </tr>
+
+                </table>
+            </li>
+            <li>
+                <b>SEMNĂTURILE PĂRŢILOR</b>
+                <p>Acest document se semnează electronic în conformitate cu Legea nr. 91 din 29.05.2014. Verificarea semnăturii poate fi realizată la adresa https://msign.gov.md</p>
+            </li>
+        </ol>
+    </body>
+</html>

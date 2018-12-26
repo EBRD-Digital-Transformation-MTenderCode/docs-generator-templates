@@ -13,6 +13,7 @@
         "ccTenderer_1_5Measure": "25",
         "ccTenderer_2_2Measure": "1",
         "ccTenderer_2_3Measure": "2",
+        "ccTenderer_2_4Measure": "2",
         "ccTenderer_3_2Measure": "3",
         "ccTenderer_3_3Measure": "4"
       }
@@ -21,7 +22,8 @@
       "classification": {
         "id": "77600000-6",
         "description": "Servicii privind vânătoarea"
-      }
+      },
+      "procurementMethodDetails": "TEST Licitatia deschisa"
     },
     "supplier": {
       "address": {

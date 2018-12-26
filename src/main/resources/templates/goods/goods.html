@@ -259,10 +259,18 @@
                 list-style: none;
                 counter-reset: li;
             }
-            .big_list li{
+            .big_list > li{
                 margin-left: -30pt;
             }
-
+            .big_list > li > ol > li{
+                position: relative;
+                left: -10pt;
+            }
+            .big_list > li > ol > li:before{
+                white-space: nowrap;
+                position: absolute;
+                left: -20pt;
+            }
             .big_list > li > ol {
                 margin-bottom: 11pt;
                 list-style: none;
@@ -627,10 +635,7 @@
                             AC.contract.period.endDate
                         </span>
                     </li>
-                    <li>Prezentul Contract reprezintă acordul de voinţă al  părţilor şi se consideră semnat la data aplicării ultimei semnături de către una din părți  -
-                        <span class="context" th:text="${context.ac.contract.milestones.dateMet}">
-                            AC.contract.milestones.[id:approval-2].dateMet
-                        </span>.
+                    <li>Prezentul Contract reprezintă acordul de voinţă al  părţilor şi se consideră semnat la data aplicării ultimei semnături de către una din părți.
                     </li>
                     <li>
                         Pentru confirmarea celor menţionate mai sus, Părţile au semnat prezentul Contract în conformitate cu legislaţia Republicii Moldova, la data şi anul indicate mai sus.

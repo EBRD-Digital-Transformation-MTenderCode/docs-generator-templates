@@ -259,16 +259,24 @@
                 list-style: none;
                 counter-reset: li;
             }
-            .big_list li{
+
+            .big_list > li{
                 margin-left: -30pt;
             }
-
             .big_list > li > ol {
                 margin-bottom: 11pt;
                 list-style: none;
                 counter-reset: li;
             }
-
+            .big_list > li > ol > li{
+                position: relative;
+                left: -10pt;
+            }
+            .big_list > li > ol > li:before{
+                white-space: nowrap;
+                position: absolute;
+                left: -20pt;
+            }
             .big_list > li:before,
             .big_list > li > ol > li:before {
                 counter-increment: li;
