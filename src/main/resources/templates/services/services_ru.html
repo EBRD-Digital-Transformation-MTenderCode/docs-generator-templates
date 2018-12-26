@@ -336,18 +336,18 @@
                 alt="" />
         </div>
         <div>
-            <b>CONTRACT NR. <span class="context" th:text="${context.ac.contract.id}" style="text-transform: uppercase">AC.contracts[0].id</span></b>
+            <b>ДОГОВОР Nr. <span class="context" th:text="${context.ac.contract.id}" style="text-transform: uppercase">AC.contracts[0].id</span></b>
         </div>
         <div>
             <b>
-                de achiziţionare <span class="context" th:text="${context.ac.contract.description}">
+                закупок услуг <span class="context" th:text="${context.ac.contract.description}">
                 AC.contracts[0].description
             </span>
             </b>
         </div>
         <div>
             <b>
-                Cod CPV
+                Код CPV:
                 <span class="context" th:text="${context.ac.tender.classification.id}">
                     AC.tender.classification.id
                 </span>
@@ -367,8 +367,8 @@
         </div>
         <table class="table">
             <tr>
-                <th>Prestatorul de servicii</th>
-                <th>Autoritatea contractantă</th>
+                <th>Поставщик услуг</th>
+                <th>Закупающий орган</th>
             </tr>
             <tr>
                 <td>
@@ -385,7 +385,7 @@
                         </span>
                     </div>
                     <div style="margin-top: 11pt">
-                        <div style="margin-bottom: 3px">reprezentată prin</div>
+                        <div style="margin-bottom: 3px">представленное</div>
                         <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person"*/-->
                         <div th:each="supplierPerson : ${context.ac.supplier.persones}">
                             <!--/*@thymesVar id="supplierBusinessFunction" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person.BusinessFunction"*/-->
@@ -403,7 +403,7 @@
                         </div>
                     </div>
                     <div style="margin-top: 11pt">
-                        <div>care acţionează în baza</div>
+                        <div>которые действуют на основании</div>
                         <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person"*/-->
                         <div th:each="supplierPerson : ${context.ac.supplier.persones}">
                             <!--/*@thymesVar id="supplierBusinessFunction" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person.BusinessFunction"*/-->
@@ -417,15 +417,15 @@
                             </span>
                         </div>
                     </div>
-                    <div style="margin-top: 11pt">denumit(a) în continuare Prestator</div>
-                    <div style="margin-top: 11pt">înregistrat în Registrul de Stat cu nr.]
+                    <div style="margin-top: 11pt">именуемое в дальнейшем Поставщик услуг</div>
+                    <div style="margin-top: 11pt">Регистрация в Государственном реестре:
                         <span class="context"
                               th:text="${context.ac.supplier.details.permit != null} ? ${context.ac.supplier.details.permit.id} : '-' "> AC.parties.[role=="supplier"].details.permits[scheme="SRLE"][0].id </span>
-                         la data de
+                         от
                         <span class="context"
                               th:text="${context.ac.supplier.details.permit != null} ? ${#temporals.format(context.ac.supplier.details.permit.startDate, 'dd.MM.yyyy')} : '-' ">AC.parties.[role=="supplier"].details.permits[scheme="SRLE"].permit.validityPeriod.startDate</span>,
                     </div>
-                    <div style="margin-top: 11pt"> pe de o parte</div>
+                    <div style="margin-top: 11pt"> одной стороны, </div>
                 </td>
                 <td>
                     <!--/*@thymesVar id="buyerInfo" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer"*/-->
@@ -441,7 +441,7 @@
                         </span>
                     </div>
                     <div style="margin-top: 11pt">
-                        <div style="margin-bottom: 3px">reprezentată prin</div>
+                        <div style="margin-bottom: 3px">представленное</div>
                         <!--/*@thymesVar id="buyerPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer.Person"*/-->
                         <div th:each="buyerPerson : ${context.ac.buyer.persones}">
                             <!--/*@thymesVar id="buyerBusinessFunction" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer.Person.BusinessFunction"*/-->
@@ -459,7 +459,7 @@
                         </div>
                     </div>
                     <div style="margin-top: 11pt">
-                        <div>care acţionează în baza</div>
+                        <div>которые действуют на основании</div>
                         <!--/*@thymesVar id="buyerPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer.Person"*/-->
                         <div th:each="buyerPerson : ${context.ac.buyer.persones}">
                             <!--/*@thymesVar id="buyerBusinessFunction" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer.Person.BusinessFunction"*/-->
@@ -474,216 +474,215 @@
                         </div>
                     </div>
                     <div style="margin-top: 11pt">
-                        denumit(a) în continuare Cumpărător/Beneficiar
+                        именуемое в дальнейшем Бенефициар
                     </div>
-                    <div style="margin-top: 11pt">înregistrat în Registrul de Stat cu nr.
+                    <div style="margin-top: 11pt">Регистрация в Государственном реестре:
                         <span class="context"
                               th:text="${context.ac.buyer.details.permit != null} ? ${context.ac.buyer.details.permit.id} : '-' "> AC.parties.[role=="buyer"].details.permits[scheme="SRLE"][0].id </span>
                          la data de
                         <span class="context"
                               th:text="${context.ac.buyer.details.permit != null} ? ${#temporals.format(context.ac.buyer.details.permit.startDate, 'dd.MM.yyyy')} : '-' ">AC.parties.[role=="buyer"].details.permits[scheme="SRLE"].permit.validityPeriod.startDate</span>,
                     </div>
-                    <div style="margin-top: 11pt"> pe de o parte</div>
+                    <div style="margin-top: 11pt"> с другой стороны</div>
                 </td>
             </tr>
         </table>
-        <p> ambii (denumiţi(te) în continuare Părţi), au încheiat prezentul Contract referitor la următoarele:</p>
+        <p> совместно (именуемые в дальнейшем Стороны) заключили настоящий Договор о следующем:</p>
 
         <ol class="big_list">
             <li>
-                <b>Obiectul Contractului</b>
+                <b>ПРЕДМЕТ ДОГОВОРА</b>
                 <ol>
                     <li>
-                        Achiziţionarea
+                        Закупка
                         <span class="context" th:text="${context.ac.contract.description}">AC.contract.description</span>
-                        , denumite în continuare Servicii, conform procedurii de achiziții publice de tip
+                        , именуемые в дальнейшем Товары, в соответствии с процедурой закупок типа
                         <span class="context" th:if="${context.ac.tender.procurementMethodDetails == 'mv'}">
-                            Achiziții de valoare mică
+                            Закупка малой стоимости
                         </span>
                         <span class="context" th:if="${context.ac.tender.procurementMethodDetails == 'sv'}">
-                            Cerere Oferte de Prețuri
+                            Запрос ценовых оферт
                         </span>
                         <span class="context" th:if="${context.ac.tender.procurementMethodDetails == 'ot'}">
-                            Licitație deschisă
+                            Открытые торги
                         </span>
-                        nr.
+                        №
                         <span class="context" th:text="${context.ev.tender.id}"> EV.tender.id</span>
-                        din
+                        от
                         <span class="context" th:text="${#temporals.format(context.ev.publishDate, 'dd.MM.yyyy')}"> EV.publishDate</span>
-                        , în baza deciziei grupului de lucru al Cumpărătorului/Beneficiarului din
+                        , на основании решения рабочей группы Бенефициара от
                         <span class="context" th:text="${#temporals.format(context.ac.award.date, 'dd.MM.yyyy')}"> AC.awards[relatedLot:currentLot].date</span>
                     </li>
                     <li>
-                        Prestatorul îşi asumă obligaţia de a presta Serviciile conform Specificaţiei, care este parte integrantă a prezentului Contract.
+                        Поставщик услуг берет на себя обязательство оказывать Услуги согласно Спецификации, которая является неотъемлемой частью настоящего Договора.
                     </li>
                     <li>
-                        Beneficiarul se obligă, la rîndul său, să achite şi să recepţioneze Serviciile prestate de Prestator.
+                        Бенефициар обязуется, в свою очередь, оплачивать и получать Услуги, предоставляемые Поставщиком услуг.
                     </li>
                     <li>
-                        Serviciile prestate în baza contractului vor respecta standardele indicate în Specificaţie Cînd nu este menţionat nici un standard sau reglementare aplicabilă, se vor respecta standardele sau alte reglementări autorizate în ţara de origine a produselor.
+                        Услуги, оказываемые по договору, будут соответствовать стандартам, указанным в Спецификации. Когда не упоминается стандарт либо норматив, соблюдать стандарты или другие положения, принятые в стране происхождения продукции.
                     </li>
                     <li>
-                        Termenele de garanţie [valabilitate, după caz] a Serviciilor sînt indicate în Specificaţie.
+                        Сроки гарантии [срок действия, в случае необходимости] Услуг указаны в Спецификации.
                     </li>
                 </ol>
             </li>
 
             <li>
-                <b>Preţul şi condiţii de plată</b>
+                <b>СТОИМОСТЬ И УСЛОВИЯ ОПЛАТЫ</b>
                 <ol>
-                    <li>Suma totală a prezentului Contract, inclusiv TVA, se stabileşte în lei moldoveneşti şi
-                        constituie: <span class="context" th:text="${context.ac.contract.value}">AC.contract.value.amount </span>
-                        lei MD.
+                    <li>Общая сумма настоящего Договора, в том числе НДС, устанавливается в молдавских леях и составляет
+                        <span class="context" th:text="${context.ac.contract.value}">AC.contract.value.amount </span>
+                        лей MD.
                     </li>
-                    <li>Metoda şi condiţiile de plată de către Cumpărător vor fi:</li>
+                    <li>Способом и условиями оплаты будут: ________________ [Указанные выше требования должны быть рассмотрены закупающим органом и скорректированы с учетом текущих требований.]</li>
                 </ol>
             </li>
             <li>
-                <b>Obligaţiile părţilor</b>
+                <b>ОБЯЗАННОСТИ СТОРОН</b>
                 <ol>
                     <li>
-                        În baza prezentului Contract, Prestatorul se obligă să anunţe Cumpărătorul după semnarea prezentului Contract, în decurs de
+                        На основании настоящего Договора Поставщик услуг обязуется уведомлять Бенефициара после подписания настоящего Договора, в течение
                         <span class="context"th:text="${context.ac.contract.agreedMetrics.ccTenderer_2_1Measure}">
                             AC.agreedMetrics.cc-tenderer-2-1.measure
                         </span>
-                        zile calendaristice, prin telefon/fax sau telegramă autorizată, despre disponibilitatea prestării Serviciilor;
+                        календарных дней, по телефону/факсу или заверенной телеграммой о доступности предоставления Услуг.
                     </li>
                     <li>
-                        Pretenţiile privind calitatea Serviciilor prestate sînt înaintate   Prestatorului în termen de
+                        Претензии по качеству оказанных Услуг предъявляются Поставщику услуг в течение
                         <span class="context"th:text="${context.ac.contract.agreedMetrics.ccBuyer_1_1Measure}">
                             AC.agreedMetrics.cc-buyer-1-1.measure
                         </span>
-                        zile lucrătoare de la depistarea deficienţelor de calitate şi trebuie confirmate printr-un certificat eliberat de o organizaţie independentă neutră şi autorizată în acest sens.
+                        рабочих дней со дня выявления недостатков качества и должны быть подтверждены сертификатом, выданным независимой нейтральной и уполномоченной организацией.
                     </li>
                     <li>
-                        Prestatorul este obligat să examineze pretenţiile înaintate în termen de
+                        Поставщик услуг обязан рассмотреть предъявленные претензии в течение
                         <span class="context"th:text="${context.ac.contract.agreedMetrics.ccTenderer_2_2Measure}">
                             AC.agreedMetrics.cc-tenderer-2-2.measure
                         </span>
-                        zile lucrătoare de la data primirii acestora şi să comunice Cumpărătorului despre decizia luată.
+                        рабочих дней со дня их получения и сообщить Бенефициару о принятом решении.
                     </li>
                     <li>
-                        În caz de recunoaştere a pretenţiilor, Prestatorul este obligat, în termen de
+                        В случае признания претензий, Поставщик услуг  обязан в течение
                         <span class="context"th:text="${context.ac.contract.agreedMetrics.ccTenderer_2_3Measure}">
                             AC.agreedMetrics.cc-tenderer-2-3.measure
                         </span>
-                        zile, să presteze suplimentar Cumpărătorului cantitatea neprestată de servicii, iar în caz de constatare a calităţii necorespunzătoare – să le substituie sau să le corecteze în conformitate cu cerinţele Contractului.
+                        дней дополнительно предоставить Бенефициару количество несоответствующих услуг, а в случае установления ненадлежащего качества – их заменить или исправить их в соответствии с требованиями Договора.
                     </li>
                     <li>
-                        Partea iniţiatoare a rezilierii Contractului este obligată să comunice în termen de
+                        Сторона, инициирующая расторжения Договора, обязана сообщить в течение
                         <span class="context"th:text="${context.ac.contract.agreedMetrics.ccGenerel_1_2Measure}">
                             AC.agreedMetrics.cc-general-1-2.measure
                         </span>
-                        zile lucrătoare celeilalte Părţi despre intenţiile ei printr-o scrisoare motivată.
+                        рабочих дней другой Стороне о своем намерении мотивированным письмом.
                     </li>
                     <li>
-                        Partea înştiinţată este obligată să răspundă în decurs de
+                        Уведомленная сторона обязана ответить в течение
                         <span class="context"th:text="${context.ac.contract.agreedMetrics.ccGenerel_1_3Measure}">
                             AC.agreedMetrics.cc-general-1-3.measure
                         </span>
-                        zile lucrătoare de la primirea notificării. În cazul în care litigiul nu este soluţionat în termenele stabilite, partea iniţiatoare va iniția rezilierea.
+                        рабочих дней после получения уведомления. Если спор не урегулирован в установленные сроки, инициирующая сторона должна инициировать расторжение договора.
                     </li>
                 </ol>
             </li>
             <li>
-                <b>Sancţiuni</b>
+                <b>САНКЦИИ</b>
                 <ol>
-                    <li>Forma de garanţie de bună executare a contractului agreată de Cumpărător este
+                    <li>Форма обеспечения добросовестного исполнения договора, одобренная Бенефициарем:
                         <span
                             class="context"
                             th:text="${context.ac.contract.agreedMetrics.ccTenderer_1_2Measure}"
                         >
                             AC.agreedMetrics.cc-tenderer-1-2.measure
                         </span>
-                        , în cuantum de
+                        в размере
                         <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_1_1Measure}">
                             AC.agreedMetrics.cc-tenderer-1-1.measure
-                        </span>% din valoarea contractului.
+                        </span> % от стоимости договора.
                     </li>
-                    <li>Pentru refuzul de a presta Serviciile prevăzute în prezentul Contract, se va reţine garanţia de
-                        bună executare a contractului, în cazul în care ea a fost constituită în conformitate cu
-                        prevederile punctului 10.1., în caz contrar Prestatorul suportă o penalitate în valoare de
+                    <li>За отказ предоставить Услуги, предусмотренные в настоящем Договоре,
+                        обеспечение исполнения договора будет удержано, если оно было создано в соответствии с положениями пункта 4.1.
+                        В противном случае Поставщику услуг назначается пеня в размере
                         <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_3_3Measure}">
                             AC.agreedMetrics.cc-tenderer-3-3.measure
-                        </span>% din suma totală a contractului.
+                        </span> % от общей суммы договора.
                     </li>
-                    <li>Pentru prestarea cu întîrziere a Serviciilor, Prestatorul poartă răspundere materială în valoare
-                        de
+                    <li>За оказание с опозданием Услуг, Поставщик услуг несет материальную ответственность в размере
                         <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_3_1Measure}">
                             AC.agreedMetrics.cc-tenderer-3-1.measure
                         </span>
-                        % din suma Serviciilor neprestate, pentru fiecare zi de întîrziere, dar nu mai mult de
+                        % от суммы непредоставленных Услуг, за каждый день просрочки, но не более
                         <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_3_2Measure}">
                             AC.agreedMetrics.cc-tenderer-3-2.measure
                         </span>
-                        % din suma totală a prezentului Contract. în cazul în care întîrzierea
+                        % от общей суммы настоящего Договора. Если задержка превышает
                         depăşeşte
                         <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_2_4Measure}">
                             AC.agreedMetrics.cc-tenderer-2-4.measure
                         </span>
-                        zile, se consideră ca fiind refuz de a presta Serviciile prevăzute în prezentul Contract şi
-                        Prestatorului i se va reţine garanţia de bună executare a contractului, în cazul în care ea a
-                        fost constituită în conformitate cu prevederile punctului 10.1.
+                        дней, это считается отказом предоставить Услуги, предусмотренные в настоящем Договоре, и обеспечение исполнения договора
+                        будет удержано с Поставщика услуг, если оно было установлено в соответствии с положениями пункта 4.1.
                     </li>
-                    <li>Pentru achitarea cu întîrziere, Cumpărătorul poartă răspundere materială în valoare de
+                    <li>За просрочку платежа Бенефициар несет материальную ответственность в размере
                         <span class="context" th:text="${context.ac.contract.agreedMetrics.ccBuyer_2_1Measure}">
                             AC.agreedMetrics.cc-buyer-2-1.measure
                         </span>
-                        % din suma Serviciilor neachitate, pentru fiecare zi de întîrziere, dar
-                        nu mai mult de
+                        %  от суммы неоплаченных Услуг, за каждый день просрочки, но не более
                         <span class="context" th:text="${context.ac.contract.agreedMetrics.ccBuyer_2_2Measure}">
                             AC.agreedMetrics.cc-buyer-2-2.measure
                         </span>
-                        % din suma totală a prezentului contract.
+                        % от общей суммы настоящего Договора.
                     </li>
                 </ol>
             </li>
 
             <li>
-                <b>Dispoziţii finale</b>
+                <b>ЗАКЛЮЧИТЕЛЬНЫЕ ПОЛОЖЕНИЯ</b>
                 <ol>
                     <li>
-                        Următoarele documente vor fi considerate părţi componente şi integrale ale Contractului:
+                        Следующие документы будут считаться неотъемлемой и полной частью Договора:
                         <ul>
-                            <li>a) Specificaţia tehnică;</li>
-                            <li>b) Specificația de preț;</li>
-                            <li>c) [adăugaţi alte documente componente conform necesităţii, de exemplu, desene, grafice, formulare, protocolul de recepţionare provizorie şi finală etc.]</li>
+                            <li>a) Техническое задание;</li>
+                            <li>b) Формирование стоимости;</li>
+                            <li>c)
+                                [добавить другие составляющие документы в соответствии с потребностями, например, чертежи, графики, формуляры, промежуточный и окончательный протокол приема и т. д.]___________
+                            </li>
                         </ul>
                     </li>
                     <li>
-                        Prezentul Contract va predomina asupra tuturor altor documente componente. În cazul unor discrepanţe sau inconsecvenţe între documentele componente ale Contractului,
-                        documentele vor avea ordinea de prioritate enumerată mai sus.
+                        Настоящий Договор будет преобладать над всеми другими составными документами.
+                        В случае расхождений или несоответствий между документами, составляющими Договор, приоритет будут иметь документы из вышеуказанного списка.
                     </li>
                     <li>
-                        Documentaţia de însoţire a Serviciilor include: _______ [Cerinţele de mai sus trebuie prevăzute de către autoritatea contractantă şi ajustate conform cerinţelor actuale.]<!--TODO change ___________ -->
+                        Документация по сопровождению услуг включает:___________ [Указанные выше требования должны быть указаны организацией-заказчиком и скорректированы с учетом текущих требований.]
+                        <!--TODO change ___________ -->
                     </li>
                     <li>
-                        Clauzele contractuale generale ale contractului de achiziții publice de servicii sunt parte integrantă și completă a prezentului contract.
-                        Părțile confirmă că au citit și sunt de acord cu Clauzele contractuale generale ale contractului de achiziții publice de servicii, care pot fi accesate la următoarea adresă electronică: ____________.<!--TODO change ___________ -->
+                        Общие Условия Договора Государственных Закупок услуг являются неотъемлемой и полной частью настоящего  Договора.
+                        Стороны подтверждают что ознакомились и согласны с Общими Условиями Договора Государственных Закупок Услуг, доступ к которым можно получить по электронному адресу:____________.
                     </li>
-                    <li>
-                        În cazul unor divergențe între prezentul contractul și clauzele contractuale generale ale contractului de achiziție publică de servicii,
-                        prioritate va avea prezentul contractul și documentele care fac parte integrantă a acestuia.
+                    <li>В случае расхождений или несоответствий между настоящим договором и общими условиями договора государственных закупок услуг,
+                        приоритет будут иметь настоящий договор и документы которые являются его неотъемлемой частью.
                     </li>
-                    <li>Prezentul Contract este valabil pînă la
+                    <li>Настоящий Договор действует до
                         <span class="context" th:text="${#temporals.format(context.ac.contract.endDate, 'dd.MM.yyyy')}">
                             AC.contract.period.endDate
                         </span>
                     </li>
-                    <li>Prezentul Contract reprezintă acordul de voinţă al părţilor şi se consideră semnat la data aplicării ultimei semnături de către una dintre părți.</li>
-                    <li>Pentru confirmarea celor menţionate mai sus, Părţile au semnat prezentul Contract în conformitate cu legislaţia Republicii Moldova, la data şi anul indicate mai sus.</li>
+                    <li>Настоящий Договор представляет собой добровольное соглашение Сторон и считается подписанным на дату постановки последней подписи одной из Сторон.</li>
+                    <li>В качестве доказательства вышеизложенного Стороны подписали настоящий Договор в соответствии с законодательством Республики Молдова на дату и год, указанные выше.</li>
                 </ol>
             </li>
 
             <li>
-                <b> Datele juridice, poştale şi bancare ale Părţilor</b>
+                <b> ЮРИДИЧЕСКИЕ, ПОЧТОВЫЕ И БАНКОВСКИЕ РЕКВИЗИТЫ СТОРОН</b>
                 <table class="table table-border">
                     <tr>
-                        <th>Prestatorul de servicii</th>
-                        <th>Autoritatea contractantă</th>
+                        <th>Поставщик услуг</th>
+                        <th>Закупающий орган</th>
                     </tr>
                     <tr>
-                        <td> Adresa poştală:
+                        <td> Почтовый адрес:
                             <span class="context" th:text="${context.ac.supplier.address.streetAddress} + ', '">
                               AC.parties.[supplier].address.streetAddress
                             </span>
@@ -700,7 +699,7 @@
                                   th:text="${context.ac.supplier.address.postalCode != null}  ?', ' + ${context.ac.supplier.address.postalCode}">postalCode
                             </span>
                         </td>
-                        <td> Adresa poştală:
+                        <td> Почтовый адрес:
                             <span class="context" th:text="${context.ac.buyer.address.streetAddress} + ', '">
                               AC.parties.[buyer].address.streetAddress
                             </span>
@@ -720,12 +719,12 @@
                     </tr>
 
                     <tr>
-                        <td> Telefon:
+                        <td> Телефон:
                             <span class="context" th:text="${context.ac.supplier.contactPoint.telephone}">
                               AC.parties.[supplier].contactPoint.telephone
                             </span>
                         </td>
-                        <td> Telefon:
+                        <td> Телефон:
                             <span class="context" th:text="${context.ac.buyer.contactPoint.telephone}">
                               AC.parties.[buyer].contactPoint.telephone
                             </span>
@@ -733,14 +732,14 @@
                     </tr>
                     <tr>
                         <td>
-                            Cont de decontare:
+                            Расчетный счет:
                             <span class="context"
                                   th:text="${context.ac.supplier.details.bankAccount.accountIdentification}">
                               AC.parties.[supplier].details.bankAccounts.accountIdentification.id
                             </span>
                         </td>
                         <td>
-                            Cont de decontare:
+                            Расчетный счет:
                             <span class="context"
                                   th:text="${context.ac.buyer.details.bankAccount.accountIdentification}">
                               AC.parties.[buyer].details.bankAccounts.accountIdentification.id
@@ -748,19 +747,19 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Banca:
+                        <td>Банк:
                             <span class="context" th:text="${context.ac.supplier.details.bankAccount.name}">
                               AC.parties.[supplier].details.bankAccounts.bankName
                             </span>
                         </td>
-                        <td>Banca:
+                        <td>Банк:
                             <span class="context" th:text="${context.ac.buyer.details.bankAccount.name}">
                               AC.parties.[buyer].details.bankAccounts.bankName
                             </span>
                         </td>
                     </tr>
                     <tr>
-                        <td>Adresa poştală a băncii:
+                        <td>Почтовый адрес банка:
                             <span
                                 class="context"
                                 th:text="${context.ac.supplier.details.bankAccount.address.streetAddress} + ', '"
@@ -784,7 +783,7 @@
                             </span>
                         </td>
 
-                        <td>Adresa poştală a băncii:
+                        <td>Почтовый адрес банка:
                             <span
                                 class="context"
                                 th:text="${context.ac.buyer.details.bankAccount.address.streetAddress} + ', '"
@@ -808,12 +807,12 @@
                     </tr>
 
                     <tr>
-                        <td>Cod:
+                        <td>Код:
                             <span class="context" th:text="${context.ac.supplier.details.bankAccount.identifier}">
                                 AC.parties.[supplier].details.bankAccounts.identifier.id
                             </span>
                         </td>
-                        <td>Cod:
+                        <td>Код:
                             <span class="context" th:text="${context.ac.buyer.details.bankAccount.identifier}">
                                 AC.parties.[buyer].details.bankAccounts.identifier.id
                             </span>
@@ -822,7 +821,7 @@
 
                     <tr>
                         <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.AdditionalIdentifier"*/-->
-                        <td> Cod fiscal:
+                        <td> Фискальный код:
                             <span class="context" th:each="item : ${context.ac.supplier.additionalIdentifiers}">
                                 <span th:text="${item.id}">AC.parties.[supplier].additionalidentifieres[scheme:MD-FISCAL].id</span>
                             </span>
@@ -830,7 +829,7 @@
                                 th:class="${#arrays.length(context.ac.supplier.additionalIdentifiers)} ? 'noDisplay'">-</span>
                         </td>
                         <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer.AdditionalIdentifier"*/-->
-                        <td> Cod fiscal:
+                        <td> Фискальный код:
                             <span class="context" th:each="item : ${context.ac.buyer.additionalIdentifiers}">
                                 <span
                                     th:text="${item.id}">AC.parties.[buyer].additionalIdentifiers[scheme:MD-FISCAL].id</span>
@@ -843,9 +842,8 @@
             </li>
 
             <li>
-                <b>Semnăturile părţilor</b>
-                <p>Acest document se semnează electronic în conformitate cu Legea nr. 91 din 29.05.2014. Verificarea
-                   semnăturii poate fi realizată la adresa https://msign.gov.md
+                <b>ПОДПИСИ СТОРОН</b>
+                <p>Этот документ подписан в электронном виде в соответствии с Законом №. 91 от 29.05.2014. Проверка подписей может быть осуществлена посредствам электронного сервиса  https://msign.gov.md
                 </p>
             </li>
         </ol>
