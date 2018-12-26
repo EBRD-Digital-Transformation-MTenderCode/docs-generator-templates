@@ -29,7 +29,7 @@ data class GoodsContext(
         @field:JsonProperty("award") @param:JsonProperty("award") val award: Award
     ) {
 
-        @JsonPropertyOrder("id", "description", "value", "endDate", "agreedMetrics")
+        @JsonPropertyOrder("id", "description", "value", "endDate", "agreedMetrics", "milestones")
         data class Contract(
             @field:JsonProperty("id") @param:JsonProperty("id") val id: String, // AC.contracts[0].id
             @field:JsonProperty("description") @param:JsonProperty("description") val description: String, // AC.contracts[0].description,
@@ -39,7 +39,8 @@ data class GoodsContext(
             @JsonDeserialize(using = JsonDateDeserializer::class)
             @field:JsonProperty("endDate") @param:JsonProperty("endDate") val endDate: LocalDate, // AC.contract.period.endDate (DD.MM.YYYY)
 
-            @field:JsonProperty("agreedMetrics") @param:JsonProperty("agreedMetrics") val agreedMetrics: AgreedMetrics
+            @field:JsonProperty("agreedMetrics") @param:JsonProperty("agreedMetrics") val agreedMetrics: AgreedMetrics,
+            @field:JsonProperty("milestones") @param:JsonProperty("milestones") val milestones: Milestone
         ) {
 
             @JsonPropertyOrder("ccGenerel_1_1Measure",
@@ -77,6 +78,12 @@ data class GoodsContext(
                 @field:JsonProperty("ccTenderer_3_2Measure") @param:JsonProperty("ccTenderer_3_2Measure") val ccTenderer_3_2Measure: String, // AC.contracts[0].agreedMetrics[id==cc-tenderer-1].observations[id==cc-tenderer-3-2].measure
                 @field:JsonProperty("ccTenderer_3_3Measure") @param:JsonProperty("ccTenderer_3_3Measure") val ccTenderer_3_3Measure: String // AC.contracts[0].agreedMetrics[id==cc-tenderer-1].observations[id==cc-tenderer-3-3].measure
             )
+            @JsonPropertyOrder("dataMet")
+            data class Milestone(
+                @field:JsonProperty("dataMet") @param:JsonProperty("dataMet") val dateMet: String // AC.contract.milestones.[id:approval-2].dateMet
+            )
+
+
         }
 
         @JsonPropertyOrder("procurementMethodDetails", "classification")
@@ -143,8 +150,16 @@ data class GoodsContext(
 
                 @JsonPropertyOrder("jobTitle")
                 data class BusinessFunction(
-                    @field:JsonProperty("jobTitle") @param:JsonProperty("jobTitle") val jobTitle: String // AC.parties[role=="buyer"].persones[*].businessFunctions[type=="authority"].jobTitle
+                    @field:JsonProperty("jobTitle") @param:JsonProperty("jobTitle") val jobTitle: String, // AC.parties[role=="buyer"].persones[*].businessFunctions[type=="authority"].jobTitle
+                    @field:JsonProperty("documents") @param:JsonProperty("documents") val documents: List<Document>
                 )
+                {
+
+                    @JsonPropertyOrder("title")
+                    data class Document(
+                        @field:JsonProperty("title") @param:JsonProperty("title") val title: String // AC.parties[role=="buyer"].persones[*].businessFunctions[type=="authority"].documents[documentType=="regulatoryDocument"].title
+                    )
+                }
             }
 
             @JsonPropertyOrder("bankAccount", "legalForm", "permit")

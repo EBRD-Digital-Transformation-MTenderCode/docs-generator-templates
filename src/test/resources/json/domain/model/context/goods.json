@@ -22,6 +22,9 @@
         "ccTenderer_3_1Measure": "5",
         "ccTenderer_3_2Measure": "5",
         "ccTenderer_3_3Measure": "5"
+      },
+      "milestones": {
+        "dataMet": "55555555555555555555555"
       }
     },
     "tender": {
@@ -215,7 +218,7 @@
             "id": "77600000-6",
             "description": "Servicii privind vânătoarea"
           },
-          "description": "ssssdshfash idgsyhudssss gighoidhogihdpoj ssssdshfash idgsyhudssss gighoidhogihdpoj",
+          "description": "ssss",
           "unit": {
             "name": "Milion decalitri",
             "value": {
