@@ -304,9 +304,16 @@
         </div>
         <div>
             <b>
-                privind achiziţia prin  <span class="context" th:text="${context.ac.tender.procurementMethodDetails}">
-                AC.tender.procurementMethodDetails
-            </span>
+                privind achiziţia prin
+                <span class="context" th:if="${context.ac.tender.procurementMethodDetails == 'mv'}">
+                Achiziții de valoare mică
+                </span>
+                <span class="context" th:if="${context.ac.tender.procurementMethodDetails == 'sv'}">
+                Cerere Oferte de Prețuri
+                </span>
+                <span class="context" th:if="${context.ac.tender.procurementMethodDetails == 'ot'}">
+                Licitație deschisă
+                </span>
             </b>
         </div>
         <div style="margin-top: 11pt"><span class="context"
