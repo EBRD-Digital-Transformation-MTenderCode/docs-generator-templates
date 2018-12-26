@@ -88,7 +88,7 @@ data class GoodsContext(
 
         @JsonPropertyOrder("procurementMethodDetails", "classification")
         data class Tender(
-            @field:JsonProperty("procurementMethodDetails") @param:JsonProperty("procurementMethodDetails") val procurementMethodDetails: String, // AC.tender.procurementMethodDetails
+            @field:JsonProperty("procurementMethodDetails") @param:JsonProperty("procurementMethodDetails") val procurementMethodDetails: String, // TODO need maping
             @field:JsonProperty("classification") @param:JsonProperty("classification") val classification: Classification
         ) {
 
