@@ -875,10 +875,13 @@
                             MS.tender.title
                         </span>
                         </td>
+                        <!--/*@thymesVar id="relatedLot" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.RelatedLot"*/-->
                         <td>Lot:
-                            <span class="context" th:text="${context.ac.award.relatedLot.id}">
-                            AC.award.relatedLot.id
-                        </span>
+                            <span th:each="relatedLot : ${context.ac.award.relatedLots}">
+                                <span class="context" th:text="${relatedLot.id}">
+                                AC.award.relatedLot.id
+                                </span>
+                            </span>
                         </td>
                     </tr>
                 </table>
@@ -916,55 +919,62 @@
                         <td></td>
                         <td></td>
                     </tr>
-                    <tr>
-                        <td></td>
+                    <!--/*@thymesVar id="relatedLot" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.RelatedLot"*/-->
+                    <tr th:each="relatedLot : ${context.ac.award.relatedLots}">
                         <td>
-                        <span class="context" th:text="${context.ac.award.relatedLot.id}">
-                            AC.award.relatedLot.id
-                        </span>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.Item"*/-->
-                    <tr th:each="item : ${context.ac.award.items}">
-                        <td>
-                        <span class="context" th:text="${item.classification.id}">
-                            AC.award.items[*].classification.id
-                        </span>
-                            <span class="context" th:text="${item.classification.description}">+description</span>
-                        </td>
-                        <td><span class="context" th:text="${item.description}">AC.award.items[*].description</span>
-                        </td>
-                        <td>
-                        <span class="context" th:text="${item.agreedMetrics.ccSubject_1Measure}">
-                            AC.contract.agreedMetrics.cc-subject-1.measure
-                        </span>
-                        </td>
-                        <td>
-                        <span class="context" th:text="${item.agreedMetrics.ccSubject_2Measure}">
-                            AC.contract.agreedMetrics.cc-subject-2.measure
-                        </span>
-                        </td>
-                        <td>
-                        <span class="context" th:text="${item.agreedMetrics.ccSubject_3Measure}">
-                            AC.contract.agreedMetrics.cc-subject-3.measure
-                        </span>
-                        </td>
-                        <td>
-                        <span class="context" th:text="${item.agreedMetrics.ccSubject_4Measure}">
-                            AC.contract.agreedMetrics.cc-subject-4.measure
-                        </span>
-                        </td>
-                        <td></td>
-                        <td>
-                        <span class="context" th:text="${item.agreedMetrics.ccSubject_5Measure}">
-                            AC.contract.agreedMetrics.cc-subject-5.measure
-                        </span>
+                            <table>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <span class="context" th:text="${relatedLot.id}">
+                                        AC.award.relatedLot.id
+                                     </span>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                             </tr>
+                            <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.Item"*/-->
+                        <tr th:each="item : ${context.ac.award.items}">
+                                <td>
+                                <span class="context" th:text="${item.classification.id}">
+                                    AC.award.items[*].classification.id
+                                </span>
+                                    <span class="context" th:text="${item.classification.description}">+description</span>
+                                </td>
+                                <td><span class="context" th:text="${item.description}">AC.award.items[*].description</span>
+                                </td>
+                                <td>
+                                <span class="context" th:text="${item.agreedMetrics.ccSubject_1Measure}">
+                                    AC.contract.agreedMetrics.cc-subject-1.measure
+                                </span>
+                                </td>
+                                <td>
+                                <span class="context" th:text="${item.agreedMetrics.ccSubject_2Measure}">
+                                    AC.contract.agreedMetrics.cc-subject-2.measure
+                                </span>
+                                </td>
+                                <td>
+                                <span class="context" th:text="${item.agreedMetrics.ccSubject_3Measure}">
+                                    AC.contract.agreedMetrics.cc-subject-3.measure
+                                </span>
+                                </td>
+                                <td>
+                                <span class="context" th:text="${item.agreedMetrics.ccSubject_4Measure}">
+                                    AC.contract.agreedMetrics.cc-subject-4.measure
+                                </span>
+                                </td>
+                                <td></td>
+                                <td>
+                                <span class="context" th:text="${item.agreedMetrics.ccSubject_5Measure}">
+                                    AC.contract.agreedMetrics.cc-subject-5.measure
+                                </span>
+                                </td>
+                            </tr>
+                            </table>
                         </td>
                     </tr>
                 </table>
@@ -1037,7 +1047,7 @@
                     </span>
                         </td>
                         <td>Lot:
-                            <span class="context" th:text="${context.ac.award.relatedLot.id}">
+                           <!-- <span class="context" th:text="${context.ac.award.relatedLot.id}">-->
                         AC.award.relatedLot.id
                     </span>
                         </td>
@@ -1083,7 +1093,7 @@
                         <td></td>
                         <td></td>
                     </tr>
-                    <tr>
+<!--                    <tr>
                         <td></td>
                         <td>
                     <span class="context" th:text="${context.ac.award.relatedLot.id}">
@@ -1098,7 +1108,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                    </tr>
+                    </tr>-->
 
                     <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.Item"*/-->
                     <tr th:each="item : ${context.ac.award.items}">

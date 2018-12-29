@@ -206,9 +206,11 @@
     },
     "award": {
       "date": "2018-11-23",
-      "relatedLot": {
+      "relatedLots": [
+        {
         "id": "118b1ce0-ef28-11e8-8498-a736525a2642"
-      },
+      }
+      ],
       "items": [
         {
           "classification": {

@@ -299,28 +299,28 @@ data class GoodsContext(
             }
         }
 
-        @JsonPropertyOrder("date", "relatedLot", "items")
+        @JsonPropertyOrder("date", "relatedLots", "items")
         data class Award(
             @JsonSerialize(using = JsonDateSerializer::class)
             @JsonDeserialize(using = JsonDateDeserializer::class)
             @field:JsonProperty("date") @param:JsonProperty("date") val date: LocalDate, //AC.awards[relatedLots[0]==AC.tender.lots[0].id].date (DD.MM.YYYY)
 
-            @field:JsonProperty("relatedLot") @param:JsonProperty("relatedLot") val relatedLot: RelatedLot,
-            @field:JsonProperty("items") @param:JsonProperty("items") val items: List<Item>
+            @field:JsonProperty("relatedLots") @param:JsonProperty("relatedLots") val relatedLots: List<RelatedLot>,
+            @field:JsonProperty("items") @param:JsonProperty("items") val items: List<Item> //AC.award.items[AC.awards.relatedLots[*].id == AC.awards.items[*].relatedLot]
         ) {
 
             @JsonPropertyOrder("id")
             data class RelatedLot(
-                @field:JsonProperty("id") @param:JsonProperty("id") val id: String //AC.awards.relatedLots[0]
+                @field:JsonProperty("id") @param:JsonProperty("id") val id: String //AC.awards.relatedLots[*].id
             )
 
             @JsonPropertyOrder("classification", "description", "unit", "planning", "quantity", "agreedMetrics")
             data class Item(
                 @field:JsonProperty("classification") @param:JsonProperty("classification") val classification: Classification,
-                @field:JsonProperty("description") @param:JsonProperty("description") val description: String,//AC.award.items[*].description
+                @field:JsonProperty("description") @param:JsonProperty("description") val description: String,//AC.award.items[AC.awards.relatedLots[*].id == AC,awards.items[*].relatedLot].description
                 @field:JsonProperty("unit") @param:JsonProperty("unit") val unit: Unit,
                 @field:JsonProperty("planning") @param:JsonProperty("planning") val planning: Planning,
-                @field:JsonProperty("quantity") @param:JsonProperty("quantity") val quantity: Double, //AC.award.items[*].quantity
+                @field:JsonProperty("quantity") @param:JsonProperty("quantity") val quantity: Double, //AC.award.items[AC.awards.relatedLots[*].id == AC,awards.items[*].relatedLot].quantity
                 @field:JsonProperty("agreedMetrics") @param:JsonProperty("agreedMetrics") val agreedMetrics: AgreedMetrics
             ) {
 
