@@ -28,7 +28,7 @@
       "procurementMethodDetails": "sv",
       "classification": {
         "id": "77600000-6",
-        "description": "Servicii privind vânătoarea"
+        "description": "Serv icii privind vânătoarea"
       }
     },
     "buyer": {
@@ -209,13 +209,20 @@
       "relatedLots": [
         {
         "id": "118b1ce0-ef28-11e8-8498-a736525a2642"
-      }
+      },
+        {
+          "id": "++++++18b1ce0-ef28-11e8-8498-a736525a2642"
+        }
+      ,
+        {
+          "id": "++++++18b1ce0-ef28-11e8-8498-a736525a2642"
+        }
       ],
       "items": [
         {
           "classification": {
             "id": "77600000-6",
-            "description": "Servicii privind vânătoarea"
+            "description": "Ser vicii pri"
           },
           "description": "ssss",
           "unit": {
@@ -232,14 +239,14 @@
                   "startDate": "2018-11-30",
                   "endDate": "2018-11-30"
                 },
-                "budgetBreakdownId": "ocds-1111111111111111111111111111111111"
+                "budgetBreakdownId": "ocds-1111111-1111111111-111111-111111-11111"
               },
               {
                 "period": {
                   "startDate": "2018-11-30",
                   "endDate": "2018-11-30"
                 },
-                "budgetBreakdownId": "ocds-22222222222222222222222222222222"
+                "budgetBreakdownId": "ocds-2222-222-22222222-2222222-222222-2222"
               }
             ]
           },
@@ -255,7 +262,7 @@
         {
           "classification": {
             "id": "77600000-6",
-            "description": "Servicii privind vânătoarea"
+            "description": "Serv icii pri"
           },
           "description": "2p",
           "unit": {

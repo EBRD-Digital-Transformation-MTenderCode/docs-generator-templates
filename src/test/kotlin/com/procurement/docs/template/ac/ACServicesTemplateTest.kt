@@ -17,7 +17,7 @@ class ACServicesTemplateTest : AbstractTemplateTest() {
     private val templateEngine = templateEngine()
 
     @ParameterizedTest
-    @ValueSource(strings = ["ro"])
+    @ValueSource(strings = ["ro","ru"])
     fun test(lang: String) {
         //Test context
         val storedJson = RESOURCES.load("json/domain/model/context/services.json")

@@ -141,12 +141,11 @@ data class GoodsContext(
                 @field:JsonProperty("businessFunctions") @param:JsonProperty("businessFunctions") val businessFunctions: List<BusinessFunction>
             ) {
 
-                @JsonPropertyOrder("jobTitle")
+                @JsonPropertyOrder("jobTitle", "documents")
                 data class BusinessFunction(
                     @field:JsonProperty("jobTitle") @param:JsonProperty("jobTitle") val jobTitle: String, // AC.parties[role=="buyer"].persones[*].businessFunctions[type=="authority"].jobTitle
                     @field:JsonProperty("documents") @param:JsonProperty("documents") val documents: List<Document>
-                )
-                {
+                ) {
 
                     @JsonPropertyOrder("title")
                     data class Document(
@@ -188,11 +187,11 @@ data class GoodsContext(
 
                 @JsonPropertyOrder("id", "startDate")
                 data class Permit(
-                    @field:JsonProperty("id") @param:JsonProperty("id") val id: String, // AC.parties.[role=="buyer"].details.permits[scheme="MD-SRLE"][0].id
+                    @field:JsonProperty("id") @param:JsonProperty("id") val id: String, // AC.parties.[role=="buyer"].details.permits[scheme="SRLE"][0].id
 
                     @JsonSerialize(using = JsonDateSerializer::class)
                     @JsonDeserialize(using = JsonDateDeserializer::class)
-                    @field:JsonProperty("startDate") @param:JsonProperty("startDate") val startDate: LocalDate // AC.parties.[role=="buyer"].details.permits[scheme="MD-SRLE"].permit.validityPeriod.startDate
+                    @field:JsonProperty("startDate") @param:JsonProperty("startDate") val startDate: LocalDate // AC.parties.[role=="buyer"].details.permits[scheme="SRLE"].permit.validityPeriod.startDate
                 )
             }
         }
@@ -290,11 +289,11 @@ data class GoodsContext(
 
                 @JsonPropertyOrder("id", "startDate")
                 data class Permit(
-                    @field:JsonProperty("id") @param:JsonProperty("id") val id: String, // AC.parties.[role=="supplier"].details.permits[scheme="MD-SRLE"][0].id
+                    @field:JsonProperty("id") @param:JsonProperty("id") val id: String, // AC.parties.[role=="supplier"].details.permits[scheme="SRLE"][0].id
 
                     @JsonSerialize(using = JsonDateSerializer::class)
                     @JsonDeserialize(using = JsonDateDeserializer::class)
-                    @field:JsonProperty("startDate") @param:JsonProperty("startDate") val startDate: LocalDate // AC.parties.[role=="supplier"].details.permits[scheme="MD-SRLE"].permit.validityPeriod.startDate
+                    @field:JsonProperty("startDate") @param:JsonProperty("startDate") val startDate: LocalDate // AC.parties.[role=="supplier"].details.permits[scheme="SRLE"].permit.validityPeriod.startDate
                 )
             }
         }
@@ -303,10 +302,10 @@ data class GoodsContext(
         data class Award(
             @JsonSerialize(using = JsonDateSerializer::class)
             @JsonDeserialize(using = JsonDateDeserializer::class)
-            @field:JsonProperty("date") @param:JsonProperty("date") val date: LocalDate, //AC.awards[relatedLots[0]==AC.tender.lots[0].id].date (DD.MM.YYYY)
+            @field:JsonProperty("date") @param:JsonProperty("date") val date: LocalDate, //AC.awards[0].date (DD.MM.YYYY)
 
             @field:JsonProperty("relatedLots") @param:JsonProperty("relatedLots") val relatedLots: List<RelatedLot>,
-            @field:JsonProperty("items") @param:JsonProperty("items") val items: List<Item> //AC.award.items[AC.awards.relatedLots[*].id == AC.awards.items[*].relatedLot]
+            @field:JsonProperty("items") @param:JsonProperty("items") val items: List<Item>//AC.award.items[AC.awards.relatedLots[*].id == AC.awards.items[*].relatedLot]
         ) {
 
             @JsonPropertyOrder("id")
@@ -326,20 +325,20 @@ data class GoodsContext(
 
                 @JsonPropertyOrder("id", "description")
                 data class Classification(
-                    @field:JsonProperty("id") @param:JsonProperty("id") val id: String,// AC.award.items[*].classification.id
-                    @field:JsonProperty("description") @param:JsonProperty("description") val description: String// AC.award.items[*].classification.description
+                    @field:JsonProperty("id") @param:JsonProperty("id") val id: String,// AC.award.items[[AC.awards.relatedLots[*].id == AC,awards.items[*].relatedLot].classification.id
+                    @field:JsonProperty("description") @param:JsonProperty("description") val description: String// AC.award.items[AC.awards.relatedLots[*].id == AC,awards.items[*].relatedLot].classification.description
                 )
 
                 @JsonPropertyOrder("name", "value")
                 data class Unit(
-                    @field:JsonProperty("name") @param:JsonProperty("name") val name: String,//AC.award.items[*].unit.name
+                    @field:JsonProperty("name") @param:JsonProperty("name") val name: String,//AC.award.items[AC.awards.relatedLots[*].id == AC,awards.items[*].relatedLot].unit.name
                     @field:JsonProperty("value") @param:JsonProperty("value") val value: Value
                 ) {
 
                     @JsonPropertyOrder("amountNet", "amount")
                     data class Value(
-                        @field:JsonProperty("amountNet") @param:JsonProperty("amountNet") val amountNet: Double,//AC.award.items[*].unit.value.amountNet
-                        @field:JsonProperty("amount") @param:JsonProperty("amount") val amount: Double//AC.award.items[*].unit.value.amount
+                        @field:JsonProperty("amountNet") @param:JsonProperty("amountNet") val amountNet: Double,//AC.award.item[AC.awards.relatedLots[*].id == AC,awards.items[*].relatedLot].unit.value.amountNet
+                        @field:JsonProperty("amount") @param:JsonProperty("amount") val amount: Double//AC.award.items[AC.awards.relatedLots[*].id == AC,awards.items[*].relatedLot].unit.value.amount
                     )
                 }
 

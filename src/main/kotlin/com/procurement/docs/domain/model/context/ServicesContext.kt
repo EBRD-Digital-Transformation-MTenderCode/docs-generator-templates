@@ -145,7 +145,7 @@ data class ServicesContext(
                 data class BusinessFunction(
                     @field:JsonProperty("jobTitle") @param:JsonProperty("jobTitle") val jobTitle: String, // AC.parties[role=="buyer"].persones[*].businessFunctions[type=="authority"].jobTitle
                     @field:JsonProperty("documents") @param:JsonProperty("documents") val documents: List<Document>
-                ){
+                ) {
 
                     @JsonPropertyOrder("title")
                     data class Document(
@@ -302,7 +302,7 @@ data class ServicesContext(
         data class Award(
             @JsonSerialize(using = JsonDateSerializer::class)
             @JsonDeserialize(using = JsonDateDeserializer::class)
-            @field:JsonProperty("date") @param:JsonProperty("date") val date: LocalDate, //AC.awards[relatedLots[0]==AC.tender.lots[0].id].date (DD.MM.YYYY)
+            @field:JsonProperty("date") @param:JsonProperty("date") val date: LocalDate, //AC.awards[0].date (DD.MM.YYYY)
 
             @field:JsonProperty("relatedLots") @param:JsonProperty("relatedLots") val relatedLots: List<RelatedLot>,
             @field:JsonProperty("items") @param:JsonProperty("items") val items: List<Item>//AC.award.items[AC.awards.relatedLots[*].id == AC.awards.items[*].relatedLot]
@@ -312,6 +312,7 @@ data class ServicesContext(
             data class RelatedLot(
                 @field:JsonProperty("id") @param:JsonProperty("id") val id: String //AC.awards.relatedLots[*].id
             )
+
             @JsonPropertyOrder("classification", "description", "unit", "planning", "quantity", "agreedMetrics")
             data class Item(
                 @field:JsonProperty("classification") @param:JsonProperty("classification") val classification: Classification,
@@ -324,8 +325,8 @@ data class ServicesContext(
 
                 @JsonPropertyOrder("id", "description")
                 data class Classification(
-                    @field:JsonProperty("id") @param:JsonProperty("id") val id: String,// AC.award.items[*].classification.id
-                    @field:JsonProperty("description") @param:JsonProperty("description") val description: String// AC.award.items[*].classification.description
+                    @field:JsonProperty("id") @param:JsonProperty("id") val id: String,// AC.award.items[[AC.awards.relatedLots[*].id == AC,awards.items[*].relatedLot].classification.id
+                    @field:JsonProperty("description") @param:JsonProperty("description") val description: String// AC.award.items[AC.awards.relatedLots[*].id == AC,awards.items[*].relatedLot].classification.description
                 )
 
                 @JsonPropertyOrder("name", "value")
