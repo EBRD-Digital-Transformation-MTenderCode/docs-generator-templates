@@ -208,18 +208,19 @@
       "date": "2018-11-23",
       "relatedLots": [
         {
-          "id": "118b1ce0-ef28-11e8-8498-a736525a2642"
+          "id": "1"
         },
         {
-          "id": "++++++18b1ce0-ef28-11e8-8498-a736525a2642"
+          "id": "2"
         }
       ,
         {
-          "id": "++++++18b1ce0-ef28-11e8-8498-a736525a2642"
+          "id": "3"
         }
       ],
       "items": [
         {
+          "relatedLot": "1",
           "classification": {
             "id": "77600000-6",
             "description": "Ser vicii pri"
@@ -260,6 +261,7 @@
           }
         },
         {
+          "relatedLot": "2",
           "classification": {
             "id": "77600000-6",
             "description": "Serv icii pri"
@@ -268,7 +270,7 @@
           "unit": {
             "name": "Milion decalitri",
             "value": {
-              "amountNet": 200.0,
+              "amountNet": 200000000.0,
               "amount": 200.0
             }
           },
