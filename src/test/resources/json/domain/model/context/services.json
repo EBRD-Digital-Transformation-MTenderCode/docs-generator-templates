@@ -251,7 +251,7 @@
               }
             ]
           },
-          "quantity": 10.0,
+          "quantity": 10000.0,
           "agreedMetrics": {
             "ccSubject_1Measure": "15",
             "ccSubject_2Measure": "15",
@@ -271,7 +271,7 @@
             "name": "Milion decalitri",
             "value": {
               "amountNet": 200000000.0,
-              "amount": 200.0
+              "amount": 200000000.0
             }
           },
           "planning": {
