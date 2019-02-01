@@ -285,7 +285,7 @@
               }
             ]
           },
-          "quantity": 20.0,
+          "quantity": 2000000.00,
           "agreedMetrics": {
             "ccSubject_1Measure": "15",
             "ccSubject_2Measure": "15",

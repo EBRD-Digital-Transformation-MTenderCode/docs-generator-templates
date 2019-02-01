@@ -859,7 +859,7 @@
             </li>
         </ol>
 
-        <div class="landscapePage" style="width: 147%">
+        <div class="landscapePage" style="width: 132%"><!--DON'T TOUGH -->
             <div class="break"></div>
             <h4>Specificaţii tehnice (F4.1)</h4>
             <p style="margin-bottom: 15px; font-style: italic">
@@ -1061,42 +1061,42 @@
                 </table>
             </div>
 
-            <div style="font-size: 10pt">
+            <div style="font-size: 9pt">
                 <table class="table table-border">
                     <tr>
                         <th  width="8%">Cod CPV</th>
                         <th  width="15%">Denumirea bunurilor şi/sau a serviciilor</th>
                         <th  width="7%">Unitatea de măsură</th>
-                        <th style="word-wrap: break-word" width="6%">Cantitatea</th>
-                        <th  width="11%">Preţ unitar (fără TVA</th>
-                        <th  width="11%">Preţ unitar (cu TVA)</th>
+                        <th style="word-wrap: break-word" width="9%">Cantitatea</th>
+                        <th  width="10%">Preţ unitar (fără TVA)</th>
+                        <th  width="10%">Preţ unitar (cu TVA)</th>
                         <th  width="11%">Suma fără TVA</th>
                         <th width="11%">Suma cu TVA</th>
-                        <th style="word-wrap: break-word" width="6%">Termenul de livrare/prestare</th>
+                        <th style="word-wrap: break-word" width="5%">Termenul de livrare/prestare</th>
                         <th width="14%">Clasificație bugetară (IBAN)</th>
                     </tr>
                     <tr class="table-number">
                         <td width="8%">1</td>
                         <td width="15%">2</td>
                         <td width="7%">3</td>
-                        <td width="6%">4</td>
-                        <td width="11%">5</td>
-                        <td width="11%">6</td>
+                        <td width="9%">4</td>
+                        <td width="10%">5</td>
+                        <td width="10%">6</td>
                         <td width="11%">7</td>
                         <td width="11%">8</td>
-                        <td width="6%">9</td>
+                        <td width="5%">9</td>
                         <td width="14%"></td>
                     </tr>
                     <tr>
                         <td width="8%"></td>
                         <td width="15%"><b>Bunuri/Servicii:</b></td>
                         <td width="7%"></td>
-                        <td width="6%"></td>
+                        <td width="9%"></td>
+                        <td width="10%"></td>
+                        <td width="10%"></td>
                         <td width="11%"></td>
                         <td width="11%"></td>
-                        <td width="11%"></td>
-                        <td width="11%"></td>
-                        <td width="6%"></td>
+                        <td width="5%"></td>
                         <td width="14%"></td>
                     </tr>
                     <!--/*@thymesVar id="relatedLot" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.RelatedLot"*/-->
@@ -1111,12 +1111,12 @@
                                 </span>
                                     </td>
                                     <td width="7%"></td>
-                                    <td width="6%"></td>
+                                    <td width="9%"></td>
+                                    <td width="10%"></td>
+                                    <td width="10%"></td>
                                     <td width="11%"></td>
                                     <td width="11%"></td>
-                                    <td width="11%"></td>
-                                    <td width="11%"></td>
-                                    <td width="6%"></td>
+                                    <td width="5%"></td>
                                     <td width="14%"></td>
                                 </tr>
 
@@ -1128,19 +1128,19 @@
                                     <td width="15%"><span class="context" th:text="${item.description}">AC.award.items[*].description</span>
                                     </td>
                                     <td width="7%"><span class="context" th:text="${item.unit.name}">AC.award.items[*].unit.name</span></td>
-                                    <td width="6%"><span class="context" th:text="${item.quantity}">AC.award.items[*].quantity</span></td>
-                                    <td width="11%">
+                                    <td width="9%"><span class="context" th:text="${item.quantity}">AC.award.items[*].quantity</span></td>
+                                    <td width="10%">
                     <span class="context" th:text="${item.unit.value.amountNet}">
                         AC.award.items[*].unit.value.amountNet
                     </span>
                                     </td>
-                                    <td width="11%">
+                                    <td width="10%">
                                         <span class="context" th:text="${item.unit.value.amount}">AC.award.items[*].unit.value.amount</span>
                                     </td>
                                     <td width="11%"><span class="context" th:text="${item.quantity * item.unit.value.amountNet}">=4*5</span>
                                     </td>
                                     <td width="11%"><span class="context" th:text="${item.quantity * item.unit.value.amount}">=4*6</span></td>
-                                    <td width="6%"><span class="context"></span></td>
+                                    <td width="5%"><span class="context"></span></td>
                                     <td width="14%">
                                         <!--/*@thymesVar id="allocation" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.Item.Planning.BudgetAllocations"*/-->
                                         <span th:each="allocation : ${item.planning.budgetAllocations}">
@@ -1165,11 +1165,11 @@
                         <td width="8%"></td>
                         <td width="15%">TOTAL</td>
                         <td width="7%"></td>
-                        <td width="6%"></td>
-                        <td width="11%"><span class="context"
+                        <td width="9%"></td>
+                        <td width="10%"><span class="context"
                                               th:text="${#aggregates.sum(context.ac.award.items.![unit.value.amountNet])}">Sum</span>
                         </td>
-                        <td width="11%"><span class="context"
+                        <td width="10%"><span class="context"
                                               th:text="${#aggregates.sum(context.ac.award.items.![unit.value.amount])}">Sum</span>
                         </td>
                         <td width="11%"><span class="context"
@@ -1178,7 +1178,7 @@
                         <td width="11%"><span class="context"
                                               th:text="${#aggregates.sum(context.ac.award.items.![quantity * unit.value.amount])}">Sum</span>
                         </td>
-                        <td width="6%"></td>
+                        <td width="5%"></td>
                         <td width="14%"></td>
 
                     </tr>
