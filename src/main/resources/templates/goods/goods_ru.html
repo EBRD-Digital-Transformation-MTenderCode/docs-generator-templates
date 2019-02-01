@@ -530,7 +530,7 @@
                 <b>СТОИМОСТЬ И УСЛОВИЯ ОПЛАТЫ</b>
                 <ol>
                     <li>Общая сумма настоящего Договора, в том числе НДС, устанавливается в молдавских леях и составляет
-                        <span class="context" th:text="${context.ac.contract.value}">AC.contract.value.amount </span>
+                        <span class="context" th:text="${#numbers.formatDecimal(context.ac.contract.value,3,2)}">AC.contract.value.amount </span>
                         лей MD.
                     </li>
                     <li>Способом и условиями оплаты будут: __________[Указанные выше требования должны быть рассмотрены закупающим органом и скорректированы с учетом текущих требований.]
@@ -1101,18 +1101,18 @@
                                     <td width="15%"><span class="context" th:text="${item.description}">AC.award.items[*].description</span>
                                     </td>
                                     <td width="7%"><span class="context" th:text="${item.unit.name}">AC.award.items[*].unit.name</span></td>
-                                    <td width="9%"><span class="context" th:text="${item.quantity}">AC.award.items[*].quantity</span></td>
+                                    <td width="9%"><span class="context" th:text="${#numbers.formatDecimal(item.quantity,3,2)}">AC.award.items[*].quantity</span></td>
                                     <td width="10%">
-                    <span class="context" th:text="${item.unit.value.amountNet}">
-                        AC.award.items[*].unit.value.amountNet
-                    </span>
+                                        <span class="context" th:text="${#numbers.formatDecimal(item.unit.value.amountNet,3,2)}">
+                                            AC.award.items[*].unit.value.amountNet
+                                        </span>
                                     </td>
                                     <td width="10%">
-                                        <span class="context" th:text="${item.unit.value.amount}">AC.award.items[*].unit.value.amount</span>
+                                        <span class="context" th:text="${#numbers.formatDecimal(item.unit.value.amount,3,2)}">AC.award.items[*].unit.value.amount</span>
                                     </td>
-                                    <td width="11%"><span class="context" th:text="${item.quantity * item.unit.value.amountNet}">=4*5</span>
+                                    <td width="11%"><span class="context" th:text="${#numbers.formatDecimal(item.quantity * item.unit.value.amountNet,3,2)}">=4*5</span>
                                     </td>
-                                    <td width="11%"><span class="context" th:text="${item.quantity * item.unit.value.amount}">=4*6</span></td>
+                                    <td width="11%"><span class="context" th:text="${#numbers.formatDecimal(item.quantity * item.unit.value.amount,3,2)}">=4*6</span></td>
                                     <td width="5%"><span class="context"></span></td>
                                     <td width="14%">
                                         <!--/*@thymesVar id="allocation" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.Item.Planning.BudgetAllocations"*/-->
