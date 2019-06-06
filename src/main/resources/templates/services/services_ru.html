@@ -928,7 +928,7 @@
                     <!--/*@thymesVar id="relatedLot" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.RelatedLot"*/-->
                     <tr th:each="relatedLot : ${context.ac.award.relatedLots}">
                         <td colspan="8" style="padding: 0; box-sizing: border-box">
-                            <table  width="100%; border-spacing: 0; border-collapse: collapse;">
+                            <table width="100%; border-spacing: 0; border-collapse: collapse;">
                                 <tr>
                                     <td width="8%"></td>
                                     <td width="32%">
@@ -944,7 +944,8 @@
                                     <td width="10%"></td>
                                 </tr>
                                 <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.Item"*/-->
-                                <tr th:each="item : ${context.ac.award.items}" th:if="${item.relatedLot} == ${relatedLot.id}">
+                                <tr th:each="item : ${context.ac.award.items}"
+                                    th:if="${item.relatedLot} == ${relatedLot.id}">
                                     <td width="8%">
                                 <span class="context" th:text="${item.classification.id}">
                                     AC.award.items[*].classification.id
@@ -1064,13 +1065,13 @@
             <div style="font-size: 9pt">
                 <table class="table table-border">
                     <tr>
-                        <th  width="8%">Cod CPV</th>
-                        <th  width="15%">Denumirea bunurilor şi/sau a serviciilor</th>
-                        <th  width="7%">Unitatea de măsură</th>
+                        <th width="8%">Cod CPV</th>
+                        <th width="15%">Denumirea bunurilor şi/sau a serviciilor</th>
+                        <th width="7%">Unitatea de măsură</th>
                         <th style="word-wrap: break-word" width="9%">Cantitatea</th>
-                        <th  width="10%">Preţ unitar (fără TVA)</th>
-                        <th  width="10%">Preţ unitar (cu TVA)</th>
-                        <th  width="11%">Suma fără TVA</th>
+                        <th width="10%">Preţ unitar (fără TVA)</th>
+                        <th width="10%">Preţ unitar (cu TVA)</th>
+                        <th width="11%">Suma fără TVA</th>
                         <th width="11%">Suma cu TVA</th>
                         <th style="word-wrap: break-word" width="5%">Termenul de livrare/prestare</th>
                         <th width="14%">Clasificație bugetară (IBAN)</th>
@@ -1102,7 +1103,7 @@
                     <!--/*@thymesVar id="relatedLot" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.RelatedLot"*/-->
                     <tr th:each="relatedLot : ${context.ac.award.relatedLots}">
                         <td colspan="10" style="padding: 0; box-sizing: border-box">
-                            <table  style="width: 100%; border-spacing: 0; border-collapse: collapse;">
+                            <table style="width: 100%; border-spacing: 0; border-collapse: collapse;">
                                 <tr>
                                     <td width="8%"></td>
                                     <td width="15%">
@@ -1121,34 +1122,45 @@
                                 </tr>
 
                                 <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.Item"*/-->
-                                <tr th:each="item : ${context.ac.award.items}" th:if="${item.relatedLot} == ${relatedLot.id}">
+                                <tr th:each="item : ${context.ac.award.items}"
+                                    th:if="${item.relatedLot} == ${relatedLot.id}">
                                     <td width="8%">
                                         <span class="context" th:text="${item.classification.id}">AC.award.items[*].classification.id</span>
                                     </td>
                                     <td width="15%"><span class="context" th:text="${item.description}">AC.award.items[*].description</span>
                                     </td>
-                                    <td width="7%"><span class="context" th:text="${item.unit.name}">AC.award.items[*].unit.name</span></td>
-                                    <td width="9%"><span class="context" th:text="${#numbers.formatDecimal(item.quantity,3,2)}">AC.award.items[*].quantity</span></td>
+                                    <td width="7%"><span class="context" th:text="${item.unit.name}">AC.award.items[*].unit.name</span>
+                                    </td>
+                                    <td width="9%"><span class="context"
+                                                         th:text="${#numbers.formatDecimal(item.quantity,1,2)}">AC.award.items[*].quantity</span>
+                                    </td>
                                     <td width="10%">
-                                        <span class="context" th:text="${#numbers.formatDecimal(item.unit.value.amountNet,3,2)}">
+                                        <span class="context"
+                                              th:text="${#numbers.formatDecimal(item.unit.value.amountNet,1,2)}">
                                             AC.award.items[*].unit.value.amountNet
                                         </span>
                                     </td>
                                     <td width="10%">
-                                        <span class="context" th:text="${#numbers.formatDecimal(item.unit.value.amount,3,2)}">AC.award.items[*].unit.value.amount</span>
+                                        <span class="context"
+                                              th:text="${#numbers.formatDecimal(item.unit.value.amount,1,2)}">AC.award.items[*].unit.value.amount</span>
                                     </td>
-                                    <td width="11%"><span class="context" th:text="${#numbers.formatDecimal(item.quantity * item.unit.value.amountNet,3,2)}">=4*5</span>
+                                    <td width="11%"><span class="context"
+                                                          th:text="${#numbers.formatDecimal(item.quantity * item.unit.value.amountNet,1,2)}">=4*5</span>
                                     </td>
-                                    <td width="11%"><span class="context" th:text="${#numbers.formatDecimal(item.quantity * item.unit.value.amount,3,2)}">=4*6</span></td>
+                                    <td width="11%"><span class="context"
+                                                          th:text="${#numbers.formatDecimal(item.quantity * item.unit.value.amount,1,2)}">=4*6</span>
+                                    </td>
                                     <td width="5%"><span class="context"></span></td>
                                     <td width="14%">
                                         <!--/*@thymesVar id="allocation" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.Item.Planning.BudgetAllocations"*/-->
                                         <span th:each="allocation : ${item.planning.budgetAllocations}">
-                                            <span class="context" th:text="${#temporals.format(allocation.period.startDate, 'dd.MM.yyyy')}">
+                                            <span class="context"
+                                                  th:text="${#temporals.format(allocation.period.startDate, 'dd.MM.yyyy')}">
                                                 AC.award.items[*].planning.budgetAllocation[relatedItem:current].period.startDate
                                             </span>
                                                 -
-                                            <span class="context" th:text="${#temporals.format(allocation.period.endDate, 'dd.MM.yyyy')}">
+                                            <span class="context"
+                                                  th:text="${#temporals.format(allocation.period.endDate, 'dd.MM.yyyy')}">
                                             AC.award.items[*].planning.budgetAllocation[relatedItem:current].period.endDate
                                             </span>
                                             <span class="context" th:text="${allocation.budgetBreakdownId}">
@@ -1167,16 +1179,16 @@
                         <td width="7%"></td>
                         <td width="9%"></td>
                         <td width="10%"><span class="context"
-                                              th:text="${#aggregates.sum(context.ac.award.items.![unit.value.amountNet])}">Sum</span>
+                                              th:text="${#numbers.formatDecimal(#aggregates.sum(context.ac.award.items.![unit.value.amountNet]), 1, 2)}">Sum</span>
                         </td>
                         <td width="10%"><span class="context"
-                                              th:text="${#aggregates.sum(context.ac.award.items.![unit.value.amount])}">Sum</span>
+                                              th:text="${#numbers.formatDecimal(#aggregates.sum(context.ac.award.items.![unit.value.amount]),1,2)}">Sum</span>
                         </td>
                         <td width="11%"><span class="context"
-                                              th:text="${#aggregates.sum(context.ac.award.items.![quantity * unit.value.amountNet])}">Sum</span>
+                                              th:text="${#numbers.formatDecimal(#aggregates.sum(context.ac.award.items.![quantity * unit.value.amountNet]),1,2)}">Sum</span>
                         </td>
                         <td width="11%"><span class="context"
-                                              th:text="${#aggregates.sum(context.ac.award.items.![quantity * unit.value.amount])}">Sum</span>
+                                              th:text="${#numbers.formatDecimal(#aggregates.sum(context.ac.award.items.![quantity * unit.value.amount]),1,2)}">Sum</span>
                         </td>
                         <td width="5%"></td>
                         <td width="14%"></td>

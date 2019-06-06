@@ -4,7 +4,7 @@
     "contract": {
       "id": "ocds-t1s2t3-MD-1542981234151-AC-1542036270645",
       "description": "description",
-      "value": 100.0,
+      "value": 100.00000000,
       "endDate": "2018-11-26",
       "agreedMetrics": {
         "ccGenerel_1_1Measure": "142",
@@ -229,8 +229,8 @@
           "unit": {
             "name": "Milion decalitri",
             "value": {
-              "amountNet": 100.0,
-              "amount": 100.0
+              "amountNet": 100.00,
+              "amount": 100.00
             }
           },
           "planning": {
@@ -251,7 +251,7 @@
               }
             ]
           },
-          "quantity": 10000.0,
+          "quantity": 10000.00,
           "agreedMetrics": {
             "ccSubject_1Measure": "15",
             "ccSubject_2Measure": "15",
@@ -270,8 +270,8 @@
           "unit": {
             "name": "Milion decalitri",
             "value": {
-              "amountNet": 200000000.0,
-              "amount": 200000000.0
+              "amountNet": 200000000.00,
+              "amount": 200000000.00
             }
           },
           "planning": {
@@ -285,7 +285,7 @@
               }
             ]
           },
-          "quantity": 20.0,
+          "quantity": 20.00,
           "agreedMetrics": {
             "ccSubject_1Measure": "15",
             "ccSubject_2Measure": "15",

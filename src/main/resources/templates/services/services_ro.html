@@ -199,12 +199,13 @@
             .landscapePage {
                 page: land;
             }
+
             .landscapePage table th,
-            .landscapePage .table-number td
-            {
+            .landscapePage .table-number td {
                 text-align: center;
             }
-            .total{
+
+            .total {
                 font-weight: 700;
             }
 
@@ -243,15 +244,16 @@
                 vertical-align: top;
                 word-break: break-word;
                 text-align: left;
-                border:none;
+                border: none;
             }
 
             .table-border th {
                 background-color: #DCDCDC;
                 -webkit-print-color-adjust: exact;
             }
+
             .table-border th,
-            .table-border td{
+            .table-border td {
                 border: 1px solid black;
             }
 
@@ -260,28 +262,33 @@
                 counter-reset: li;
             }
 
-            .big_list > li{
+            .big_list > li {
                 margin-left: -30pt;
             }
+
             .big_list > li > ol {
                 margin-bottom: 11pt;
                 list-style: none;
                 counter-reset: li;
             }
-            .big_list > li > ol > li{
+
+            .big_list > li > ol > li {
                 position: relative;
                 left: -10pt;
             }
-            .big_list > li > ol > li:before{
+
+            .big_list > li > ol > li:before {
                 white-space: nowrap;
                 position: absolute;
                 left: -20pt;
             }
+
             .big_list > li:before,
             .big_list > li > ol > li:before {
                 counter-increment: li;
                 content: counters(li, ".") ". ";
             }
+
             .big_list > li:before {
                 font-weight: bold;
             }
@@ -314,27 +321,33 @@
             h1 {
                 text-align: center;
             }
-            li>b{
+
+            li > b {
                 text-transform: uppercase;
                 font-size: 12pt;
                 margin-bottom: 10px;
             }
-            .banner{
+
+            .banner {
                 text-align: center;
                 margin-bottom: 30px;
             }
-            h4{
+
+            h4 {
                 text-transform: uppercase;
             }
-            .coma::after{
+
+            .coma::after {
                 content: ",";
             }
-            .coma:last-child::after{
+
+            .coma:last-child::after {
                 content: "";
             }
-            .landscapePage table>tr>td>span,
+
+            .landscapePage table > tr > td > span,
             .landscapePage th,
-            .total>td>span{
+            .total > td > span {
                 word-wrap: break-word
             }
         </style>
@@ -432,7 +445,7 @@
                     <div style="margin-top: 11pt">înregistrat în Registrul de Stat cu nr.]
                         <span class="context"
                               th:text="${context.ac.supplier.details.permit != null} ? ${context.ac.supplier.details.permit.id} : '-' "> AC.parties.[role=="supplier"].details.permits[scheme="SRLE"][0].id </span>
-                         la data de
+                                                  la data de
                         <span class="context"
                               th:text="${context.ac.supplier.details.permit != null} ? ${#temporals.format(context.ac.supplier.details.permit.startDate, 'dd.MM.yyyy')} : '-' ">AC.parties.[role=="supplier"].details.permits[scheme="SRLE"].permit.validityPeriod.startDate</span>,
                     </div>
@@ -490,7 +503,7 @@
                     <div style="margin-top: 11pt">înregistrat în Registrul de Stat cu nr.
                         <span class="context"
                               th:text="${context.ac.buyer.details.permit != null} ? ${context.ac.buyer.details.permit.id} : '-' "> AC.parties.[role=="buyer"].details.permits[scheme="SRLE"][0].id </span>
-                         la data de
+                                                  la data de
                         <span class="context"
                               th:text="${context.ac.buyer.details.permit != null} ? ${#temporals.format(context.ac.buyer.details.permit.startDate, 'dd.MM.yyyy')} : '-' ">AC.parties.[role=="buyer"].details.permits[scheme="SRLE"].permit.validityPeriod.startDate</span>,
                     </div>
@@ -506,7 +519,8 @@
                 <ol>
                     <li>
                         Achiziţionarea
-                        <span class="context" th:text="${context.ac.contract.description}">AC.contract.description</span>
+                        <span class="context"
+                              th:text="${context.ac.contract.description}">AC.contract.description</span>
                         , denumite în continuare Servicii, conform procedurii de achiziții publice de tip
                         <span class="context" th:if="${context.ac.tender.procurementMethodDetails == 'mv'}">
                             Achiziții de valoare mică
@@ -525,13 +539,17 @@
                         <span class="context" th:text="${#temporals.format(context.ac.award.date, 'dd.MM.yyyy')}"> AC.awards[relatedLot:currentLot].date</span>
                     </li>
                     <li>
-                        Prestatorul îşi asumă obligaţia de a presta Serviciile conform Specificaţiei, care este parte integrantă a prezentului Contract.
+                        Prestatorul îşi asumă obligaţia de a presta Serviciile conform Specificaţiei, care este parte
+                        integrantă a prezentului Contract.
                     </li>
                     <li>
-                        Beneficiarul se obligă, la rîndul său, să achite şi să recepţioneze Serviciile prestate de Prestator.
+                        Beneficiarul se obligă, la rîndul său, să achite şi să recepţioneze Serviciile prestate de
+                        Prestator.
                     </li>
                     <li>
-                        Serviciile prestate în baza contractului vor respecta standardele indicate în Specificaţie Cînd nu este menţionat nici un standard sau reglementare aplicabilă, se vor respecta standardele sau alte reglementări autorizate în ţara de origine a produselor.
+                        Serviciile prestate în baza contractului vor respecta standardele indicate în Specificaţie Cînd
+                        nu este menţionat nici un standard sau reglementare aplicabilă, se vor respecta standardele sau
+                        alte reglementări autorizate în ţara de origine a produselor.
                     </li>
                     <li>
                         Termenele de garanţie [valabilitate, după caz] a Serviciilor sînt indicate în Specificaţie.
@@ -543,7 +561,8 @@
                 <b>Preţul şi condiţii de plată</b>
                 <ol>
                     <li>Suma totală a prezentului Contract, inclusiv TVA, se stabileşte în lei moldoveneşti şi
-                        constituie: <span class="context" th:text="${#numbers.formatDecimal(context.ac.contract.value,3,2)}">AC.contract.value.amount </span>
+                        constituie: <span class="context"
+                                          th:text="${#numbers.formatDecimal(context.ac.contract.value,3,2)}">AC.contract.value.amount </span>
                         lei MD.
                     </li>
                     <li>Metoda şi condiţiile de plată de către Cumpărător vor fi:</li>
@@ -553,46 +572,52 @@
                 <b>Obligaţiile părţilor</b>
                 <ol>
                     <li>
-                        În baza prezentului Contract, Prestatorul se obligă să anunţe Cumpărătorul după semnarea prezentului Contract, în decurs de
-                        <span class="context"th:text="${context.ac.contract.agreedMetrics.ccTenderer_2_1Measure}">
+                        În baza prezentului Contract, Prestatorul se obligă să anunţe Cumpărătorul după semnarea
+                        prezentului Contract, în decurs de
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_2_1Measure}">
                             AC.agreedMetrics.cc-tenderer-2-1.measure
                         </span>
-                        zile calendaristice, prin telefon/fax sau telegramă autorizată, despre disponibilitatea prestării Serviciilor;
+                        zile calendaristice, prin telefon/fax sau telegramă autorizată, despre disponibilitatea
+                        prestării Serviciilor;
                     </li>
                     <li>
-                        Pretenţiile privind calitatea Serviciilor prestate sînt înaintate   Prestatorului în termen de
-                        <span class="context"th:text="${context.ac.contract.agreedMetrics.ccBuyer_1_1Measure}">
+                        Pretenţiile privind calitatea Serviciilor prestate sînt înaintate Prestatorului în termen de
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccBuyer_1_1Measure}">
                             AC.agreedMetrics.cc-buyer-1-1.measure
                         </span>
-                        zile lucrătoare de la depistarea deficienţelor de calitate şi trebuie confirmate printr-un certificat eliberat de o organizaţie independentă neutră şi autorizată în acest sens.
+                        zile lucrătoare de la depistarea deficienţelor de calitate şi trebuie confirmate printr-un
+                        certificat eliberat de o organizaţie independentă neutră şi autorizată în acest sens.
                     </li>
                     <li>
                         Prestatorul este obligat să examineze pretenţiile înaintate în termen de
-                        <span class="context"th:text="${context.ac.contract.agreedMetrics.ccTenderer_2_2Measure}">
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_2_2Measure}">
                             AC.agreedMetrics.cc-tenderer-2-2.measure
                         </span>
                         zile lucrătoare de la data primirii acestora şi să comunice Cumpărătorului despre decizia luată.
                     </li>
                     <li>
                         În caz de recunoaştere a pretenţiilor, Prestatorul este obligat, în termen de
-                        <span class="context"th:text="${context.ac.contract.agreedMetrics.ccTenderer_2_3Measure}">
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_2_3Measure}">
                             AC.agreedMetrics.cc-tenderer-2-3.measure
                         </span>
-                        zile, să presteze suplimentar Cumpărătorului cantitatea neprestată de servicii, iar în caz de constatare a calităţii necorespunzătoare – să le substituie sau să le corecteze în conformitate cu cerinţele Contractului.
+                        zile, să presteze suplimentar Cumpărătorului cantitatea neprestată de servicii, iar în caz de
+                        constatare a calităţii necorespunzătoare – să le substituie sau să le corecteze în conformitate
+                        cu cerinţele Contractului.
                     </li>
                     <li>
                         Partea iniţiatoare a rezilierii Contractului este obligată să comunice în termen de
-                        <span class="context"th:text="${context.ac.contract.agreedMetrics.ccGenerel_1_2Measure}">
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccGenerel_1_2Measure}">
                             AC.agreedMetrics.cc-general-1-2.measure
                         </span>
                         zile lucrătoare celeilalte Părţi despre intenţiile ei printr-o scrisoare motivată.
                     </li>
                     <li>
                         Partea înştiinţată este obligată să răspundă în decurs de
-                        <span class="context"th:text="${context.ac.contract.agreedMetrics.ccGenerel_1_3Measure}">
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccGenerel_1_3Measure}">
                             AC.agreedMetrics.cc-general-1-3.measure
                         </span>
-                        zile lucrătoare de la primirea notificării. În cazul în care litigiul nu este soluţionat în termenele stabilite, partea iniţiatoare va iniția rezilierea.
+                        zile lucrătoare de la primirea notificării. În cazul în care litigiul nu este soluţionat în
+                        termenele stabilite, partea iniţiatoare va iniția rezilierea.
                     </li>
                 </ol>
             </li>
@@ -658,22 +683,31 @@
                         <ul>
                             <li>a) Specificaţia tehnică;</li>
                             <li>b) Specificația de preț;</li>
-                            <li>c) [adăugaţi alte documente componente conform necesităţii, de exemplu, desene, grafice, formulare, protocolul de recepţionare provizorie şi finală etc.]</li>
+                            <li>c) [adăugaţi alte documente componente conform necesităţii, de exemplu, desene, grafice,
+                                formulare, protocolul de recepţionare provizorie şi finală etc.]
+                            </li>
                         </ul>
                     </li>
                     <li>
-                        Prezentul Contract va predomina asupra tuturor altor documente componente. În cazul unor discrepanţe sau inconsecvenţe între documentele componente ale Contractului,
+                        Prezentul Contract va predomina asupra tuturor altor documente componente. În cazul unor
+                        discrepanţe sau inconsecvenţe între documentele componente ale Contractului,
                         documentele vor avea ordinea de prioritate enumerată mai sus.
                     </li>
                     <li>
-                        Documentaţia de însoţire a Serviciilor include: _______ [Cerinţele de mai sus trebuie prevăzute de către autoritatea contractantă şi ajustate conform cerinţelor actuale.]<!--TODO change ___________ -->
+                        Documentaţia de însoţire a Serviciilor include: _______ [Cerinţele de mai sus trebuie prevăzute
+                        de către autoritatea contractantă şi ajustate conform cerinţelor actuale.]
+                        <!--TODO change ___________ -->
                     </li>
                     <li>
-                        Clauzele contractuale generale ale contractului de achiziții publice de servicii sunt parte integrantă și completă a prezentului contract.
-                        Părțile confirmă că au citit și sunt de acord cu Clauzele contractuale generale ale contractului de achiziții publice de servicii, care pot fi accesate la următoarea adresă electronică: ____________.<!--TODO change ___________ -->
+                        Clauzele contractuale generale ale contractului de achiziții publice de servicii sunt parte
+                        integrantă și completă a prezentului contract.
+                        Părțile confirmă că au citit și sunt de acord cu Clauzele contractuale generale ale contractului
+                        de achiziții publice de servicii, care pot fi accesate la următoarea adresă electronică:
+                        ____________.<!--TODO change ___________ -->
                     </li>
                     <li>
-                        În cazul unor divergențe între prezentul contractul și clauzele contractuale generale ale contractului de achiziție publică de servicii,
+                        În cazul unor divergențe între prezentul contractul și clauzele contractuale generale ale
+                        contractului de achiziție publică de servicii,
                         prioritate va avea prezentul contractul și documentele care fac parte integrantă a acestuia.
                     </li>
                     <li>Prezentul Contract este valabil pînă la
@@ -681,8 +715,12 @@
                             AC.contract.period.endDate
                         </span>
                     </li>
-                    <li>Prezentul Contract reprezintă acordul de voinţă al părţilor şi se consideră semnat la data aplicării ultimei semnături de către una dintre părți.</li>
-                    <li>Pentru confirmarea celor menţionate mai sus, Părţile au semnat prezentul Contract în conformitate cu legislaţia Republicii Moldova, la data şi anul indicate mai sus.</li>
+                    <li>Prezentul Contract reprezintă acordul de voinţă al părţilor şi se consideră semnat la data
+                        aplicării ultimei semnături de către una dintre părți.
+                    </li>
+                    <li>Pentru confirmarea celor menţionate mai sus, Părţile au semnat prezentul Contract în
+                        conformitate cu legislaţia Republicii Moldova, la data şi anul indicate mai sus.
+                    </li>
                 </ol>
             </li>
 
@@ -930,7 +968,7 @@
                     <!--/*@thymesVar id="relatedLot" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.RelatedLot"*/-->
                     <tr th:each="relatedLot : ${context.ac.award.relatedLots}">
                         <td colspan="8" style="padding: 0; box-sizing: border-box">
-                            <table  width="100%; border-spacing: 0; border-collapse: collapse;">
+                            <table width="100%; border-spacing: 0; border-collapse: collapse;">
                                 <tr>
                                     <td width="8%"></td>
                                     <td width="32%">
@@ -946,7 +984,8 @@
                                     <td width="10%"></td>
                                 </tr>
                                 <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.Item"*/-->
-                                <tr th:each="item : ${context.ac.award.items}" th:if="${item.relatedLot} == ${relatedLot.id}">
+                                <tr th:each="item : ${context.ac.award.items}"
+                                    th:if="${item.relatedLot} == ${relatedLot.id}">
                                     <td width="8%">
                                 <span class="context" th:text="${item.classification.id}">
                                     AC.award.items[*].classification.id
@@ -1066,13 +1105,13 @@
             <div style="font-size: 9pt">
                 <table class="table table-border">
                     <tr>
-                        <th  width="8%">Cod CPV</th>
-                        <th  width="15%">Denumirea bunurilor şi/sau a serviciilor</th>
-                        <th  width="7%">Unitatea de măsură</th>
+                        <th width="8%">Cod CPV</th>
+                        <th width="15%">Denumirea bunurilor şi/sau a serviciilor</th>
+                        <th width="7%">Unitatea de măsură</th>
                         <th style="word-wrap: break-word" width="9%">Cantitatea</th>
-                        <th  width="10%">Preţ unitar (fără TVA)</th>
-                        <th  width="10%">Preţ unitar (cu TVA)</th>
-                        <th  width="11%">Suma fără TVA</th>
+                        <th width="10%">Preţ unitar (fără TVA)</th>
+                        <th width="10%">Preţ unitar (cu TVA)</th>
+                        <th width="11%">Suma fără TVA</th>
                         <th width="11%">Suma cu TVA</th>
                         <th style="word-wrap: break-word" width="5%">Termenul de livrare/prestare</th>
                         <th width="14%">Clasificație bugetară (IBAN)</th>
@@ -1104,7 +1143,7 @@
                     <!--/*@thymesVar id="relatedLot" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.RelatedLot"*/-->
                     <tr th:each="relatedLot : ${context.ac.award.relatedLots}">
                         <td colspan="10" style="padding: 0; box-sizing: border-box">
-                            <table  style="width: 100%; border-spacing: 0; border-collapse: collapse;">
+                            <table style="width: 100%; border-spacing: 0; border-collapse: collapse;">
                                 <tr>
                                     <td width="8%"></td>
                                     <td width="15%">
@@ -1123,34 +1162,45 @@
                                 </tr>
 
                                 <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.Item"*/-->
-                                <tr th:each="item : ${context.ac.award.items}" th:if="${item.relatedLot} == ${relatedLot.id}">
+                                <tr th:each="item : ${context.ac.award.items}"
+                                    th:if="${item.relatedLot} == ${relatedLot.id}">
                                     <td width="8%">
                                         <span class="context" th:text="${item.classification.id}">AC.award.items[*].classification.id</span>
                                     </td>
                                     <td width="15%"><span class="context" th:text="${item.description}">AC.award.items[*].description</span>
                                     </td>
-                                    <td width="7%"><span class="context" th:text="${item.unit.name}">AC.award.items[*].unit.name</span></td>
-                                    <td width="9%"><span class="context" th:text="${#numbers.formatDecimal(item.quantity,3,2)}">AC.award.items[*].quantity</span></td>
+                                    <td width="7%"><span class="context" th:text="${item.unit.name}">AC.award.items[*].unit.name</span>
+                                    </td>
+                                    <td width="9%"><span class="context"
+                                                         th:text="${#numbers.formatDecimal(item.quantity,1,2)}">AC.award.items[*].quantity</span>
+                                    </td>
                                     <td width="10%">
-                                        <span class="context" th:text="${#numbers.formatDecimal(item.unit.value.amountNet,3,2)}">
+                                        <span class="context"
+                                              th:text="${#numbers.formatDecimal(item.unit.value.amountNet,1,2)}">
                                             AC.award.items[*].unit.value.amountNet
                                         </span>
                                     </td>
                                     <td width="10%">
-                                        <span class="context" th:text="${#numbers.formatDecimal(item.unit.value.amount,3,2)}">AC.award.items[*].unit.value.amount</span>
+                                        <span class="context"
+                                              th:text="${#numbers.formatDecimal(item.unit.value.amount,1,2)}">AC.award.items[*].unit.value.amount</span>
                                     </td>
-                                    <td width="11%"><span class="context" th:text="${#numbers.formatDecimal(item.quantity * item.unit.value.amountNet,3,2)}">=4*5</span>
+                                    <td width="11%"><span class="context"
+                                                          th:text="${#numbers.formatDecimal(item.quantity * item.unit.value.amountNet,1,2)}">=4*5</span>
                                     </td>
-                                    <td width="11%"><span class="context" th:text="${#numbers.formatDecimal(item.quantity * item.unit.value.amount,3,2)}">=4*6</span></td>
+                                    <td width="11%"><span class="context"
+                                                          th:text="${#numbers.formatDecimal(item.quantity * item.unit.value.amount,1,2)}">=4*6</span>
+                                    </td>
                                     <td width="5%"><span class="context"></span></td>
                                     <td width="14%">
                                         <!--/*@thymesVar id="allocation" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.Item.Planning.BudgetAllocations"*/-->
                                         <span th:each="allocation : ${item.planning.budgetAllocations}">
-                                            <span class="context" th:text="${#temporals.format(allocation.period.startDate, 'dd.MM.yyyy')}">
+                                            <span class="context"
+                                                  th:text="${#temporals.format(allocation.period.startDate, 'dd.MM.yyyy')}">
                                                 AC.award.items[*].planning.budgetAllocation[relatedItem:current].period.startDate
                                             </span>
                                                 -
-                                            <span class="context" th:text="${#temporals.format(allocation.period.endDate, 'dd.MM.yyyy')}">
+                                            <span class="context"
+                                                  th:text="${#temporals.format(allocation.period.endDate, 'dd.MM.yyyy')}">
                                             AC.award.items[*].planning.budgetAllocation[relatedItem:current].period.endDate
                                             </span>
                                             <span class="context" th:text="${allocation.budgetBreakdownId}">
@@ -1169,16 +1219,16 @@
                         <td width="7%"></td>
                         <td width="9%"></td>
                         <td width="10%"><span class="context"
-                                              th:text="${#aggregates.sum(context.ac.award.items.![unit.value.amountNet])}">Sum</span>
+                                              th:text="${#numbers.formatDecimal(#aggregates.sum(context.ac.award.items.![unit.value.amountNet]), 1, 2)}">Sum</span>
                         </td>
                         <td width="10%"><span class="context"
-                                              th:text="${#aggregates.sum(context.ac.award.items.![unit.value.amount])}">Sum</span>
+                                              th:text="${#numbers.formatDecimal(#aggregates.sum(context.ac.award.items.![unit.value.amount]),1,2)}">Sum</span>
                         </td>
                         <td width="11%"><span class="context"
-                                              th:text="${#aggregates.sum(context.ac.award.items.![quantity * unit.value.amountNet])}">Sum</span>
+                                              th:text="${#numbers.formatDecimal(#aggregates.sum(context.ac.award.items.![quantity * unit.value.amountNet]),1,2)}">Sum</span>
                         </td>
                         <td width="11%"><span class="context"
-                                              th:text="${#aggregates.sum(context.ac.award.items.![quantity * unit.value.amount])}">Sum</span>
+                                              th:text="${#numbers.formatDecimal(#aggregates.sum(context.ac.award.items.![quantity * unit.value.amount]),1,2)}">Sum</span>
                         </td>
                         <td width="5%"></td>
                         <td width="14%"></td>
