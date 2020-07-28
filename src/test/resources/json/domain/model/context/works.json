@@ -1,0 +1,151 @@
+{
+  "ac": {
+    "date": "2018-11-23",
+    "contract": {
+      "id": "ocds-t1s2t3-MD-1542981234151-AC-1542036270645",
+      "description": "description",
+      "monthNumber": "2",
+      "amount": 10,
+      "amountNet": 3,
+      "agreedMetrics": {
+        "ccBuyer_1_1Measure": "5",
+        "ccTenderer_1_1Measure": "15",
+        "ccTenderer_1_5Measure": "25",
+        "ccTenderer_2_2Measure": "1",
+        "ccTenderer_2_3Measure": "2",
+        "ccTenderer_2_4Measure": "2",
+        "ccTenderer_3_2Measure": "3",
+        "ccTenderer_3_3Measure": "4"
+      }
+    },
+    "tender": {
+      "classification": {
+        "id": "77600000-6",
+        "description": "Servicii privind vânătoarea"
+      },
+      "procurementMethodDetails": "mv"
+    },
+    "supplier": {
+      "address": {
+        "country": "MOLDOVA",
+        "region": "Cahul",
+        "locality": "mun.Cahul",
+        "streetAddress": "ukukyo777uk",
+        "postalCode": "12345"
+      },
+      "identifier": {
+        "id": "MD_00_DM",
+        "legalName": "name"
+      },
+      "additionalIdentifiers": [],
+      "contactPoint": {
+        "telephone": "string",
+        "fax": "fax"
+      },
+      "persones": [
+        {
+          "title": "title",
+          "name": "name",
+          "businessFunctions": [
+            {
+              "id": "456921",
+              "jobTitle": "Chief Executive Officer"
+            }
+          ]
+        },
+        {
+          "title": "titl2e",
+          "name": "name2",
+          "businessFunctions": [
+            {
+              "id": "4569c21",
+              "jobTitle": "Chief Executive Officer22222222222"
+            }
+          ]
+        }
+      ],
+      "details": {
+        "bankAccount": {
+          "accountIdentification": "2600000625637",
+          "identifier": "300711",
+          "name": "MBank"
+        },
+        "legalForm": {
+          "description": "ddd"
+        },
+        "permit": {
+          "idSRL" : "idSRL",
+          "startDateSRL": "2020-12-12",
+          "idSRLE": "idSRLE",
+          "startDateSRLE": "2022-12-12",
+          "yearsNumber": null,
+          "issuedBy": {
+            "id": "popopo",
+            "name": "vasia pupkin"
+          },
+          "issuedThought": {
+            "id": "95874",
+            "name": "name"
+          }
+        }
+      }
+    },
+    "buyer": {
+      "address": {
+        "country": "MOLDOVA",
+        "region": "Cahul",
+        "locality": "mun.Cahul",
+        "streetAddress": "ukukyo777uk",
+        "postalCode": "12345"
+      },
+      "identifier": {
+        "id": "MD_00_DM",
+        "legalName": "name"
+      },
+      "additionalIdentifiers": [],
+      "contactPoint": {
+        "telephone": "string",
+        "fax": "fax"
+      },
+      "persones": [
+        {
+          "title": "title",
+          "name": "name",
+          "businessFunctions": [
+            {
+              "id": "456921",
+              "jobTitle": "Chief Executive Officer"
+            }
+          ]
+        },
+        {
+          "title": "titl2e",
+          "name": "name2",
+          "businessFunctions": [
+            {
+              "id": "4569c21",
+              "jobTitle": "Chief Executive Officer22222222222"
+            }
+          ]
+        }
+      ],
+      "details": {
+        "bankAccount": {
+          "accountIdentification": "2600000625637",
+          "identifier": "300711",
+          "name": "MBank"
+        },
+        "legalForm": {
+          "description": "ddd"
+        },
+        "permit": null
+      }
+    }
+  },
+  "ev": {
+    "publishDate": "2018-11-30",
+    "tender": {
+      "id": "ocds-t1s2t3-MD-1542981234151"
+    }
+  }
+}

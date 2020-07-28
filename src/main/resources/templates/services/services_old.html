@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ro">
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+        <style>
+            html {
+                line-height: 1.15; /* 1 */
+                -webkit-text-size-adjust: 100%; /* 2 */
+            }
+
+            body {
+                margin: 0;
+            }
+
+            main {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2em;
+                margin: 0.67em 0;
+            }
+
+            hr {
+                box-sizing: content-box; /* 1 */
+                height: 0; /* 1 */
+                overflow: visible; /* 2 */
+            }
+
+            pre {
+                font-family: monospace, monospace; /* 1 */
+                font-size: 1em; /* 2 */
+            }
+
+            a {
+                background-color: transparent;
+            }
+
+            abbr[title] {
+                border-bottom: none; /* 1 */
+                text-decoration: underline; /* 2 */
+                text-decoration: underline dotted; /* 2 */
+            }
+
+            b,
+            strong {
+                font-weight: bolder;
+            }
+
+            code,
+            kbd,
+            samp {
+                font-family: monospace, monospace; /* 1 */
+                font-size: 1em; /* 2 */
+            }
+
+            small {
+                font-size: 80%;
+            }
+
+            sub,
+            sup {
+                font-size: 75%;
+                line-height: 0;
+                position: relative;
+                vertical-align: baseline;
+            }
+
+            sub {
+                bottom: -0.25em;
+            }
+
+            sup {
+                top: -0.5em;
+            }
+
+            img {
+                border-style: none;
+            }
+
+            button,
+            input,
+            optgroup,
+            select,
+            textarea {
+                font-family: inherit; /* 1 */
+                font-size: 100%; /* 1 */
+                line-height: 1.15; /* 1 */
+                margin: 0; /* 2 */
+            }
+
+            button,
+            input { /* 1 */
+                overflow: visible;
+            }
+
+            button,
+            select { /* 1 */
+                text-transform: none;
+            }
+
+            button,
+            [type="button"],
+            [type="reset"],
+            [type="submit"] {
+                -webkit-appearance: button;
+            }
+
+            button::-moz-focus-inner,
+            [type="button"]::-moz-focus-inner,
+            [type="reset"]::-moz-focus-inner,
+            [type="submit"]::-moz-focus-inner {
+                border-style: none;
+                padding: 0;
+            }
+
+            button:-moz-focusring,
+            [type="button"]:-moz-focusring,
+            [type="reset"]:-moz-focusring,
+            [type="submit"]:-moz-focusring {
+                outline: 1px dotted ButtonText;
+            }
+
+            fieldset {
+                padding: 0.35em 0.75em 0.625em;
+            }
+
+            legend {
+                box-sizing: border-box; /* 1 */
+                color: inherit; /* 2 */
+                display: table; /* 1 */
+                max-width: 100%; /* 1 */
+                padding: 0; /* 3 */
+                white-space: normal; /* 1 */
+            }
+
+            progress {
+                vertical-align: baseline;
+            }
+
+            textarea {
+                overflow: auto;
+            }
+
+            [type="checkbox"],
+            [type="radio"] {
+                box-sizing: border-box; /* 1 */
+                padding: 0; /* 2 */
+            }
+
+            [type="number"]::-webkit-inner-spin-button,
+            [type="number"]::-webkit-outer-spin-button {
+                height: auto;
+            }
+
+            [type="search"] {
+                -webkit-appearance: textfield; /* 1 */
+                outline-offset: -2px; /* 2 */
+            }
+
+            [type="search"]::-webkit-search-decoration {
+                -webkit-appearance: none;
+            }
+
+            ::-webkit-file-upload-button {
+                -webkit-appearance: button; /* 1 */
+                font: inherit; /* 2 */
+            }
+
+            details {
+                display: block;
+            }
+
+            summary {
+                display: list-item;
+            }
+
+            template {
+                display: none;
+            }
+
+            [hidden] {
+                display: none;
+            }
+        </style>
+        <style>
+            *,
+            *:before,
+            *:after {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+            @page land {
+                size: landscape;
+            }
+
+            .landscapePage {
+                page: land;
+            }
+            .landscapePage table th,
+            .landscapePage .table-number td
+            {
+                text-align: center;
+            }
+            .total{
+                font-weight: 700;
+            }
+
+            .noDisplay {
+                display: none;
+            }
+
+            body {
+                line-height: 1;
+                font-family: "Times New Roman", sans-serif;
+                font-size: 10pt;
+            }
+
+            b {
+                display: inline-block;
+                font-size: 11pt;
+                margin-bottom: 10px;
+            }
+
+            div {
+                margin-bottom: 13pt;
+            }
+
+            .context {
+                /*color: red;*/
+            }
+
+            .square {
+                display: inline-block;
+                width: 175px;
+                height: 75px;
+                float: right;
+                margin-top: 20px;
+                border: 1px solid black;
+            }
+
+            .square-clear {
+                display: table;
+                clear: both;
+            }
+
+            .table {
+                width: 100%;
+                border-collapse: collapse;
+                page-break-inside: avoid;
+                margin-bottom: 20px;
+            }
+
+            .table th,
+            .table td {
+                padding: 5px;
+                vertical-align: top;
+                word-break: break-word;
+                text-align: left;
+                border: 1px solid black;
+            }
+
+            .table-border th {
+                background-color: #DCDCDC;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .big_list {
+                list-style: none;
+                counter-reset: li;
+            }
+
+            .big_list > li > ol {
+                margin-bottom: 10pt;
+                list-style: none;
+                counter-reset: li;
+            }
+
+            .big_list > li:before,
+            .big_list > li > ol > li:before {
+                counter-increment: li;
+                content: counters(li, ".") ". ";
+            }
+            .big_list > li:before {
+                font-weight: bold;
+            }
+
+            ul {
+                list-style: none;
+                margin-top: 5px;
+            }
+
+            li {
+                padding: 5px 0;
+            }
+
+            ul > li {
+                padding: 2px 0;
+            }
+
+            p {
+                margin: 0;
+            }
+
+            .table-number {
+                text-align: center;
+            }
+
+            .break {
+                page-break-before: always;
+            }
+
+            h1 {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <!--/*@thymesVar id="context" type="com.procurement.docs.domain.model.context.ServicesContext"*/-->
+        <div style="text-align: center">
+            <img
+                src="data:image/gif;base64,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"
+                alt="" />
+        </div>
+        <div class="square"></div>
+        <div class="square-clear"></div>
+        <h1>
+            Contract Nr. <br /> <span class="context" th:text="${context.ac.contract.id}">AC.contracts[0].id</span>
+        </h1>
+        <div>
+            <b>
+                de achiziţionare <span class="context" th:text="${context.ac.contract.description}">
+                AC.contracts[0].description
+            </span>
+            </b>
+        </div>
+        <div>
+            <b>
+                Cod CPV
+                <span class="context" th:text="${context.ac.tender.classification.id}">
+                    AC.tender.classification.id
+                </span>
+                <span class="context" th:text="${context.ac.tender.classification.description}">
+                    AC.tender.classification.description
+                </span>
+            </b>
+        </div>
+
+        <div style="margin-bottom: 0"><span class="context"
+                                            th:text="${#temporals.format(context.ac.date, 'dd.MM.yyyy')}">AC.date</span>
+        </div>
+        <div>
+            <span class="context" th:text="${context.ac.buyer.address.locality}">
+                AC.parties[role=="buyer"].address.addressDetails.locality.description
+            </span>
+        </div>
+        <table class="table">
+            <tr>
+                <th>Prestatorul de servicii</th>
+                <th>Autoritatea contractantă</th>
+            </tr>
+            <tr>
+                <td>
+                    <!--/*@thymesVar id="supplierInfo" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier"*/-->
+                    <div th:each="supplierInfo : ${context.ac.supplier}">
+                        <span class="context" th:text="${supplierInfo.details.legalForm.description}">
+                            AC.parties[role=="supplier"].legalForm.description
+                        </span>
+                        <span class="context" th:text="${supplierInfo.identifier.legalName}">
+                            AC.parties[role=="supplier"].identifier.legalName
+                        </span>
+                        <span class="context" th:text="${supplierInfo.identifier.id}">
+                            AC.parties[role=="supplier"].identifier.id
+                        </span>
+                    </div>
+                    <div>
+                        <div style="margin-bottom: 3px">reprezentată prin</div>
+                        <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person"*/-->
+                        <div th:each="supplierPerson : ${context.ac.supplier.persones}">
+                            <!--/*@thymesVar id="supplierBusinessFunction" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person.BusinessFunction"*/-->
+                            <span th:each="supplierBussinessFunction : ${supplierPerson.businessFunctions}">
+                                <span class="context" th:text="${supplierBussinessFunction.jobTitle}">
+                                    AC.parties.[supplier].persones.businessFunctions[type:authority].jobTitle
+                                </span>
+                            </span>
+                            <span class="context" th:text="${supplierPerson.title}">
+                                AC.parties.[supplier].persones.title
+                            </span>
+                            <span class="context" th:text="${supplierPerson.name}">
+                                AC.parties.[supplier].persones.name
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <div>care acţionează în baza</div>
+                        <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person"*/-->
+                        <div th:each="supplierPerson : ${context.ac.supplier.persones}">
+                            <!--/*@thymesVar id="supplierBusinessFunction" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person.BusinessFunction"*/-->
+                            <span th:each="supplierBussinessFunction : ${supplierPerson.businessFunctions}">
+                                <!--/*@thymesVar id="supplierDocuments" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person.BusinessFunctions.Documents"*/-->
+                                <span th:each="supplierDocument, iterator : ${supplierBussinessFunction.documents}">
+                                    <span class="context" th:text="${supplierDocument.title}">
+                                        AC.parties.[supplier].persones.businessFunctions[type:authority].documents[type:regulatoryDocument].title
+                                    </span>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div>denumit(a) în continuare Prestator</div>
+                    <div>înregistrat în Registrul de Stat cu nr.]
+                        <span class="context"
+                              th:text="${context.ac.supplier.details.permit != null} ? ${context.ac.supplier.details.permit.id} : '-' "> 245 </span>
+                         la data de
+                        <span class="context"
+                              th:text="${context.ac.supplier.details.permit != null} ? ${#temporals.format(context.ac.supplier.details.permit.startDate, 'dd.MM.yyyy')} : '-' ">19.12.1995</span>,
+                    </div>
+                    <div> pe de o parte</div>
+                </td>
+                <td>
+                    <!--/*@thymesVar id="buyerInfo" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer"*/-->
+                    <div th:each="buyerInfo : ${context.ac.buyer}">
+                        <span class="context" th:text="${buyerInfo.details.legalForm.description}">
+                            AC.parties.[buyer].legalForm.description
+                        </span>
+                        <span class="context" th:text="${buyerInfo.identifier.legalName}">
+                            AC.parties.[buyer].identifier.legalName
+                        </span>
+                        <span class="context" th:text="${buyerInfo.identifier.id}">
+                            AC.parties.[buyer].identifier.
+                        </span>
+                    </div>
+                    <div>
+                        <div style="margin-bottom: 3px">reprezentată prin</div>
+                        <!--/*@thymesVar id="buyerPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer.Person"*/-->
+                        <div th:each="buyerPerson : ${context.ac.buyer.persones}">
+                            <!--/*@thymesVar id="buyerBusinessFunction" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer.Person.BusinessFunction"*/-->
+                            <span th:each="buyerBussinessFunction : ${buyerPerson.businessFunctions}">
+                                <span class="context" th:text="${buyerBussinessFunction.jobTitle}">
+                                    AC.parties.[buyer].persones.businessFunctions[type:authority].jobTitle
+                                </span>
+                            </span>
+                            <span class="context" th:text="${buyerPerson.title}">
+                                AC.parties.[buyer].persones.title
+                            </span>
+                            <span class="context" th:text="${buyerPerson.name}">
+                                AC.parties.[buyer].persones.name
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        denumit(a) în continuare Cumpărător/Beneficiar
+                    </div>
+                    <div>înregistrat în Registrul de Stat cu nr.
+                        <span class="context"
+                              th:text="${context.ac.buyer.details.permit != null} ? ${context.ac.buyer.details.permit.id} : '-' "> 245 </span>
+                         la data de
+                        <span class="context"
+                              th:text="${context.ac.buyer.details.permit != null} ? ${#temporals.format(context.ac.buyer.details.permit.startDate, 'dd.MM.yyyy')} : '-' ">19.12.1995</span>,
+                    </div>
+                    <div> pe de o parte</div>
+
+                </td>
+            </tr>
+        </table>
+        <p> ambii (denumiţi(te) în continuare Părţi), au încheiat prezentul Contract referitor la următoarele:</p>
+        <ol type="a">
+            <li>
+                Achiziţionarea
+                <span class="context" th:text="${context.ac.contract.description}">AC.contract.description</span>
+                , denumite în continuare Servicii, conform procedurii de achiziții publice de tip
+                <span class="context" th:text="${context.ac.tender.procurementMethodDetails}">
+                    AC.tender.procurementMethodDetails
+                </span>
+                nr.
+                <span class="context" th:text="${context.ev.tender.id}"> EV.tender.id</span>
+                din
+                <span class="context" th:text="${#temporals.format(context.ev.publishDate, 'dd.MM.yyyy')}"> EV.publishDate</span>
+                , în baza deciziei grupului de lucru al Cumpărătorului/Beneficiarului din
+                <span class="context" th:text="${#temporals.format(context.ac.award.date, 'dd.MM.yyyy')}"> AC.awards[relatedLot:currentLot].date</span>
+            </li>
+            <li>
+                Următoarele documente vor fi considerate părţi componente şi integrale ale Contractului:
+                <ul>
+                    <li> a) Specificaţia tehnică;</li>
+                    <li> b) Specificaţia de preţ;</li>
+                    <li> c) [adăugaţi alte documente componente conform necesităţii, de exemplu, desene, grafice,
+                         formulare, protocolul de recepţionare provizorie şi finală etc.]
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Prezentul Contract va predomina asupra tuturor altor documente componente. în cazul unor discrepanţe sau
+                inconsecvenţe între documentele componente ale Contractului, documentele vor avea ordinea de prioritate
+                enumerată mai sus.
+            </li>
+            <li>
+                în calitate de contravaloare a plăţilor care urmează a fi efectuate de Beneficiar, Prestatorul se obligă
+                prin prezenta să presteze Beneficiarului Serviciile şi să înlăture defectele lor în conformitate cu
+                prevederile Contractului sub toate aspectele.
+            </li>
+            <li>
+                Beneficiarul se obligă prin prezenta să plătească Prestatorului, în calitate de contravaloare a
+                prestării
+                serviciilor, precum şi a înlăturării defectelor lor, preţul Contractului sau orice altă sumă care poate
+                deveni plătibilă conform prevederilor Contractului în termenele şi modalitatea stabilite de Contract.
+            </li>
+        </ol>
+
+        <ol class="big_list">
+            <li>
+                <b>Obiectul Contractului</b>
+                <ol>
+                    <li> Prestatorul îşi asumă obligaţia de a presta Serviciile conform Specificaţiei, care este parte
+                         integrantă a prezentului Contract.
+                    </li>
+                    <li>Beneficiarul se obligă, la rîndul său, să achite şi să recepţioneze Serviciile prestate de
+                        Prestator.
+                    </li>
+                    <li>Serviciile prestate în baza contractului vor respecta standardele indicate în Specificaţie Cînd
+                        nu este menţionat nici un standard sau reglementare aplicabilă, se vor respecta standardele sau
+                        alte reglementări autorizate în ţara de origine a produselor.
+                    </li>
+                    <li>Termenele de garanţie [valabilitate, după caz] a Serviciilor sînt indicate în Specificaţie.</li>
+                </ol>
+            </li>
+
+            <li>
+                <b>Termeni şi condiţii de prestare</b>
+                <ol>
+                    <li>Prestarea Serviciilor se efectuează de către Prestator în termenele prevăzute de graficul de
+                        prestare.
+                    </li>
+                    <li>Documentaţia de însoţire a Serviciilor include: [Cerinţele de mai sus trebuie prevăzute de către
+                        autoritatea contractantă şi ajustate conform cerinţelor actuale.]
+                    </li>
+                    <li>Originalele documentelor prevăzute în punctul 2.2 se vor prezenta Beneficiarului cel tîrziu la
+                        momentul prestării serviciilor. Prestarea serviciilor se consideră încheiată în momentul în care
+                        sînt prezentate documentele de mai sus.
+                    </li>
+                </ol>
+            </li>
+
+            <li>
+                <b>Preţul şi condiţii de plată</b>
+                <ol>
+                    <li> Preţul Serviciilor prestate conform prezentului Contract este stabilit în lei moldoveneşti,
+                         fiind indicat Specificaţia prezentului Contract.
+                    </li>
+                    <li>Suma totală a prezentului Contract, inclusiv TVA, se stabileşte în lei moldoveneşti şi
+                        constituie: <span class="context" th:text="${context.ac.contract.value}">AC.contract.value.amount </span>
+                        lei MD.
+                    </li>
+                    <li>Achitarea plăţilor pentru Serviciilor prestate va efectua în lei moldoveneşti.</li>
+                    <li>Metoda şi condiţiile de plată de către Cumpărător vor fi:</li>
+                    <li>Plăţile se vor efectua prin transfer bancar pe contul de decontare al Prestatorului indicat în
+                        prezentul Contract.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <b>Condiţii de predare-primire</b>
+                <ol>
+                    <li>Serviciile se consideră predate de către Prestator şi recepţionate de către Cumpărător
+                        [destinatar, după caz] dacă:
+                        <ul>
+                            <li>a) cantitatea Serviciilor corespunde informaţiei indicate în Lista serviciilor şi
+                                graficul prestării şi documentele de însoţire conform punctului 2.2 al prezentului
+                                Contract;
+                            </li>
+                            <li>b) calitatea Serviciilor corespunde informaţiei indicate în Specificaţie;</li>
+                        </ul>
+                    </li>
+                    <li>Prestatorul este obligat să prezinte Cumpărătorului un exemplar original al facturii fiscale
+                        odată cu prestarea Serviciilor, pentru efectuarea plăţii. Pentru nerespectarea de către
+                        Prestator a prezentei clauze, Cumpărătorul îşi rezervă dreptul de a majora termenul de achitare
+                        prevăzut în punctul 3.4 corespunzător numărului de zile de întîrziere şi de a fi exonerat de
+                        achitarea penalităţii stabilite în punctul 10.3.
+                    </li>
+                </ol>
+            </li>
+
+            <li>
+                <b>Standarde</b>
+                <ol>
+                    <li>Serviciile prestate în baza contractului vor respecta standardele prezentate de către prestator
+                        în propunerea sa tehnică.
+                    </li>
+                    <li>Cînd nu este menţionat nici un standard sau reglementare aplicabilă se vor respecta standardele
+                        sau alte reglementări autorizate în ţara de origine a produselor.
+                    </li>
+                </ol>
+            </li>
+
+            <li>
+                <b>Obligaţiile părţilor</b>
+                <ol>
+                    <li>
+                        în baza prezentului Contract, Prestatorul se obligă:
+                        <ul>
+                            <li>a) să presteze Serviciile în condiţiile prevăzute de prezentul Contract;</li>
+                            <li>b) să anunţe Cumpărătorul după semnarea prezentului Contract, în decurs de
+                                <span
+                                    class="context"
+                                    th:text="${context.ac.contract.agreedMetrics.ccTenderer_2_1Measure}"
+                                >
+                                    AC.agreedMetrics.cc-tenderer-2-1.measure
+                                </span>
+                                zile calendaristice, prin telefon/fax sau telegramă autorizată, despre disponibilitatea
+                                prestării Serviciilor;
+                            </li>
+                            <li>c) să asigure condiţiile corespunzătoare pentru recepţionarea Serviciilor de către
+                                Cumpărător [destinatar, după caz], în termenele stabilite, în corespundere cu cerinţele
+                                prezentului Contract;
+                            </li>
+                            <li>d) să asigure integritatea şi calitatea Serviciilor pe toată perioada de pînă la
+                                recepţionarea lor de către Cumpărător [destinatar, după caz].
+                            </li>
+                        </ul>
+                    </li>
+                    <li>în baza prezentului Contract, Cumpărătorul se obligă:
+                        <ul>
+                            <li>a) să întreprindă toate măsurile necesare pentru asigurarea recepţionării în termenul
+                                stabilit a Serviciilor prestate în corespundere cu cerinţele prezentului Contract;
+                            </li>
+                            <li>b) să asigure achitarea Serviciilor prestate, respectînd modalităţile şi termenele
+                                indicate
+                                în prezentul Contract.
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+
+            <li>
+                <b>Forţa majoră</b>
+                <ol>
+                    <li>Părţile sînt exonerate de răspundere pentru neîndeplinirea parţială sau integrală a obligaţiilor
+                        conform prezentului Contract, dacă aceasta este cauzată de producerea unor cazuri de forţă
+                        majoră (războaie, calamităţi naturale: incendii, inundaţii, cutremure de pămînt, precum şi alte
+                        circumstanţe care nu depind de voinţa Părţilor)
+                    </li>
+                    <li>Partea care invocă clauza de forţă majoră este obligată să informeze imediat (dar nu mai tîrziu
+                        de <span class="context" th:text="${context.ac.contract.agreedMetrics.ccGenerel_1_1Measure}">
+                            AC.agreedMetrics.cc-generel-1-1.measure
+                        </span>
+                        zile) cealaltă Parte despre survenirea circumstanţelor de forţă majoră.
+                    </li>
+                    <li>Survenirea circumstanţelor de forţă majoră, momentul declanşării şi termenul de acţiune trebuie
+                        să fie confirmate printr-un certificat, eliberat în mod corespunzător de către organul competent
+                        din ţara Părţii care invocă asemenea circumstanţe.
+                    </li>
+                </ol>
+            </li>
+
+            <li>
+                <b>Rezilierea</b>
+                <ol>
+                    <li>Rezilierea Contractului se poate realiza cu acordul comun al Părţilor.</li>
+                    <li>Contractul poate fi reziliat în mod unilateral de către:
+                        <ul>
+                            <li>a) Cumpărător în caz de refuz al Prestatorului de a presta Serviciile prevăzute în
+                                prezentul Contract;
+                            </li>
+                            <li>b) Cumpărător în caz de nerespectare de către Prestator a termenelor de prestare
+                                stabilite;
+                            </li>
+                            <li>c) Prestator în caz de nerespectare de către Cumpărător a termenelor de plată a
+                                Serviciilor;
+                            </li>
+                            <li>d) Prestator sau Cumpărător în caz de nesatisfacere de către una dintre Părţi a
+                                pretenţiilor înaintate conform prezentului Contract.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Partea iniţiatoare a rezilierii Contractului este obligată să comunice în termen de
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccGenerel_1_2Measure}">
+                            AC.agreedMetrics.cc-generel-1-2.measure
+                        </span>
+                        zile lucrătoare celeilalte Părţi despre intenţiile ei printr-o scrisoare motivată.
+                    </li>
+                    <li>Partea înştiinţată este obligată să răspundă în decurs de
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccGenerel_1_3Measure}">
+                            AC.agreedMetrics.cc-generel-1-3.measure
+                        </span>
+                        zile lucrătoare de la primirea notificării. în cazul în care litigiul nu este soluţionat în
+                        termenele stabilite, partea iniţiatoare va iniţia rezilierea.
+                    </li>
+                </ol>
+            </li>
+
+            <li>
+                <b>Reclamaţii</b>
+                <ol>
+                    <li>Reclamaţiile privind cantitatea Serviciilor prestate sînt înaintate Prestatorul la momentul
+                        recepţionării lor, fiind confirmate printr-un act întocmit în comun cu reprezentantul
+                        Prestatorului.
+                    </li>
+                    <li>Pretenţiile privind calitatea Serviciilor prestate sînt înaintate Prestatorului în termen de
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccBuyer_1_1Measure}">
+                            AC.agreedMetrics.cc-buyer-1-1.measure
+                        </span>
+                        zile lucrătoare de la depistarea deficienţelor de calitate şi trebuie confirmate printr-un
+                        certificat eliberat de o organizaţie independentă neutră şi autorizată în acest sens.
+                    </li>
+                    <li>Prestatorul este obligat să examineze pretenţiile înaintate în termen de
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_2_2Measure}">
+                            AC.agreedMetrics.cc-tenderer-2-2.measure
+                        </span>
+                        zile lucrătoare de la data primirii acestora şi să comunice Cumpărătorului despre decizia luată.
+                    </li>
+                    <li>în caz de recunoaştere a pretenţiilor, Prestatorul este obligat, în termen de
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_2_3Measure}">
+                            AC.agreedMetrics.cc-tenderer-2-3.measure
+                        </span>
+                        zile, să presteze suplimentar Cumpărătorului cantitatea neprestată de
+                        servicii, iar în caz de constatare a calităţii necorespunzătoare – să le substituie sau să le
+                        corecteze în conformitate cu cerinţele Contractului.
+                    </li>
+                    <li>Prestatorul poartă răspundere pentru calitatea Serviciilor în limitele stabilite, inclusiv
+                        pentru viciile ascunse.
+                    </li>
+                    <li>în cazul devierii de la calitatea confirmată prin certificatul de calitate întocmit de
+                        organizaţia independentă neutră sau autorizată în acest sens, cheltuielile pentru staţionare sau
+                        întîrziere sînt suportate de partea vinovată.
+                    </li>
+                </ol>
+            </li>
+
+            <li>
+                <b>Sancţiuni</b>
+                <ol>
+                    <li>Forma de garanţie de bună executare a contractului agreată de Cumpărător este
+                        <span
+                            class="context"
+                            th:text="${context.ac.contract.agreedMetrics.ccTenderer_1_2Measure}"
+                        >
+                            AC.agreedMetrics.cc-tenderer-1-2.measure
+                        </span>
+                        , în cuantum de
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_1_1Measure}">
+                            AC.agreedMetrics.cc-tenderer-1-1.measure
+                        </span>% din valoarea contractului.
+                    </li>
+                    <li>Pentru refuzul de a presta Serviciile prevăzute în prezentul Contract, se va reţine garanţia de
+                        bună executare a contractului, în cazul în care ea a fost constituită în conformitate cu
+                        prevederile punctului 10.1., în caz contrar Prestatorul suportă o penalitate în valoare de
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_3_3Measure}">
+                            AC.agreedMetrics.cc-tenderer-3-3.measure
+                        </span> % [indicaţi procentajul] din suma totală a contractului.
+                    </li>
+                    <li>Pentru prestarea cu întîrziere a Serviciilor, Prestatorul poartă răspundere materială în valoare
+                        de
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_3_1Measure}">
+                            AC.agreedMetrics.cc-tenderer-3-1.measure
+                        </span>
+                        % din suma Serviciilor neprestate, pentru fiecare zi de întîrziere, dar nu mai mult de
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_3_2Measure}">
+                            AC.agreedMetrics.cc-tenderer-3-2.measure
+                        </span>
+                        % [indicaţi procentajul] din suma totală a prezentului Contract. în cazul în care întîrzierea
+                        depăşeşte
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccTenderer_2_4Measure}">
+                            AC.agreedMetrics.cc-tenderer-2-4.measure
+                        </span>
+                        zile, se consideră ca fiind refuz de a presta Serviciile prevăzute în prezentul Contract şi
+                        Prestatorului i se va reţine garanţia de bună executare a contractului, în cazul în care ea a
+                        fost constituită în conformitate cu prevederile punctului 10.1.
+                    </li>
+                    <li>Pentru achitarea cu întîrziere, Cumpărătorul poartă răspundere materială în valoare de
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccBuyer_2_1Measure}">
+                            AC.agreedMetrics.cc-buyer-2-1.measure
+                        </span>
+                        % [indicaţi procentajul] din suma Serviciilor neachitate, pentru fiecare zi de întîrziere, dar
+                        nu mai mult de
+                        <span class="context" th:text="${context.ac.contract.agreedMetrics.ccBuyer_2_2Measure}">
+                            AC.agreedMetrics.cc-buyer-2-2.measure
+                        </span>
+                        % [indicaţi procentajul] din suma totală a prezentului contract.
+                    </li>
+                </ol>
+            </li>
+
+            <li>
+                <b>Drepturi de proprietate intelectuală</b>
+                <ol>
+                    <li>
+                        Prestatorul are obligaţia să despăgubească achizitorul împotriva oricăror:
+                        <ul>
+                            <li>a)
+                                reclamaţii şi acţiuni în justiţie, ce rezultă din încălcarea unor drepturi de
+                                proprietate intelectuală (brevete, nume, mărci înregistrate etc.), legate de
+                                echipamentele, materialele, instalaţiile sau utilajele folosite pentru sau în legătură
+                                cu produsele achiziţionate, şi
+                            </li>
+                            <li>b)
+                                daune-interese, costuri, taxe şi cheltuieli de orice natură, aferente, cu excepţia
+                                situaţiei în care o astfel de încălcare rezultă din respectarea Caietului de sarcini
+                                întocmit de către achizitor.
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+
+            <li>
+                <b>Dispoziţii finale</b>
+                <ol>
+                    <li>Litigiile ce ar putea rezulta din prezentul Contract vor fi soluţionate de către Părţi pe cale
+                        amiabilă. în caz contrar, ele vor fi transmise spre examinare în instanţa de judecată competentă
+                        conform legislaţiei Republicii Moldova.
+                    </li>
+                    <li>De la data semnării prezentului Contract, toate negocierile purtate şi documentele perfectate
+                        anterior îşi pierd valabilitatea.
+                    </li>
+                    <li>Părţile contractante au dreptul, pe durata îndeplinirii contractului, să convină asupra
+                        modificării clauzelor contractului, prin act adiţional, numai în cazul apariţiei unor
+                        circumstanţe care lezează interesele comerciale legitime ale acestora şi care nu au putut fi
+                        prevăzute la data încheierii contractului. Modificările şi completările la prezentul Contract
+                        sînt valabile numai în cazul în care au fost perfectate în scris şi au fost semnate de ambele
+                        Părţi.
+                    </li>
+                    <li>Nici una dintre Părţi nu are dreptul să transmită obligaţiile şi drepturile sale stipulate în
+                        prezentul Contract unor terţe persoane fără acordul în scris al celeilalte părţi.
+                    </li>
+                    <li>Prezentul Contract este întocmit în două exemplare în limba de stat a Republicii Moldova, cîte
+                        un exemplar pentru Vînzător, Cumpărător.
+                    </li>
+                    <li>Prezentul Contract se consideră încheiat la data semnării şi intră în vigoare la data
+                        înregistrării la Trezoreria de Stat a Ministerului Finanţelor, în cazul în care sursele
+                        financiare se alocă din bugetul de stat/bugetul local, sau la data semnării sau la o altă dată
+                        ulterioară indicată în acest contract în cazul în care gestionarea surselor financiare nu se
+                        efectuează prin intermediul sistemului trezorerial.
+                    </li>
+                    <li>Prezentul Contract este valabil pînă la
+                        <span class="context" th:text="${#temporals.format(context.ac.contract.endDate, 'dd.MM.yyyy')}">
+                            AC.contract.period.endDate
+                        </span>
+                    </li>
+                    <li>Prezentul Contract reprezintă acordul de voinţă al părţilor şi se consideră semnat la data
+                        aplicării ultimei semnături de către una dintre părţi.
+                    </li>
+                    <li>Pentru confirmarea celor menţionate mai sus, Părţile au semnat prezentul Contract în
+                        conformitate cu legislaţia Republicii Moldova, la data şi anul indicate mai sus.
+                    </li>
+                </ol>
+            </li>
+
+            <li>
+                <b> Datele juridice, poştale şi bancare ale Părţilor</b>
+                <div class="break"></div>
+                <table class="table table-border">
+                    <tr>
+                        <th>Prestatorul de servicii</th>
+                        <th>Autoritatea contractantă</th>
+                    </tr>
+                    <tr>
+                        <td> Adresa poştală:
+                            <span class="context" th:text="${context.ac.supplier.address.streetAddress} + ', '">
+                              AC.parties.[supplier].address.streetAddress
+                            </span>
+                            <span class="context" th:text="${context.ac.supplier.address.locality} + ', '">
+                              address.addressDetails.locality
+                            </span>
+                            <span class="context" th:text="${context.ac.supplier.address.region} + ', '">
+                              address.addressDetails.region
+                            </span>
+                            <span class="context" th:text="${context.ac.supplier.address.country}">
+                              address.addressDetails.country
+                            </span>
+                            <span class="context"
+                                  th:text="${context.ac.supplier.address.postalCode != null}  ?', ' + ${context.ac.supplier.address.postalCode}">postalCode
+                            </span>
+                        </td>
+                        <td> Adresa poştală:
+                            <span class="context" th:text="${context.ac.buyer.address.streetAddress} + ', '">
+                              AC.parties.[buyer].address.streetAddress
+                            </span>
+                            <span class="context" th:text="${context.ac.buyer.address.locality} + ', '">
+                              address.addressDetails.locality
+                            </span>
+                            <span class="context" th:text="${context.ac.buyer.address.region} + ', '">
+                              address.addressDetails.region
+                            </span>
+                            <span class="context" th:text="${context.ac.buyer.address.country}">
+                              address.addressDetails.country
+                            </span>
+                            <span class="context"
+                                  th:text="${context.ac.buyer.address.postalCode != null}  ?', ' + ${context.ac.buyer.address.postalCode}">postalCode
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td> Telefon:
+                            <span class="context" th:text="${context.ac.supplier.contactPoint.telephone}">
+                              AC.parties.[supplier].contactPoint.telephone
+                            </span>
+                        </td>
+                        <td> Telefon:
+                            <span class="context" th:text="${context.ac.buyer.contactPoint.telephone}">
+                              AC.parties.[buyer].contactPoint.telephone
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Cont de decontare:
+                            <span class="context"
+                                  th:text="${context.ac.supplier.details.bankAccount.accountIdentification}">
+                              AC.parties.[supplier].details.bankAccounts.accountIdentification.id
+                            </span>
+                        </td>
+                        <td>
+                            Cont de decontare:
+                            <span class="context"
+                                  th:text="${context.ac.buyer.details.bankAccount.accountIdentification}">
+                              AC.parties.[buyer].details.bankAccounts.accountIdentification.id
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Banca:
+                            <span class="context" th:text="${context.ac.supplier.details.bankAccount.name}">
+                              AC.parties.[supplier].details.bankAccounts.bankName
+                            </span>
+                        </td>
+                        <td>Banca:
+                            <span class="context" th:text="${context.ac.buyer.details.bankAccount.name}">
+                              AC.parties.[buyer].details.bankAccounts.bankName
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Adresa poştală a băncii:
+                            <span
+                                class="context"
+                                th:text="${context.ac.supplier.details.bankAccount.address.streetAddress} + ', '"
+                            >
+                              AC.parties.[supplier].details.bankAccount.address.streetAddress
+                            </span>
+                            <span class="context"
+                                  th:text="${context.ac.supplier.details.bankAccount.address.locality} + ', '">
+                              address.addressDetails.locality
+                            </span>
+                            <span class="context"
+                                  th:text="${context.ac.supplier.details.bankAccount.address.region} + ', '">
+                              address.addressDetails.region
+                            </span>
+                            <span class="context" th:text="${context.ac.supplier.details.bankAccount.address.country}">
+                              address.addressDetails.country
+                            </span>
+                            <span class="context"
+                                  th:text="${context.ac.supplier.details.bankAccount.address.postalCode != null}  ?', ' + ${context.ac.supplier.details.bankAccount.address.postalCode}">
+                                postalCode
+                            </span>
+                        </td>
+
+                        <td>Adresa poştală a băncii:
+                            <span
+                                class="context"
+                                th:text="${context.ac.buyer.details.bankAccount.address.streetAddress} + ', '"
+                            >
+                              AC.parties.[buyer].details.bankAccount.address.streetAddress
+                            </span>
+                            <span class="context"
+                                  th:text="${context.ac.buyer.details.bankAccount.address.locality} + ', '">
+                              address.addressDetails.locality
+                            </span>
+                            <span class="context"
+                                  th:text="${context.ac.buyer.details.bankAccount.address.region} + ', '">
+                              address.addressDetails.region
+                            </span>
+                            <span class="context" th:text="${context.ac.buyer.details.bankAccount.address.country}">
+                              address.addressDetails.country
+                            </span>
+                            <span class="context"
+                                  th:text="${context.ac.buyer.details.bankAccount.address.postalCode != null}  ?', ' + ${context.ac.buyer.details.bankAccount.address.postalCode}">postalCode</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Cod:
+                            <span class="context" th:text="${context.ac.supplier.details.bankAccount.identifier}">
+                                AC.parties.[supplier].details.bankAccounts.identifier.id
+                            </span>
+                        </td>
+                        <td>Cod:
+                            <span class="context" th:text="${context.ac.buyer.details.bankAccount.identifier}">
+                                AC.parties.[buyer].details.bankAccounts.identifier.id
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.AdditionalIdentifier"*/-->
+                        <td> Cod fiscal:
+                            <span class="context" th:each="item : ${context.ac.supplier.additionalIdentifiers}">
+                                <span th:text="${item.id}">AC.parties.[supplier].additionalidentifieres[scheme:MD-FISCAL].id</span>
+                            </span>
+                            <span
+                                th:class="${#arrays.length(context.ac.supplier.additionalIdentifiers)} ? 'noDisplay'">-</span>
+                        </td>
+                        <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Buyer.AdditionalIdentifier"*/-->
+                        <td> Cod fiscal:
+                            <span class="context" th:each="item : ${context.ac.buyer.additionalIdentifiers}">
+                                <span
+                                    th:text="${item.id}">AC.parties.[buyer].additionalIdentifiers[scheme:MD-FISCAL].id</span>
+                            </span>
+                            <span
+                                th:class="${#arrays.length(context.ac.buyer.additionalIdentifiers)} ? 'noDisplay'">-</span>
+                        </td>
+                    </tr>
+                </table>
+            </li>
+
+            <li>
+                <b>Semnăturile părţilor</b>
+                <p>Acest document se semnează electronic în conformitate cu Legea nr. 91 din 29.05.2014. Verificarea
+                   semnăturii poate fi realizată la adresa https://msign.gov.md
+                </p>
+            </li>
+        </ol>
+
+        <div class="landscapePage">
+            <div class="break"></div>
+            <h4>Specificaţii tehnice (F4.1)</h4>
+            <p style="margin-bottom: 15px">
+                [Acest tabel va fi completat de către ofertant în coloanele 3, 4, 5, 7, iar de către autoritatea
+                contractantă
+                – în coloanele 1, 2, 6, 8]
+            </p>
+
+            <div style="width: 132%">
+                <table class=" table table-border">
+                    <tr>
+                        <td>Numărul licitaţiei:
+                            <span class="context" th:text="${context.ms.tender.id}"> MS.tender.id </span>
+                        </td>
+                        <td>Data: <span class="context"
+                                        th:text="${#temporals.format(context.ac.award.date, 'dd.MM.yyyy')}">AC.award.date</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Denumirea licitaţiei:
+                            <span class="context" th:text="${context.ms.tender.title}">
+                            MS.tender.title
+                        </span>
+                        </td>
+                        <td>Lot:
+                            <span class="context" th:text="${context.ac.award.relatedLot.id}">
+                            AC.award.relatedLot.id
+                        </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div style="width: 132%">
+                <table class=" table table-border">
+                    <tr>
+                        <th>Cod CPV</th>
+                        <th>Denumirea bunurilor şi/sau a serviciilor</th>
+                        <th>Modelul articolului</th>
+                        <th>Ţara de origine</th>
+                        <th>Producătorul</th>
+                        <th>Specificarea tehnică deplină solicitată de către autoritatea contractantă</th>
+                        <th>Specificarea tehnică deplină propusă de către ofertant</th>
+                        <th>Standarde de referinţă</th>
+                    </tr>
+                    <tr class="table-number">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Bunuri/Servicii:</b></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                        <span class="context" th:text="${context.ac.award.relatedLot.id}">
+                            AC.award.relatedLot.id
+                        </span>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.Item"*/-->
+                    <tr th:each="item : ${context.ac.award.items}">
+                        <td>
+                        <span class="context" th:text="${item.classification.id}">
+                            AC.award.items[*].classification.id
+                        </span>
+                            <span class="context" th:text="${item.classification.description}">+description</span>
+                        </td>
+                        <td><span class="context" th:text="${item.description}">AC.award.items[*].description</span>
+                        </td>
+                        <td>
+                        <span class="context" th:text="${item.agreedMetrics.ccSubject_1Measure}">
+                            AC.contract.agreedMetrics.cc-subject-1.measure
+                        </span>
+                        </td>
+                        <td>
+                        <span class="context" th:text="${item.agreedMetrics.ccSubject_2Measure}">
+                            AC.contract.agreedMetrics.cc-subject-2.measure
+                        </span>
+                        </td>
+                        <td>
+                        <span class="context" th:text="${item.agreedMetrics.ccSubject_3Measure}">
+                            AC.contract.agreedMetrics.cc-subject-3.measure
+                        </span>
+                        </td>
+                        <td>
+                        <span class="context" th:text="${item.agreedMetrics.ccSubject_4Measure}">
+                            AC.contract.agreedMetrics.cc-subject-4.measure
+                        </span>
+                        </td>
+                        <td></td>
+                        <td>
+                        <span class="context" th:text="${item.agreedMetrics.ccSubject_5Measure}">
+                            AC.contract.agreedMetrics.cc-subject-5.measure
+                        </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                Numele, Prenumele:
+                <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person"*/-->
+                <span th:each="supplierPerson : ${context.ac.supplier.persones}">
+                    <span class="context" th:text="${supplierPerson.title}">AC.parties.[supplier].persones.title</span>
+                    <span class="context" th:text="${supplierPerson.name}">AC.parties.[supplier].persones.name</span>
+                </span>
+
+                În calitate de:
+                <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person"*/-->
+                <span th:each="supplierPerson : ${context.ac.supplier.persones}">
+                    <!--/*@thymesVar id="supplierBusinessFunction" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person.BusinessFunction"*/-->
+                    <span th:each="supplierBussinessFunction : ${supplierPerson.businessFunctions}">
+                        <span class="context" th:text="${supplierBussinessFunction.jobTitle}">
+                            AC.parties.[supplier].persones.businessFunctions[type:authority].jobTitle
+                        </span>
+                    </span>
+                </span>
+            </div>
+            <div>Ofertantul:
+                <span class="context" th:text="${context.ac.supplier.details.legalForm.description}">
+                    AC.parties.[supplier].legalForm.description
+                </span>
+                <span class="context" th:text="${context.ac.supplier.identifier.legalName}">AC.parties.[supplier].identifier.legalName</span>
+               (<span class="context" th:text="${context.ac.supplier.identifier.id}">
+                    AC.parties.[supplier].identifier.id
+                </span>
+               )
+            </div>
+            <div>Adresa:
+                <span class="context" th:text="${context.ac.supplier.address.streetAddress} + ', '">
+                    AC.parties.[supplier].address.streetAddress
+                </span>
+                <span class="context" th:text="${context.ac.supplier.address.locality} + ', '">
+                    addressDetails.locality
+                </span>
+                <span class="context"
+                      th:text="${context.ac.supplier.address.region}  + ','">addressDetails.region</span>
+                <span class="context" th:text="${context.ac.supplier.address.country}">addressDetails.country</span>
+                <span class="context"
+                      th:text="${context.ac.supplier.address.postalCode != null}  ?', ' + ${context.ac.supplier.address.postalCode}">postalCode</span>
+            </div>
+
+            <div class="break"></div>
+            <h4>Specificații de preț (F4.2)</h4>
+            <p style="margin-bottom: 15px">
+                [Acest tabel va fi completat de către ofertant în coloanele 5,6,7,8, iar de către autoritatea
+                contractantă –
+                în coloanele 1,2,3,4,9]
+            </p>
+
+            <div style="width: 132%">
+                <table class="table table-border">
+                    <tr>
+                        <td>Numărul licitaţiei: <span class="context"
+                                                      th:text="${context.ms.tender.id}"> MS.tender.id </span></td>
+                        <td>Data: <span class="context"
+                                        th:text="${#temporals.format(context.ac.award.date, 'dd.MM.yyyy')}"> AC.award.date</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Denumirea licitaţiei:
+                            <span class="context" th:text="${context.ms.tender.title}">
+                        MS.tender.title
+                    </span>
+                        </td>
+                        <td>Lot:
+                            <span class="context" th:text="${context.ac.award.relatedLot.id}">
+                        AC.award.relatedLot.id
+                    </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div style="width: 132%">
+                <table class="table table-border">
+                    <tr>
+                        <th>Cod CPV</th>
+                        <th>Denumirea bunurilor şi/sau a serviciilor</th>
+                        <th>Unitatea de măsură</th>
+                        <th>Cantitatea</th>
+                        <th>Preţ unitar (fără TVA</th>
+                        <th>Preţ unitar (cu TVA)</th>
+                        <th>Suma fără TVA</th>
+                        <th>Suma cu TVA</th>
+                        <th>Termenul de livrare/prestare</th>
+                        <th>Clasificație bugetară (IBAN)</th>
+                    </tr>
+                    <tr class="table-number">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><b>Bunuri/Servicii:</b></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                    <span class="context" th:text="${context.ac.award.relatedLot.id}">
+                        AC.award.relatedLot.id
+                    </span>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <!--/*@thymesVar id="item" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.Item"*/-->
+                    <tr th:each="item : ${context.ac.award.items}">
+                        <td>
+                            <span class="context" th:text="${item.classification.id}">AC.award.items[*].classification.id</span>
+                            <span class="context" th:text="${item.classification.description}">+description</span>
+                        </td>
+                        <td><span class="context" th:text="${item.description}">AC.award.items[*].description</span>
+                        </td>
+                        <td><span class="context" th:text="${item.unit.name}">AC.award.items[*].unit.name</span></td>
+                        <td><span class="context" th:text="${item.quantity}">AC.award.items[*].quantity</span></td>
+                        <td>
+                    <span class="context" th:text="${item.unit.value.amountNet}">
+                        AC.award.items[*].unit.value.amountNet
+                    </span>
+                        </td>
+                        <td>
+                            <span class="context" th:text="${item.unit.value.amount}">AC.award.items[*].unit.value.amount</span>
+                        </td>
+                        <td><span class="context" th:text="${item.quantity * item.unit.value.amountNet}">=4*5</span>
+                        </td>
+                        <td><span class="context" th:text="${item.quantity * item.unit.value.amount}">=4*6</span></td>
+                        <td><span class="context"></span></td>
+                        <td>
+                            <!--/*@thymesVar id="allocation" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Award.Item.Planning.BudgetAllocations"*/-->
+                            <span th:each="allocation : ${item.planning.budgetAllocations}">
+                    <span class="context"
+                          th:text="${#temporals.format(allocation.period.startDate, 'dd.MM.yyyy')}">
+                        AC.award.items[*].planning.budgetAllocation[relatedItem:current].period.startDate
+                    </span>
+                            -
+                                <span class="context"
+                                      th:text="${#temporals.format(allocation.period.endDate, 'dd.MM.yyyy')}">
+                            AC.award.items[*].planning.budgetAllocation[relatedItem:current].period.endDate
+                         </span>
+                            <span class="context" th:text="${allocation.budgetBreakdownId}">
+                        +budgetBreakdownID
+                    </span>
+                                <br />
+
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr class="total">
+                        <td></td>
+                        <td>TOTAL</td>
+                        <td></td>
+                        <td></td>
+                        <td><span class="context"
+                                  th:text="${#aggregates.sum(context.ac.award.items.![unit.value.amountNet])}">Sum</span>
+                        </td>
+                        <td><span class="context"
+                                  th:text="${#aggregates.sum(context.ac.award.items.![unit.value.amount])}">Sum</span>
+                        </td>
+                        <td><span class="context"
+                                  th:text="${#aggregates.sum(context.ac.award.items.![quantity * unit.value.amountNet])}">Sum</span>
+                        </td>
+                        <td><span class="context"
+                                  th:text="${#aggregates.sum(context.ac.award.items.![quantity * unit.value.amount])}">Sum</span>
+                        </td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                Numele, Prenumele:
+                <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person"*/-->
+                <span th:each="supplierPerson : ${context.ac.supplier.persones}">
+                    <span class="context" th:text="${supplierPerson.title}">AC.parties.[supplier].persones.title </span>
+                    <span class="context" th:text="${supplierPerson.name}">AC.parties.[supplier].persones.name</span>
+                </span>
+                În calitate de:
+                <!--/*@thymesVar id="supplierPerson" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person"*/-->
+                <span th:each="supplierPerson : ${context.ac.supplier.persones}">
+                    <!--/*@thymesVar id="supplierBusinessFunction" type="com.procurement.docs.domain.model.context.ServicesContext.AC.Supplier.Person.BusinessFunction"*/-->
+                    <span th:each="supplierBussinessFunction : ${supplierPerson.businessFunctions}">
+                        <span class="context" th:text="${supplierBussinessFunction.jobTitle}">
+                            AC.parties.[supplier].persones.businessFunctions[type:authority].jobTitle
+                        </span>
+                    </span>
+                </span>
+            </div>
+            <div>Ofertantul:
+                <span class="context" th:text="${context.ac.supplier.details.legalForm.description}">
+                AC.parties.[supplier].legalForm.description
+            </span>
+                <span class="context" th:text="${context.ac.supplier.identifier.legalName}">
+                AC.parties.[supplier].identifier.legalName
+            </span>
+               (<span class="context" th:text="${context.ac.supplier.identifier.id}">
+                AC.parties.[supplier].identifier.id)
+            </span>)
+            </div>
+            <div>Adresa:
+                <span class="context" th:text="${context.ac.supplier.address.streetAddress} + ', '">
+                AC.parties.[supplier].address.streetAddress
+            </span>
+                <span class="context"
+                      th:text="${context.ac.supplier.address.locality} + ', '">addressDetails.locality</span>
+                <span class="context" th:text="${context.ac.supplier.address.region} +', '">addressDetails.region</span>
+                <span class="context" th:text="${context.ac.supplier.address.country}">addressDetails.country</span>
+                <span class="context"
+                      th:text="${context.ac.supplier.address.postalCode != null}  ?', ' + ${context.ac.supplier.address.postalCode}">postalCode</span>
+            </div>
+        </div>
+    </body>
+</html>
